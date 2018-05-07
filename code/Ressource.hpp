@@ -1,22 +1,21 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Bete.hpp
+/// Fichier : Ressource.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Bete
+/// Classe Ressource
 
-
-#ifndef BETE_HPP
-#define BETE_HPP
+#ifndef RESS_HPP
+#define RESS_HPP
 
 #include <iostream>
+#include "Ressource.hpp"
 
-class Bete : public SurCarte{
+class Ressource{
 
 public: 
 
 
 protected:
-
-
+	
 };
 
 #endif

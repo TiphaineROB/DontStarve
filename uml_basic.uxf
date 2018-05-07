@@ -159,6 +159,7 @@ Package::Nourriture
 --
 - datePeremption: int
 - apportNourriture: double
+- image: Texture
 --
 </panel_attributes>
     <additional_attributes/>

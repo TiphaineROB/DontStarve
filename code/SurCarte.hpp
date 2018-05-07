@@ -12,7 +12,6 @@ class SurCarte{
 
 public: 
 
-
 protected:
 
 	double _vie;

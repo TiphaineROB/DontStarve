@@ -1,15 +1,16 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Bete.hpp
+/// Fichier : Arbre.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Bete
+/// Classe Arbre
 
 
-#ifndef BETE_HPP
-#define BETE_HPP
+#ifndef ARB_HPP
+#define ARB_HPP
 
 #include <iostream>
 
-class Bete : public SurCarte{
+class Arbre : public SurCarte
+{
 
 public: 
 
