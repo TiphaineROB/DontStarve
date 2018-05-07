@@ -1,14 +1,15 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Ressource.hpp
+/// Fichier : Bois.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Ressource
+/// Classe Bois
 
-#ifndef RESS_HPP
-#define RESS_HPP
+#ifndef BOIS_HPP
+#define BOIS_HPP
 
 #include <iostream>
+#include "Ressource.hpp"
 
-class Ressource{
+class Bois : public Ressource{
 
 public: 
 

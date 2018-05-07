@@ -1,17 +1,17 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Ressource.hpp
+/// Fichier : Feu.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Ressource
+/// Classe Feu
 
-#ifndef RESS_HPP
-#define RESS_HPP
+#ifndef FEU_HPP
+#define FEU_HPP
 
 #include <iostream>
+#include "Outil.hpp"
 
-class Ressource{
+class Feu : public Outil{
 
 public: 
-
 
 protected:
 	

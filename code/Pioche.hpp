@@ -1,14 +1,15 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Ressource.hpp
+/// Fichier : Pioche.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Ressource
+/// Classe Pioche
 
-#ifndef RESS_HPP
-#define RESS_HPP
+#ifndef PIOC_HPP
+#define PIOC_HPP
 
 #include <iostream>
+#include "Outil.hpp"
 
-class Ressource{
+class Pioche : public Outil{
 
 public: 
 
