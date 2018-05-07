@@ -7,16 +7,16 @@
 #define SIM_HPP
 
 #include <iostream>
-#include <Environnement.hpp>
+//#include <Environnement.hpp>
 
 class Simulation{
 
-public: 
+public:
 
 
 protected:
 	double _timer;
-	Environnement _myEnv;
+	//Environnement _myEnv;
 	int _day;
 
 };
