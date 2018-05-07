@@ -8,6 +8,7 @@ int main()
   RenderWindow window(VideoMode(200,200),"ROB Starving");
   Texture texture;
   Sprite sprite;
+  sprite perso
 
   if(!texture.loadFromFile("../images/fond.jpg"))
   {
