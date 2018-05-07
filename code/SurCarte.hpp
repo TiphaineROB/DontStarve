@@ -7,10 +7,14 @@
 #define OBJ_HPP
 
 #include <iostream>
+#include <string>
 
 class SurCarte{
 
 public: 
+	string getType(){
+		return "Ceci est un objet";
+	}
 
 protected:
 
