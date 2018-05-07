@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>402</x>
-      <y>726</y>
+      <x>462</x>
+      <y>798</y>
       <w>126</w>
       <h>84</h>
     </coordinates>
@@ -13,7 +13,7 @@
 Package::Ressources
 
 --
-- logo: Affichage
+- logo: Texture
 - 
 --
 + ramasser()
@@ -25,8 +25,8 @@ Package::Ressources
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>834</y>
+      <x>540</x>
+      <y>906</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -41,8 +41,8 @@ Package::Ressources
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>354</x>
-      <y>834</y>
+      <x>414</x>
+      <y>906</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -57,8 +57,8 @@ Package::Ressources
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>744</x>
-      <y>720</y>
+      <x>804</x>
+      <y>792</y>
       <w>126</w>
       <h>72</h>
     </coordinates>
@@ -67,7 +67,7 @@ Package::Outils
 
 --
 - vie: Long
-- logo: Affichage
+- logo: Texture
 --
 /+ utiliser()/
 </panel_attributes>
@@ -76,8 +76,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>834</y>
+      <x>684</x>
+      <y>906</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -91,8 +91,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>834</y>
+      <x>810</x>
+      <y>906</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -108,8 +108,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>876</x>
-      <y>834</y>
+      <x>936</x>
+      <y>906</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -124,8 +124,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>546</x>
-      <y>504</y>
+      <x>606</x>
+      <y>576</y>
       <w>384</w>
       <h>138</h>
     </coordinates>
@@ -136,7 +136,6 @@ Package::Environnement
 - ressources : Ressources[]
 - outils : Outils[]
 - nourritures : Nourriture[]
-- image : Affichages
 --
 + creerHache()
 + allumerFeu()
@@ -149,8 +148,8 @@ Package::Environnement
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1074</x>
-      <y>720</y>
+      <x>1134</x>
+      <y>792</y>
       <w>126</w>
       <h>84</h>
     </coordinates>
@@ -167,8 +166,8 @@ Package::Nourriture
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1014</x>
-      <y>828</y>
+      <x>1074</x>
+      <y>900</y>
       <w>126</w>
       <h>84</h>
     </coordinates>
@@ -187,8 +186,8 @@ _-ClassAttribute: Long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>828</y>
+      <x>1200</x>
+      <y>900</y>
       <w>126</w>
       <h>84</h>
     </coordinates>
@@ -207,8 +206,8 @@ _-ClassAttribute: Long_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>228</y>
+      <x>528</x>
+      <y>300</y>
       <w>126</w>
       <h>96</h>
     </coordinates>
@@ -227,8 +226,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>240</x>
-      <y>510</y>
+      <x>300</x>
+      <y>582</y>
       <w>126</w>
       <h>54</h>
     </coordinates>
@@ -243,8 +242,8 @@ Package::Environnement
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>366</x>
-      <y>510</y>
+      <x>426</x>
+      <y>582</y>
       <w>126</w>
       <h>54</h>
     </coordinates>
@@ -261,8 +260,8 @@ Package::Environnement
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>114</x>
-      <y>510</y>
+      <x>174</x>
+      <y>582</y>
       <w>126</w>
       <h>54</h>
     </coordinates>
@@ -277,27 +276,8 @@ Package::Environnement
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
-      <y>120</y>
-      <w>126</w>
-      <h>114</h>
-    </coordinates>
-    <panel_attributes>Affichage
-Package::Affichage
-{Some Properties}
---
-- buttons
-- sprite
-- texture ...
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>324</x>
-      <y>384</y>
+      <x>384</x>
+      <y>456</y>
       <w>126</w>
       <h>90</h>
     </coordinates>
@@ -307,7 +287,7 @@ Package::Jeu
 --
 - vie: Long
 - position: int[2]
-- image: Affichage
+- image: Texture
 --
 #Operation(i: int): int
 /+AbstractOperation()/
@@ -317,8 +297,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>66</y>
+      <x>540</x>
+      <y>138</y>
       <w>126</w>
       <h>96</h>
     </coordinates>
@@ -337,8 +317,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>438</x>
-      <y>804</y>
+      <x>498</x>
+      <y>876</y>
       <w>18</w>
       <h>42</h>
     </coordinates>
@@ -348,8 +328,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>492</x>
-      <y>804</y>
+      <x>552</x>
+      <y>876</y>
       <w>18</w>
       <h>42</h>
     </coordinates>
@@ -359,8 +339,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>804</x>
-      <y>786</y>
+      <x>864</x>
+      <y>858</y>
       <w>18</w>
       <h>60</h>
     </coordinates>
@@ -370,8 +350,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>738</x>
-      <y>786</y>
+      <x>798</x>
+      <y>858</y>
       <w>36</w>
       <h>60</h>
     </coordinates>
@@ -381,8 +361,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>852</x>
-      <y>786</y>
+      <x>912</x>
+      <y>858</y>
       <w>60</w>
       <h>60</h>
     </coordinates>
@@ -392,8 +372,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1116</x>
-      <y>798</y>
+      <x>1176</x>
+      <y>870</y>
       <w>18</w>
       <h>42</h>
     </coordinates>
@@ -403,8 +383,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1158</x>
-      <y>798</y>
+      <x>1218</x>
+      <y>870</y>
       <w>18</w>
       <h>42</h>
     </coordinates>
@@ -414,8 +394,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>198</x>
-      <y>468</y>
+      <x>258</x>
+      <y>540</y>
       <w>156</w>
       <h>54</h>
     </coordinates>
@@ -425,8 +405,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>426</x>
-      <y>468</y>
+      <x>486</x>
+      <y>540</y>
       <w>186</w>
       <h>48</h>
     </coordinates>
@@ -436,8 +416,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>468</y>
+      <x>312</x>
+      <y>540</y>
       <w>126</w>
       <h>54</h>
     </coordinates>
@@ -447,8 +427,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>402</x>
-      <y>468</y>
+      <x>462</x>
+      <y>540</y>
       <w>84</w>
       <h>54</h>
     </coordinates>
@@ -458,8 +438,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>498</x>
-      <y>636</y>
+      <x>558</x>
+      <y>708</y>
       <w>72</w>
       <h>102</h>
     </coordinates>
@@ -474,8 +454,8 @@ n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>318</y>
+      <x>630</x>
+      <y>390</y>
       <w>72</w>
       <h>198</h>
     </coordinates>
@@ -490,8 +470,8 @@ n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>318</y>
+      <x>492</x>
+      <y>390</y>
       <w>66</w>
       <h>78</h>
     </coordinates>
@@ -506,8 +486,8 @@ n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>528</x>
-      <y>156</y>
+      <x>588</x>
+      <y>228</y>
       <w>18</w>
       <h>84</h>
     </coordinates>
@@ -522,8 +502,8 @@ n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>636</y>
+      <x>810</x>
+      <y>708</y>
       <w>18</w>
       <h>96</h>
     </coordinates>
@@ -538,8 +518,8 @@ n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>636</y>
+      <x>960</x>
+      <y>708</y>
       <w>198</w>
       <h>96</h>
     </coordinates>
