@@ -7,16 +7,19 @@
 #define PERS_HPP
 
 #include <iostream>
-#include "Ressource.hpp"
+#include <SFML/Graphics.hpp>
+//#include "Ressource.hpp"
 
-class Personnage : public SurCarte{
+class Personnage //: //public SurCarte{
+{
+public:
+	sf::Texture texture;
+	sf::Sprite sprite;
 
-public: 
-
+	Personnage();
 
 protected:
-	Ressource[] _ressources;
-
+	//Ressource[] _ressources;
 };
 
 #endif

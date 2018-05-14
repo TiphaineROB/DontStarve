@@ -7,6 +7,7 @@
 #define SIM_HPP
 
 #include <iostream>
+#include "Personnage.hpp" 
 //#include <Environnement.hpp>
 
 class Simulation{
