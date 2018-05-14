@@ -11,11 +11,33 @@
 
 class Bete : public Drawable{
 
-public: 
+	public: 
+		Bete()
+		{
+			_vie = 3;
+			_danger = 0; 
+		}	
+	
+		string getType(){
+			return "Bete indefinie";
+		}
 
+		int getVie(){
+			return this._vie;
+		}
 
-protected:
+		//Fonction qui dit si le coup que l'élement a reçu est destructif
+		bool coupMortel(){
+			_vie--;
+			if(vie==0)
+				return true;
+			else
+				return false; 
+		}
 
+	protected:
+		int _vie; 
+		int _danger; //Niveau de dangerosité de la bête
 
 };
 

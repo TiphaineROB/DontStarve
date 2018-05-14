@@ -14,13 +14,31 @@ class ElemEnv : public Drawable
 {
 
 public: 
+
+	ElemEnv()
+	{
+		_vie = 3;
+	}
 	
 	string getType(){
-		return "Elem";
+		return "Element indéfini";
 	}
 
-protected:
+	int getVie(){
+		return this._vie;
+	}
 
+	//Fonction qui dit si le coup que l'élement a reçu est destructif
+	bool coupDestructif(){
+		_vie--;
+		if(vie==0)
+			return true;
+		else
+			return false; 
+	}
+	
+protected:
+	int _vie;
 
 };
 

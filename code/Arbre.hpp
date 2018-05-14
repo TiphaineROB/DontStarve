@@ -13,14 +13,14 @@
 class Arbre : public ElemEnv
 {
 
-public: 
-	
-	string getType(){
-		return "Arbre";
-	}
-
-protected:
-
+	public: 
+		Arbre(){
+			this._vie = 3;
+			//On lui attribue son sprite aussi
+		}
+		string getType(){
+			return "Arbre";
+		}
 
 };
 

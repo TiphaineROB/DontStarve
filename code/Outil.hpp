@@ -11,8 +11,13 @@
 class Outil{
 
 public: 
-	void utiliser();
 
+	Outil(){
+		_vie = 4;
+	}
+	string getType(){
+		return "Element indéfini";
+	}
 
 protected:
 	double _vie;

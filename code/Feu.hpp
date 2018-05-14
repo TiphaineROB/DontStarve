@@ -11,9 +11,22 @@
 
 class Feu : public Outil{
 
-public: 
+	public: 
+		
+		Feu(){
+			_vie = 4;
+		}
 
-protected:
+		string getType(){
+			return "Feu";
+		}
+
+		void raviver(int nbB)
+		{
+			_vie+=nbB; //On ravive le feu en lui ajoutant du bois
+		}
+
+	protected:
 	
 };
 

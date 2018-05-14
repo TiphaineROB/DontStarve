@@ -9,15 +9,10 @@
 #include <iostream>
 #include "Ressource.hpp"
 
-class Personnage : public SurCarte{
+class Personnage : public Drawable{
 
 public: 
 
-	Personnage(){
-
-	}
-
-	
 
 	bool creerHache();
 	bool allumerFeu();

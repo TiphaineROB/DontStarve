@@ -11,11 +11,19 @@
 
 class Hache : public Outil{
 
-public: 
+	public: 
+		Hache(){
+			_vie = 5;
+		}
+		string getType(){
+			return "Hache";
+		}
 
-
-protected:
-	
+		void utiliser(){
+			_vie--; 
+			if(vie==0)
+				delete this;
+		}
 };
 
 #endif

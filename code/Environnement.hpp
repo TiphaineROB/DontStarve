@@ -7,17 +7,19 @@
 #define ENV_HPP
 
 #include <iostream>
-#include "SurCarte.hpp"
+#include "ToDraw.hpp"
 #include "Personnage.hpp"
 
-class Environnement{
+class Environnement extends ToDraw{
 
 public: 
 
 	//Constructeurs
-	Environnement()
+	Environnement(int nbP, std::Vector<Personnage> ps, std::string s)
 	{
-
+		for(int i=0; i < nbP; i++)
+			addPers(ps[i]);
+		//On charge le sprite lier 
 	}
 
 	//Destructeur
@@ -27,11 +29,10 @@ public:
 	}
 
 	//Accesseurs
-
-	void addObj(SurCarte o){
+	void addObj(Drawable o){
 		_objs.push_back(o);
 	}
-	void addPers(Personnage p){
+	void addPers(Drawable p){
 		_persos.push_back(p);
 	}
 
@@ -44,7 +45,7 @@ public:
 	}
 
 protected:
-	std::Vector<SurCarte> _objs;
+	std::Vector<Drawable> _objs;
 	std::Vector<Personnage> _persos;
 
 };
