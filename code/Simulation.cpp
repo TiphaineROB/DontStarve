@@ -12,7 +12,14 @@ int main()
   RenderWindow window(VideoMode(200,200),"ROB Starving");
   Texture texture;
   Sprite sprite;
-  sprite perso
+ 	
+  std::vector<ToDraw> Objets;
+  ToDraw _perso;
+  _perso.setTexture("../images/fond.jpg");
+  _perso.setSize(100,100);
+  _perso.setSprite();
+
+  Objets.push_back(_perso);
 
   Simulation sim = new Simulation();
 

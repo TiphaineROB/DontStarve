@@ -7,8 +7,8 @@
 #define SIM_HPP
 
 #include <iostream>
-<<<<<<< HEAD
-#include <Environnement.hpp>
+#include "Environnement.hpp"
+#include "Personnage.hpp" 
 #include <map>
 
 //typedef std::map<std::string, int> comdJ1;
@@ -33,10 +33,7 @@
 // comdJ2["creerHache"] = "K_x";
 // comdJ2["creerPioche"] = "K_c";
 // comdJ2["allumerFeu"] = "K_v";
-=======
-#include "Personnage.hpp" 
-//#include <Environnement.hpp>
->>>>>>> 54602e8153ae5df17def151c398820c2ed83f0cb
+
 
 class Simulation{
 
@@ -61,7 +58,6 @@ protected:
 	int _etat; 
 	//ToDraw _accueil;
 	//ToDraw _cmds;
-
 };
 
 

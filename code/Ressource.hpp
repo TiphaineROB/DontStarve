@@ -12,6 +12,10 @@ class Ressource{
 
 public: 
 
+	std::string getType()
+	{
+		return "Ressource";
+	}
 
 protected:
 	

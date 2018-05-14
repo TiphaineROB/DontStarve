@@ -21,10 +21,10 @@ Personnage::Personnage()
 * @return bool : true si la hache a bien été créée
 */
 bool Personnage::creerHache(){
-	int nbPierre = this.comptPierre();
-	int nbBois = this.comptBois();
+	int nbPierre = this->comptPierre();
+	int nbBois = this->comptBois();
 	if(nbPierre < 2 || nbBois < 1) //Il faut 2 pierres et un bois pour faire une hache
-		return false
+		return false;
 	_outils.push_back(Hache());
 	return true;
 }
@@ -34,10 +34,10 @@ bool Personnage::creerHache(){
 * @return bool : true si le feu a été allumé
 */
 bool Personnage::allumerFeu(){
-	int nbPierre = this.comptPierre();
-	int nbBois = this.comptBois();
+	int nbPierre = this->comptPierre();
+	int nbBois = this->comptBois();
 	if(nbPierre < 2 || nbBois < 2) //Il faut 2 de chaque ressources
-		return false
+		return false;
 	//On ajoute un drawable ??
 	return true;
 }
@@ -47,10 +47,10 @@ bool Personnage::allumerFeu(){
 * @return bool : true si la pioche a été créée
 */
 bool Personnage::creerPioche(){
-	int nbPierre = this.comptPierre();
-	int nbBois = this.comptBois();
+	int nbPierre = this->comptPierre();
+	int nbBois = this->comptBois();
 	if(nbPierre < 1 || nbBois < 1) //La pioche est l'outil le plus facile à faire
-		return false
+		return false;
 	_outils.push_back(Pioche());
 	return true;
 }
@@ -62,8 +62,8 @@ bool Personnage::creerPioche(){
 int Personnage::manger()
 {
 	//Par défaut on mange des baies ça fait moins 1 à notre faim
-	this._faim--;
-	return this._faim;
+	this->_faim--;
+	return this->_faim;
 }
 
 /*
@@ -71,7 +71,7 @@ int Personnage::manger()
 * @return int : ... ? 
 */
 int Personnage::dormir(){
-
+return 0;
 }
 
 /*
@@ -79,7 +79,7 @@ int Personnage::dormir(){
 * @return int : Le niveau de fatigue du personnage
 */
 int Personnage::reveil(){
-
+return 0;
 }
 
 /*
@@ -89,15 +89,14 @@ int Personnage::reveil(){
 */
 bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
 {
-	if(e.getType() == "Arbre" && this._outils[0].getType != "Hache") //On considère que l'objet tenu est le premier du vector _outils
+	if(e.getType() == "Arbre" && this->_outils[0].getType() != "Hache") //On considère que l'objet tenu est le premier du vector _outils
 		throw("L'outil n'est pas adapté pour couper un arbre!");
-	else if(e.getType() == "Roche" && this._outils[0].getType != "Pioche")
+	else if(e.getType() == "Roche" && this->_outils[0].getType() != "Pioche")
 		throw("L'outil n'est pas adapté pour casser une roche!");
 }
 
 Outil Personnage::changerOut(int i)
 {
+Outil outil;
+return outil;
 }
-
-
->>>>>>> f2908df1d2e5153607c06e6479b75785a245eb6c

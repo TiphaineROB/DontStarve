@@ -15,7 +15,7 @@ public:
 	Outil(){
 		_vie = 4;
 	}
-	string getType(){
+	std::string getType(){
 		return "Element indéfini";
 	}
 

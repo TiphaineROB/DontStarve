@@ -10,7 +10,7 @@
 #include "ToDraw.hpp"
 #include "Personnage.hpp"
 
-class Environnement extends ToDraw{
+class Environnement : ToDraw{
 
 public: 
 

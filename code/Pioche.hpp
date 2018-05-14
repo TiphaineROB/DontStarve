@@ -16,13 +16,13 @@ class Pioche : public Outil{
 			_vie = 5;
 		}
 		
-		string getType(){
+		std::string getType(){
 			return "Pioche";
 		} 
 
 		void utiliser(){
 			_vie--; 
-			if(vie==0)
+			if(_vie==0)
 				delete this;
 		}
 

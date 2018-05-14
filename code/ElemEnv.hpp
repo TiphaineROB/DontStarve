@@ -9,8 +9,9 @@
 
 #include <iostream>
 #include <string>
+#include "ToDraw.hpp"
 
-class ElemEnv : public Drawable
+class ElemEnv : public ToDraw
 {
 
 public: 
@@ -20,23 +21,23 @@ public:
 		_vie = 3;
 	}
 	
-	string getType(){
+	std::string getType(){
 		return "Element indéfini";
 	}
 
 	int getVie(){
-		return this._vie;
+		return this->_vie;
 	}
 
 	//Fonction qui dit si le coup que l'élement a reçu est destructif
 	bool coupDestructif(){
 		_vie--;
-		if(vie==0)
+		if(_vie==0)
 			return true;
 		else
 			return false; 
 	}
-	
+
 protected:
 	int _vie;
 
