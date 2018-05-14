@@ -1,25 +1,26 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Drawable.hpp
+/// Fichier : ElemEnv.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Drawable
+/// Classe ElemEnv
 
-#ifndef DRAW_HPP
-#define DRAW_HPP
+
+#ifndef ELEM_HPP
+#define ELEM_HPP
 
 #include <iostream>
 #include <string>
 
-class Drawable{
+class ElemEnv : public Drawable
+{
 
 public: 
+	
 	string getType(){
-		return "Ceci est un objet";
+		return "Elem";
 	}
 
 protected:
 
-	double _vie;
-	int[2] _pos;
 
 };
 

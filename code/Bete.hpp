@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-class Bete : public SurCarte{
+class Bete : public Drawable{
 
 public: 
 

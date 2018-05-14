@@ -10,7 +10,7 @@
 #include <iostream>
 #include <string>
 
-class Roche : public SurCarte
+class Roche : public ElemEnv
 {
 
 public: 

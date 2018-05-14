@@ -10,7 +10,7 @@
 #include <iostream>
 #include <string>
 
-class Arbre : public SurCarte
+class Arbre : public ElemEnv
 {
 
 public: 
