@@ -23,7 +23,7 @@ Personnage::Personnage()
 bool Personnage::creerHache(){
 	int nbPierre = this.comptPierre();
 	int nbBois = this.comptBois();
-	if(nbPierre < 3 || nbBois < 2) //Il faut 2 pierres et un bois pour faire une hache
+	if(nbPierre < 2 || nbBois < 1) //Il faut 2 pierres et un bois pour faire une hache
 		return false
 	_outils.push_back(Hache());
 	return true;
@@ -36,7 +36,7 @@ bool Personnage::creerHache(){
 bool Personnage::allumerFeu(){
 	int nbPierre = this.comptPierre();
 	int nbBois = this.comptBois();
-	if(nbPierre < 3 || nbBois < 3) //Il faut 2 de chaque ressources
+	if(nbPierre < 2 || nbBois < 2) //Il faut 2 de chaque ressources
 		return false
 	//On ajoute un drawable ??
 	return true;
@@ -49,7 +49,7 @@ bool Personnage::allumerFeu(){
 bool Personnage::creerPioche(){
 	int nbPierre = this.comptPierre();
 	int nbBois = this.comptBois();
-	if(nbPierre < 2 || nbBois < 2) //La pioche est l'outil le plus facile à faire
+	if(nbPierre < 1 || nbBois < 1) //La pioche est l'outil le plus facile à faire
 		return false
 	_outils.push_back(Pioche());
 	return true;
