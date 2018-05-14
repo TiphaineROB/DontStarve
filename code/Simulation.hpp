@@ -7,6 +7,7 @@
 #define SIM_HPP
 
 #include <iostream>
+<<<<<<< HEAD
 #include <Environnement.hpp>
 #include <map>
 
@@ -32,6 +33,10 @@
 // comdJ2["creerHache"] = "K_x";
 // comdJ2["creerPioche"] = "K_c";
 // comdJ2["allumerFeu"] = "K_v";
+=======
+#include "Personnage.hpp" 
+//#include <Environnement.hpp>
+>>>>>>> 54602e8153ae5df17def151c398820c2ed83f0cb
 
 class Simulation{
 

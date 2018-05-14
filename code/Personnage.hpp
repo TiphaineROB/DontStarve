@@ -7,12 +7,33 @@
 #define PERS_HPP
 
 #include <iostream>
-#include "Ressource.hpp"
+#include <SFML/Graphics.hpp>
+//#include "Ressource.hpp"
 
+<<<<<<< HEAD
 class Personnage : public Drawable{
+=======
+class Personnage //: //public SurCarte{
+{
+public:
+	sf::Texture texture;
+	sf::Sprite sprite;
+>>>>>>> 54602e8153ae5df17def151c398820c2ed83f0cb
 
-public: 
+<<<<<<< HEAD
+	Personnage();
 
+<<<<<<< HEAD
+=======
+protected:
+	//Ressource[] _ressources;
+=======
+	Personnage(){
+
+	}
+
+	
+>>>>>>> 54602e8153ae5df17def151c398820c2ed83f0cb
 
 	bool creerHache();
 	bool allumerFeu();
@@ -30,6 +51,7 @@ protected:
 	int _fatigue;
 	int _vie;
 
+>>>>>>> f2908df1d2e5153607c06e6479b75785a245eb6c
 };
 
 #endif

@@ -6,7 +6,16 @@
 #include <iostream>
 #include "Personnage.hpp"
 
+using namespace sf;
 
+Personnage::Personnage()
+{
+  if(!texture.loadFromFile("../images/arbres.png"))
+  {
+    std::cout << "BAD MADAFAKA" << std::endl;
+  }
+  sprite.setTexture(texture);
+}
 /*
 * @function creerHache()
 * @return bool : true si la hache a bien été créée
@@ -73,3 +82,4 @@ bool Personnage::interagir()
 {
 
 }
+>>>>>>> f2908df1d2e5153607c06e6479b75785a245eb6c
