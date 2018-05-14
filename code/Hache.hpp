@@ -1,22 +1,21 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Bete.hpp
+/// Fichier : Hache.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Bete
+/// Classe Hache
 
-
-#ifndef BETE_HPP
-#define BETE_HPP
+#ifndef HACH_HPP
+#define HACH_HPP
 
 #include <iostream>
+#include "Outil.hpp"
 
-class Bete : public Drawable{
+class Hache : public Outil{
 
 public: 
 
 
 protected:
-
-
+	
 };
 
 #endif

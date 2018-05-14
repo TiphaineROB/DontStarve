@@ -8,12 +8,16 @@
 #define ARB_HPP
 
 #include <iostream>
+#include <string>
 
-class Arbre : public SurCarte
+class Arbre : public ElemEnv
 {
 
 public: 
-
+	
+	string getType(){
+		return "Arbre";
+	}
 
 protected:
 

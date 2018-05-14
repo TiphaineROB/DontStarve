@@ -1,22 +1,21 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Bete.hpp
+/// Fichier : Baie.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Bete
+/// Classe Baie
 
-
-#ifndef BETE_HPP
-#define BETE_HPP
+#ifndef BAIE_HPP
+#define BAIE_HPP
 
 #include <iostream>
+#include "Nourriture.hpp"
 
-class Bete : public Drawable{
+class Baie : public Nourriture{
 
 public: 
 
 
 protected:
-
-
+	
 };
 
 #endif

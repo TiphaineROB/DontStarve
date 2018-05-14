@@ -1,22 +1,20 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Bete.hpp
+/// Fichier : Feu.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Bete
+/// Classe Feu
 
-
-#ifndef BETE_HPP
-#define BETE_HPP
+#ifndef FEU_HPP
+#define FEU_HPP
 
 #include <iostream>
+#include "Outil.hpp"
 
-class Bete : public Drawable{
+class Feu : public Outil{
 
 public: 
 
-
 protected:
-
-
+	
 };
 
 #endif

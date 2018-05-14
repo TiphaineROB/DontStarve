@@ -7,7 +7,6 @@
 #define RESS_HPP
 
 #include <iostream>
-#include "Ressource.hpp"
 
 class Ressource{
 

@@ -3,6 +3,7 @@
 
 using namespace sf;
 
+
 int main()
 {
   RenderWindow window(VideoMode(200,200),"ROB Starving");

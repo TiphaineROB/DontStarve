@@ -8,14 +8,19 @@
 #define ROC_HPP
 
 #include <iostream>
+#include <string>
 
-class Roche : public SurCarte
+class Roche : public ElemEnv
 {
 
 public: 
 	Roche(){
 		this._vie = 3; //Une roche est cassée au bout de 3 coups
 		//On doit lui attribuer un sprite aussi
+	}
+
+	string getType(){
+		return "Roche";
 	}
 
 protected:

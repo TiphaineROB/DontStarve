@@ -1,22 +1,21 @@
 /// ROB4-POO Projet Don't Starve
-/// Fichier : Bete.hpp
+/// Fichier : Pierre.hpp
 ///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Bete
+/// Classe Pierre
 
-
-#ifndef BETE_HPP
-#define BETE_HPP
+#ifndef PIER_HPP
+#define PIER_HPP
 
 #include <iostream>
+#include "Ressource.hpp"
 
-class Bete : public Drawable{
+class Pierre : public Ressource{
 
 public: 
 
 
 protected:
-
-
+	
 };
 
 #endif
