@@ -1,5 +1,9 @@
-<<<<<<< HEAD
+/// ROB4-POO Projet Don't Starve
+/// Fichier : Personnage.cpp
+///	Autheurs : Benjamin Delbos et Tiphaine Diot
+/// Classe Personnage
 
+#include <iostream>
 #include "Personnage.hpp"
 
 using namespace sf;
@@ -12,16 +16,6 @@ Personnage::Personnage()
   }
   sprite.setTexture(texture);
 }
-=======
-/// ROB4-POO Projet Don't Starve
-/// Fichier : Personnage.cpp
-///	Autheurs : Benjamin Delbos et Tiphaine Diot
-/// Classe Personnage
-
-#include <iostream>
-#include "Personnage.hpp"
-
-
 /*
 * @function creerHache()
 * @return bool : true si la hache a bien été créée
