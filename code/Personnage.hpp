@@ -35,6 +35,29 @@ protected:
 	
 >>>>>>> 54602e8153ae5df17def151c398820c2ed83f0cb
 
+
+	int comptBois(){
+		int nbBois = 0;
+		for(std::Vector<Ressource>::iterator r = _ressources.begin(); r != _ressources.end(); ++r)
+		{
+			if(r.getType() == "Bois")
+				nbBois ++; 
+		}
+		return nbBois; 
+	}
+
+	int comptPierre(){
+		int nbPierre = 0;
+		for(std::Vector<Ressource>::iterator r = _ressources.begin(); r != _ressources.end(); ++r)
+		{
+			if(r.getType() == "Pierre")
+				nbPierre++;
+		}
+		return nbPierre;
+	}
+
+
+
 	bool creerHache();
 	bool allumerFeu();
 	bool creerPioche();
@@ -42,11 +65,12 @@ protected:
 	int dormir();
 	int reveil();
 	bool interagir();
+	Outil changerOut(int i)
 
 protected:
-	Ressource[] _ressources;
+	std::Vector<Ressource> _ressources;
+	std::Vector<Outil> _outils;
 	char _sens;
-	Outil[] _outils;
 	int _faim;
 	int _fatigue;
 	int _vie;

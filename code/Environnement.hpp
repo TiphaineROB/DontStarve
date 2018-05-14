@@ -29,14 +29,14 @@ public:
 	}
 
 	//Accesseurs
-	void addObj(Drawable o){
+	void addObj(ToDraw o){
 		_objs.push_back(o);
 	}
-	void addPers(Drawable p){
+	void addPers(ToDraw p){
 		_persos.push_back(p);
 	}
 
-	SurCarte getObj(i){
+	ToDraw getObj(i){
 		return _objs[i];
 	}
 
@@ -45,7 +45,7 @@ public:
 	}
 
 protected:
-	std::Vector<Drawable> _objs;
+	std::Vector<ToDraw> _objs;
 	std::Vector<Personnage> _persos;
 
 };
