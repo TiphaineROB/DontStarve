@@ -13,8 +13,11 @@ class Bois : public Ressource{
 
 public: 
 
-
-protected:
+	Bois(){}
+	
+	std::string getType(){
+		return "Bois";
+	} 
 	
 };
 

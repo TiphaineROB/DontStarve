@@ -21,9 +21,7 @@ Personnage::Personnage()
 * @return bool : true si la hache a bien été créée
 */
 bool Personnage::creerHache(){
-	int nbPierre = this->comptPierre();
-	int nbBois = this->comptBois();
-	if(nbPierre < 2 || nbBois < 1) //Il faut 2 pierres et un bois pour faire une hache
+	if(this.myPack.getNbPierre() < 2 || this.myPack.getNbBois() < 1) //Il faut 2 pierres et un bois pour faire une hache
 		return false;
 	_outils.push_back(Hache());
 	return true;
@@ -34,9 +32,7 @@ bool Personnage::creerHache(){
 * @return bool : true si le feu a été allumé
 */
 bool Personnage::allumerFeu(){
-	int nbPierre = this->comptPierre();
-	int nbBois = this->comptBois();
-	if(nbPierre < 2 || nbBois < 2) //Il faut 2 de chaque ressources
+	if(this.myPack.getNbPierre() < 2 || this.myPack.getNbBois() < 2) //Il faut 2 de chaque ressources
 		return false;
 	//On ajoute un drawable ??
 	return true;
@@ -47,9 +43,7 @@ bool Personnage::allumerFeu(){
 * @return bool : true si la pioche a été créée
 */
 bool Personnage::creerPioche(){
-	int nbPierre = this->comptPierre();
-	int nbBois = this->comptBois();
-	if(nbPierre < 1 || nbBois < 1) //La pioche est l'outil le plus facile à faire
+	if(this.myPack.getNbPierre() < 1 || this.myPack.getNbBois() < 1) //La pioche est l'outil le plus facile à faire
 		return false;
 	_outils.push_back(Pioche());
 	return true;
@@ -97,6 +91,6 @@ bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'e
 
 Outil Personnage::changerOut(int i)
 {
-Outil outil;
-return outil;
+	Outil outil;
+	return outil;
 }

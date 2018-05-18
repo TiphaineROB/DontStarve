@@ -18,7 +18,7 @@ class Bete : public Drawable{
 			_danger = 0; 
 		}	
 	
-		string getType(){
+		std::string getType(){
 			return "Bete indefinie";
 		}
 

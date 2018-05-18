@@ -21,7 +21,7 @@ int main()
 
   Objets.push_back(_perso);
 
-  Simulation sim = new Simulation();
+  Simulation* sim = new Simulation();
 
   if(!texture.loadFromFile("../images/fond.jpg"))
   {
@@ -37,29 +37,29 @@ int main()
     		window.close();
    		else
    	  	{
-   	  		switch (sim.getEtat())
+   	  		switch (sim->getEtat())
    	  		{
    	  			case 0: //On est sur l'écran d'accueil
-   	  				if(event.type == Event::MouseButtonPressed and isClicAccueil(event.pos[0], event.pos[1]) == -1)
+   	  				if(event.type == Event::MouseButtonPressed and sim->isClicAccueil(event.mouseButton.x, event.mouseButton.y) == -1)
    	  				{
 						window.close(); //On a cliqué sur le bouton quitter
    	  				}	
-   	  				else if(event.type == Event::MouseButtonPressed and isClicAccueil(event.pos[0], event.pos[1]) == 1)
+   	  				else if(event.type == Event::MouseButtonPressed and sim->isClicAccueil(event.mouseButton.x, event.mouseButton.y) == 1)
    	  				{
-   	  					sim.setEtat(1); //On a cliqué sur le bouton play
+   	  					sim->setEtat(1); //On a cliqué sur le bouton play
    	  				}
    	  				break; 
    	  			case 1:  //On est sur la page qui nous donne les commandes des joueurs
-   	  				if(event.type == Event::MouseButtonPressed and isClicChoixJ(event.pos[0], event.pos[1]) == -1)
+   	  				if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == -1)
    	  				{
 						throw("Ce mode de jeu n'est pas implementé encore"); //On a cliqué sur le bouton contre l'IA
    	  				}	
-   	  				else if(event.type == Event::MouseButtonPressed and isClicChoixJ(event.pos[0], event.pos[1]) == 1)
+   	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 1)
    	  				{
    	  					//on a choisi le mode joueur solo
    	  					//sim.creerEnv(1,"../images/fond.jpg");
    	  				}
-   	  				else if(event.type == Event::MouseButtonPressed and isClicChoixJ(event.pos[0], event.pos[1]) == 2)
+   	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 2)
    	  				{
    	  					//on a choisi le mode 2 joueurs
    	  					//sim.creerEnv(2, "../images/fond.jpg");

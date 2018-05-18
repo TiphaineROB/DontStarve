@@ -19,12 +19,9 @@ public:
 		//On doit lui attribuer un sprite aussi
 	}
 
-	string getType(){
+	std::string getType(){
 		return "Roche";
 	}
-
-protected:
-
 
 };
 

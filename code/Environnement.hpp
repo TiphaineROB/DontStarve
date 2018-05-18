@@ -15,7 +15,7 @@ class Environnement : ToDraw{
 public: 
 
 	//Constructeurs
-	Environnement(int nbP, std::Vector<Personnage> ps, std::string s)
+	Environnement(int nbP, std::vector<Personnage> ps, std::string s)
 	{
 		for(int i=0; i < nbP; i++)
 			addPers(ps[i]);
@@ -23,10 +23,7 @@ public:
 	}
 
 	//Destructeur
-	~Environnement(){
-		~_objs;
-		~_persos;
-	}
+	~Environnement(){}
 
 	//Accesseurs
 	void addObj(ToDraw o){
@@ -36,17 +33,17 @@ public:
 		_persos.push_back(p);
 	}
 
-	ToDraw getObj(i){
+	ToDraw* getObj(int i){
 		return _objs[i];
 	}
 
-	Personnage getPers(i){
+	Personnage* getPers(int i){
 		return _persos[i];
 	}
 
 protected:
-	std::Vector<ToDraw> _objs;
-	std::Vector<Personnage> _persos;
+	std::vector<ToDraw*> _objs;
+	std::vector<Personnage*> _persos;
 
 };
 

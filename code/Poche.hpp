@@ -18,8 +18,16 @@ class Poche{
 		
 		int getNbPierre() {return _nbPierre; }
 		int getNbBois() {return _nbBois; }
+		const int getNbPierre() const {return _nbPierre; } 
+		const int getNbBois() const {return _nbBois; }
 		void addPierre(int i) { _nbPierre +=i; }
 		void addBois(int i) { _nbBois +=i; }
+
+		Poche& operator=(const Poche& p){
+			this->_nbPierre = p.getNbPierre();
+			this->_nbBois = p.getNbBois();
+			return *this;
+		} 
 
 	protected:
 		int _nbPierre;

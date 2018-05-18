@@ -21,7 +21,7 @@ public:
 		_vie = 3;
 	}
 	
-	std::string getType(){
+	virtual std::string getType(){
 		return "Element indéfini";
 	}
 

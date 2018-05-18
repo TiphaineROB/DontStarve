@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include "Environnement.hpp"
+#include "Arbre.hpp"
+#include "Roche.hpp"
 #include "Personnage.hpp" 
 #include <map>
 
@@ -47,7 +49,7 @@ public:
 	int getEtat(){return _etat;}
 	void setEtat(int val){ _etat = val;}
 
-	bool creerEnv(int nbJ, std::string s);
+	Environnement creerEnv(int nbJ, std::string s);
 	int isClicAccueil(int x, int y);
 	int isClicChoixJ(int x, int y);
 
@@ -74,6 +76,7 @@ int Simulation::isClicChoixJ(int x, int y)
 Environnement Simulation::creerEnv(int nbJ, std::string s){
 
 	//Importation de l'environnement global
+	_myEnv = new Environnement();
 
 	for(int i = 0; i < nbJ; i++)
 	{
@@ -84,18 +87,18 @@ Environnement Simulation::creerEnv(int nbJ, std::string s){
 	int nbrandom = rand()%9 +1; 
 	for(int i=0; i < nbrandom; i++)
 	{
-		Arbre(); //donner une position random aussi
+		this->_myEnv.addObj(Arbre()); //donner une position random aussi
 	}
 
 	//Creation des roches de la même manière
-	int nbrandom = rand()%9 +1; 
+	nbrandom = rand()%9 +1; 
 	for(int i=0; i < nbrandom; i++)
 	{
-		Roche(); //donner une position random aussi
+		this->_myEnv.addObj(Arbre()); //donner une position random aussi
 	}
 
 	//Dans la version 0 on ne crée pas de betes
-	return this._myEnv;
+	return this->_myEnv;
 }
 
 

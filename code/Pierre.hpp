@@ -12,9 +12,7 @@
 class Pierre : public Ressource{
 
 public: 
-
-
-protected:
+	Pierre(){}
 	
 };
 

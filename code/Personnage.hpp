@@ -8,8 +8,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Poche.hpp"
 #include "Outil.hpp"
-#include "Ressource.hpp"
 #include "ToDraw.hpp"
 #include "Hache.hpp"
 #include "Pioche.hpp"
@@ -22,34 +22,19 @@ public:
 	sf::Texture texture;
 	sf::Sprite sprite;
 
-	Personnage();
+	Personnage(){
+		_sens = 'B';
+		_faim = 0;
+		_fatigue = 0;
+		_vie = 5;
+		_myPack = new Poche();	
+		_nbComm = 0;
+	}
+	Personnage(int i): Personnage(){
+		_nbComm = i;
+	}
 
 protected:
-	//Ressource[] _ressources;
-
-
-	int comptBois(){
-		int nbBois = 0;
-		for(std::vector<Ressource>::iterator r = _ressources.begin(); r != _ressources.end(); ++r)
-		{
-			if(*r.getType() == "Bois")
-				nbBois ++; 
-		}
-		return nbBois; 
-	}
-
-	int comptPierre(){
-		int nbPierre = 0;
-		for(std::vector<Ressource>::iterator r = _ressources.begin(); r != _ressources.end(); ++r)
-		{
-			if(*r.getType() == "Pierre")
-				nbPierre++;
-		}
-		return nbPierre;
-	}
-
-
-
 	bool creerHache();
 	bool allumerFeu();
 	bool creerPioche();
@@ -59,13 +44,13 @@ protected:
 	bool interagir(ElemEnv env);
 	Outil changerOut(int i);
 
-protected:
-	std::vector<Ressource> _ressources;
+	Poche* _myPack;
 	std::vector<Outil> _outils;
 	char _sens;
 	int _faim;
 	int _fatigue;
 	int _vie;
+	int _nbComm;
 };
 
 #endif
