@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+
 #include "Simulation.hpp"
 #include <string>
 #include "time.h"
@@ -9,7 +9,7 @@ using namespace sf;
 int main()
 {
 	srand(time(NULL));
-  RenderWindow window(VideoMode(200,200),"ROB Starving");
+  RenderWindow window(VideoMode(1280,720),"ROB Starve Looser");
   Texture texture;
   Sprite sprite;
  	
@@ -22,12 +22,8 @@ int main()
   Objets.push_back(_perso);
 
   Simulation* sim = new Simulation();
+  Sprite currentSpr = sim->getSprAcc(); 
 
-  if(!texture.loadFromFile("../images/fond.jpg"))
-  {
-    std::cout << "BAD MADAFAKA" << std::endl;
-  }
-  sprite.setTexture(texture);
   while(window.isOpen())
   {
     Event event;
@@ -47,6 +43,7 @@ int main()
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicAccueil(event.mouseButton.x, event.mouseButton.y) == 1)
    	  				{
    	  					sim->setEtat(1); //On a cliqué sur le bouton play
+						currentSpr = sim->getSprCmds();
    	  				}
    	  				break; 
    	  			case 1:  //On est sur la page qui nous donne les commandes des joueurs
@@ -74,7 +71,12 @@ int main()
       	}
     }
     window.clear();
-    window.draw(sprite);
+    window.draw(currentSpr);
+    //if(sim->getEtat() == 0 || sim->getEtat() == 1)
+    //	window.draw(currentSpr);
+    //else
+    //  
+    //
     window.display();
   }
   return 0;

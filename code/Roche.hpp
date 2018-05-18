@@ -15,7 +15,7 @@ class Roche : public ElemEnv
 
 public: 
 	Roche(){
-		this._vie = 3; //Une roche est cassée au bout de 3 coups
+		this->_vie = 3; //Une roche est cassée au bout de 3 coups
 		//On doit lui attribuer un sprite aussi
 	}
 

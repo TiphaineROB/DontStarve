@@ -7,7 +7,6 @@
 #define PERS_HPP
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "Poche.hpp"
 #include "Outil.hpp"
 #include "ToDraw.hpp"
@@ -21,28 +20,39 @@ class Personnage : public ToDraw
 public:
 	sf::Texture texture;
 	sf::Sprite sprite;
-
-	Personnage(){
+	
+	Personnage();
+	//Personnage(){
+	//	_sens = 'B';
+	//	_faim = 0;
+	//	_fatigue = 0;
+	//	_vie = 5;
+	//	_myPack = new Poche();	
+	//	_nbComm = 0;
+	//}
+	Personnage(int i){
 		_sens = 'B';
 		_faim = 0;
 		_fatigue = 0;
 		_vie = 5;
 		_myPack = new Poche();	
-		_nbComm = 0;
-	}
-	Personnage(int i): Personnage(){
 		_nbComm = i;
 	}
 
-protected:
 	bool creerHache();
 	bool allumerFeu();
 	bool creerPioche();
 	int manger();
 	int dormir();
 	int reveil();
+	
 	bool interagir(ElemEnv env);
 	Outil changerOut(int i);
+
+protected:
+	
+	bool casser(ElemEnv e);
+	bool couper(ElemEnv e);
 
 	Poche* _myPack;
 	std::vector<Outil> _outils;

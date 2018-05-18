@@ -10,15 +10,17 @@
 #include "ToDraw.hpp"
 #include "Personnage.hpp"
 
-class Environnement : ToDraw{
+class Environnement : public ToDraw{
 
 public: 
 
 	//Constructeurs
+	Environnement(){}		
 	Environnement(int nbP, std::vector<Personnage> ps, std::string s)
 	{
 		for(int i=0; i < nbP; i++)
 			addPers(ps[i]);
+		this->setTexture("../images/PageAccueilBtn.png");
 		//On charge le sprite lier 
 	}
 
@@ -29,21 +31,28 @@ public:
 	void addObj(ToDraw o){
 		_objs.push_back(o);
 	}
-	void addPers(ToDraw p){
+	void addPers(Personnage p){
 		_persos.push_back(p);
 	}
 
-	ToDraw* getObj(int i){
+	ToDraw getObj(int i){
 		return _objs[i];
 	}
 
-	Personnage* getPers(int i){
+	Personnage getPers(int i){
 		return _persos[i];
 	}
 
+	Environnement& operator=(const Environnement& e){
+			this->_objs = e._objs;
+			this->_persos = e._persos;
+			return *this;
+	} 
+
+
 protected:
-	std::vector<ToDraw*> _objs;
-	std::vector<Personnage*> _persos;
+	std::vector<ToDraw> _objs;
+	std::vector<Personnage> _persos;
 
 };
 

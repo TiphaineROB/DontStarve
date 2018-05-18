@@ -15,7 +15,7 @@ class Arbre : public ElemEnv
 
 	public: 
 		Arbre(){
-			this._vie = 3;
+			this->_vie = 3;
 			//On lui attribue son sprite aussi
 		}
 		std::string getType(){
