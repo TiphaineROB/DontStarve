@@ -64,7 +64,7 @@ int main()
    	  				break; 
    	  			case 2: //On a lancé le jeu donc on est dans la vraie simulation
    	  				if(event.type == Event::KeyPressed)
-						sim->tour(event.key.value);
+						sim->tour(event.key);
    	  			default: 
    	  				throw("Erreur dans l'obtention de l'état de la simulation");
 
