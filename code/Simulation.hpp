@@ -14,29 +14,6 @@
 #include "Roche.hpp"
 #include "Personnage.hpp" 
 
-//typedef std::map<std::string, int> comdJ1;
-// comdJ1["G"] = "K_LEFT";
-// comdJ1["H"] = "K_UP";
-// comdJ1["D"] = "K_RIGHT";
-// comdJ1["B"] = "K_DOWN";
-// comdJ1["agir"] = "K_1";
-// comdJ1["chgOutil"] = "K_2";
-// comdJ1["manger"] = "K_3";
-// comdJ1["creerHache"] = "K_4";
-// comdJ1["creerPioche"] = "K_5";
-// comdJ1["allumerFeu"] = "K_6";
-//typedef std::map<std::string, int> comdJ2;
-// comdJ2["G"] = "K_d";
-// comdJ2["H"] = "K_r";
-// comdJ2["D"] = "K_g";
-// comdJ2["B"] = "K_f";
-// comdJ2["agir"] = "K_e";
-// comdJ2["chgOutil"] = "K_s";
-// comdJ2["manger"] = "K_z";
-// comdJ2["creerHache"] = "K_x";
-// comdJ2["creerPioche"] = "K_c";
-// comdJ2["allumerFeu"] = "K_v";
-
 
 class Simulation{
 
@@ -66,6 +43,7 @@ public:
 	sf::Sprite getSprEnv(){ return _myEnv->getSprite(); }
 
 	Environnement* creerEnv(int nbJ, std::string s);
+	Environnment* Simulation::tour(sf::Keyboard k)
 	int isClicAccueil(int x, int y);
 	int isClicChoixJ(int x, int y);
 
@@ -122,6 +100,15 @@ Environnement* Simulation::creerEnv(int nbJ, std::string s){
 
 	//Dans la version 0 on ne crée pas de betes
 	return this->_myEnv;
+}
+
+Environnment* Simulation::tour(sf::Keyboard k){
+	
+	//Il faut tester pour quel joueur la touche doit être prise en compte
+	//Puis trouver la bonne action à réaliser
+	//Si c'est une touche qui n'existe pas on renvoie quand même l'environnement sans rien changer
+	
+	return this->_myEnv; 
 }
 
 
