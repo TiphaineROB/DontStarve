@@ -44,6 +44,7 @@ public:
 	bool creerHache();
 	bool allumerFeu();
 	bool creerPioche();
+	int updateLife();
 	int manger();
 	int dormir();
 	int reveil();
