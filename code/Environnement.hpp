@@ -16,10 +16,10 @@ public:
 
 	//Constructeurs
 	Environnement(){}		
-	Environnement(int nbP, std::vector<Personnage> ps, std::string s)
+	Environnement(int nbP, std::string s)
 	{
 		for(int i=0; i < nbP; i++)
-			addPers(ps[i]);
+			addPers(Personnage(i+1));
 		this->setTexture("../images/PageAccueilBtn.png");
 		//On charge le sprite lier 
 	}
