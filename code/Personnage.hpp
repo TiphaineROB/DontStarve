@@ -25,13 +25,6 @@ public:
 	sf::Sprite sprite;
 	
 	Personnage();
-	//Personnage(){
-	//	_sens = 'B';
-	//	_faim = 0;
-	//	_fatigue = 0;
-	//	_vie = 5;
-	//	_myPack = new Poche();	
-	//}
 	Personnage(int i){
 		_sens = 'B';
 		_faim = 0;
@@ -64,10 +57,7 @@ protected:
 	char _sens;
 	int _faim;
 	int _fatigue;
-	int _vie;
-	int _nbComm;
-	
-	
+	int _vie;	
 };
 
 #endif
