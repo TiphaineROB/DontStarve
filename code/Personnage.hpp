@@ -28,7 +28,6 @@ public:
 	//	_fatigue = 0;
 	//	_vie = 5;
 	//	_myPack = new Poche();	
-	//	_nbComm = 0;
 	//}
 	Personnage(int i){
 		_sens = 'B';
@@ -36,7 +35,7 @@ public:
 		_fatigue = 0;
 		_vie = 5;
 		_myPack = new Poche();	
-		_nbComm = i;
+		_cmd = createCmd();
 	}
 
 	bool creerHache();
@@ -53,7 +52,9 @@ protected:
 	
 	bool casser(ElemEnv e);
 	bool couper(ElemEnv e);
-
+	std::map<std::string, sf::Keyboard> createCmd();
+		
+	std::map<std::string, sf::Keyboard> _cmd;
 	Poche* _myPack;
 	std::vector<Outil> _outils;
 	char _sens;
@@ -61,6 +62,8 @@ protected:
 	int _fatigue;
 	int _vie;
 	int _nbComm;
+	
+	
 };
 
 #endif
