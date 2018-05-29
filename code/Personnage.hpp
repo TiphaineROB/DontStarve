@@ -15,6 +15,9 @@
 #include "ElemEnv.hpp"
 //#include "Ressource.hpp"
 
+typedef std::map<std::string, sf::Keyboard> cmd_t;
+
+
 class Personnage : public ToDraw
 {
 public:
@@ -52,9 +55,9 @@ protected:
 	
 	bool casser(ElemEnv e);
 	bool couper(ElemEnv e);
-	std::map<std::string, sf::Keyboard> createCmd(int i);
+	cmd_t createCmd(int i);
 		
-	std::map<std::string, sf::Keyboard> _cmd;
+	cmd_t _cmd;
 	Poche* _myPack;
 	std::vector<Outil> _outils;
 	char _sens;
