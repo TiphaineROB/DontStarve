@@ -54,16 +54,17 @@ int main()
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 1)
    	  				{
    	  					//on a choisi le mode joueur solo
-   	  					//sim.creerEnv(1,"../images/fond.jpg");
+   	  					//sim->creerEnv(1,"../images/fond.jpg");
    	  				}
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 2)
    	  				{
    	  					//on a choisi le mode 2 joueurs
-   	  					//sim.creerEnv(2, "../images/fond.jpg");
+   	  					//sim->creerEnv(2, "../images/fond.jpg");
    	  				}
    	  				break; 
    	  			case 2: //On a lancé le jeu donc on est dans la vraie simulation
-   	  				break;
+   	  				if(event.type == Event::KeyPressed)
+						sim->tour(event.key.value);
    	  			default: 
    	  				throw("Erreur dans l'obtention de l'état de la simulation");
 
@@ -72,11 +73,10 @@ int main()
     }
     window.clear();
     window.draw(currentSpr);
-    //if(sim->getEtat() == 0 || sim->getEtat() == 1)
-    //	window.draw(currentSpr);
-    //else
-    //  
-    //
+    //if(sim->getEtat() == 2)
+    //{
+	  //Afficher un par un tout les drawables
+    //}
     window.display();
   }
   return 0;
