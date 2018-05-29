@@ -35,7 +35,7 @@ public:
 		_fatigue = 0;
 		_vie = 5;
 		_myPack = new Poche();	
-		_cmd = createCmd();
+		_cmd = createCmd(i);
 	}
 
 	bool creerHache();
@@ -52,7 +52,7 @@ protected:
 	
 	bool casser(ElemEnv e);
 	bool couper(ElemEnv e);
-	std::map<std::string, sf::Keyboard> createCmd();
+	std::map<std::string, sf::Keyboard> createCmd(int i);
 		
 	std::map<std::string, sf::Keyboard> _cmd;
 	Poche* _myPack;
