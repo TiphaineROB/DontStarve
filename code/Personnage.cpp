@@ -22,7 +22,6 @@ _sens = 'B';
 	_fatigue = 0;
 	_vie = 5;
 	_myPack = new Poche();	
-	_nbComm = 0;
 }
 /*
 * @function creerHache()
@@ -57,6 +56,13 @@ bool Personnage::creerPioche(){
 	return true;
 }
 
+
+int updateLife(){
+	this->_faim++; 
+	this->_fatigue++;
+	this->_vie -=2;
+}
+
 /*
 * @function manger()
 * @return int : Le niveau de faim du personnage
@@ -83,6 +89,8 @@ return 0;
 int Personnage::reveil(){
 return 0;
 }
+
+
 
 cmd_t createCmd(int i){
 	
