@@ -6,7 +6,7 @@
 #ifndef SIM_HPP
 #define SIM_HPP
 
-#include <SFML/Graphics.hpp>
+//#include <SFML/Graphics.hpp> Normalement pas nécessaire
 #include <iostream>
 #include "Environnement.hpp"
 #include "ToDraw.hpp"
@@ -77,12 +77,7 @@ int Simulation::isClicChoixJ(int x, int y)
 
 Environnement* Simulation::creerEnv(int nbJ, std::string s){
 
-	this->_myEnv = new Environnement();
-
-	for(int i = 0; i < nbJ; i++)
-	{
-		this->_myEnv->addPers(Personnage(i+1)); //On lui passe son numero pour lui attribuer la bonne map pour ses commandes
-	}
+	this->_myEnv = new Environnement(nbJ, s);
 	
 	//Creation des arbres, on en veut un nombre compris entre 1 et 10
 	int nbrandom = rand()%9 +1; 
