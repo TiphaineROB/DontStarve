@@ -84,6 +84,40 @@ int Personnage::reveil(){
 return 0;
 }
 
+cmd_t createCmd(int i){
+	
+	cmd_t cmd;
+	if(i==1)
+	{	
+		cmd["G"] = Left;
+		cmd["D"] = Right;
+		cmd["H"] = Up;
+		cmd["B"] = Down;
+		cmd["Agir"] = 1;
+		cmd["ChangerOutil"] = 2;
+		cmd["Manger"] = 3;
+		cmd["CreerHache"] = 4; 
+		cmd["CreerPioche"] = 5;
+		cmd["AllumerFeu"] = 6; 
+		cmd["Dormir"] = 7; 
+	}
+	else if(i==2)
+	{
+		cmd["G"] = D;
+		cmd["D"] = G;
+		cmd["H"] = R;
+		cmd["B"] = F;
+		cmd["Agir"] = E;
+		cmd["ChangerOutil"] = S;
+		cmd["Manger"] = Z;
+		cmd["CreerHache"] = X; 
+		cmd["CreerPioche"] = C;
+		cmd["AllumerFeu"] = V; 
+		cmd["Dormir"] = W; 
+	}
+	return cmd;
+}
+
 
 bool Personnage::couper(ElemEnv e)
 {
