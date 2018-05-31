@@ -2,7 +2,9 @@
 #include "Simulation.hpp"
 #include <string>
 #include "time.h"
+// #include <chrono>
 
+// typedef std::chrono::high_resolution_clock Clock;
 using namespace sf;
 
 
@@ -23,6 +25,10 @@ int main()
 
   Simulation* sim = new Simulation();
   Sprite currentSpr = sim->getSprAcc(); 
+
+  //auto clockStart;
+  //auto clockCurrent;
+  double duration = 0;
 
   while(window.isOpen())
   {
@@ -54,20 +60,24 @@ int main()
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 1)
    	  				{
    	  					//on a choisi le mode joueur solo
-   	  					//sim->creerEnv(1,"../images/fond.jpg");
+   	  					sim->creerEnv(1,"../images/fond.jpg");
    	  				}
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 2)
    	  				{
    	  					//on a choisi le mode 2 joueurs
-   	  					//sim->creerEnv(2, "../images/fond.jpg");
+   	  					sim->creerEnv(2, "../images/fond.jpg");
    	  				}
+   	  				//clockStart = Clock::now();
    	  				break; 
    	  			case 2: //On a lancé le jeu donc on est dans la vraie simulation
    	  				if(event.type == Event::KeyPressed)
-						sim->tour(event.key);
+   	  				{	
+   	  					// clockCurrent = Clock::now();
+   	  					// duration = std::chrono::duration_cast<std::chrono::minute>(clockCurrent - clockStart).count();
+						sim->tour(event.key.code, duration);
+   	  				}
    	  			default: 
-   	  				throw("Erreur dans l'obtention de l'état de la simulation");
-
+   	  				throw("Erreur dans l'obtention de l'état de la simulation"); //Gérer cette erreur
    	  		}	
       	}
     }
@@ -75,7 +85,9 @@ int main()
     window.draw(currentSpr);
     //if(sim->getEtat() == 2)
     //{
-	  //Afficher un par un tout les drawables
+	// 	 for()
+    //
+    //
     //}
     window.display();
   }

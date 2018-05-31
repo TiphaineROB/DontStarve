@@ -20,8 +20,10 @@ class Poche{
 		int getNbBois() {return _nbBois; }
 		const int getNbPierre() const {return _nbPierre; } 
 		const int getNbBois() const {return _nbBois; }
+		const int getNbBaie() const {return _nbBaie; }
 		void addPierre(int i) { _nbPierre +=i; }
 		void addBois(int i) { _nbBois +=i; }
+		void addBaie(int i) { _nbBaie +=i; }
 
 		Poche& operator=(const Poche& p){
 			this->_nbPierre = p.getNbPierre();
@@ -32,7 +34,7 @@ class Poche{
 	protected:
 		int _nbPierre;
 		int _nbBois;
-	
+		int _nbBaie;
 };
 
 #endif

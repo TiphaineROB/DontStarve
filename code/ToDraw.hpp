@@ -58,6 +58,9 @@ public:
 		this->sprite.setTextureRect(sf::IntRect(_origin[0],_state*_origin[1],_size[0],_size[1]));
 	}
 
+	int getSizeX(){return _size[0];}
+	int getSizeY(){return _size[1];}
+
 protected:
 	double _vie;
 	int _state;

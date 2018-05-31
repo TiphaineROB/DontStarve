@@ -9,10 +9,8 @@
 //#include <SFML/Graphics.hpp> Normalement pas nécessaire
 #include <iostream>
 #include "Environnement.hpp"
-#include "ToDraw.hpp"
 #include "Arbre.hpp"
 #include "Roche.hpp"
-#include "Personnage.hpp" 
 
 
 class Simulation{
@@ -33,23 +31,40 @@ public:
 		}
 		_cmds.setTexture(_textCmds);
 
+		_day = 0;
+		_timer = 12; //Doit correspondre à 12 minutes, toutes les 10min on passe en nuit et toutes les 4 on perds de la vie
+		_stateDay = true; //On commence la journée
 	}
 
 	int getEtat(){return _etat;}
 	void setEtat(int val){ _etat = val;}
+
+	bool changeStateDay(){
+		if(_stateDay == true)
+			_stateDay = false; 
+		else
+		{
+			_stateDay = true; 
+			_day++;
+		}
+		return _stateDay;
+	}
+
 
 	sf::Sprite getSprAcc(){ return _accueil; }
 	sf::Sprite getSprCmds(){ return _cmds; }
 	sf::Sprite getSprEnv(){ return _myEnv->getSprite(); }
 
 	Environnement* creerEnv(int nbJ, std::string s);
-	Environnment* Simulation::tour(sf::Keyboard k)
+	Environnement* tour(sf::Keyboard::Key k, double duration);
+	bool appelActions(std::string s, Personnage p);
 	int isClicAccueil(int x, int y);
 	int isClicChoixJ(int x, int y);
 
 protected:
 	double _timer;
 	Environnement* _myEnv;
+	bool _stateDay; //Correspond si on est en journée ou pendant la nuit
 	int _day; 
 	int _etat; 
 	sf::Texture _textAcc;
@@ -97,15 +112,72 @@ Environnement* Simulation::creerEnv(int nbJ, std::string s){
 	return this->_myEnv;
 }
 
-Environnment* Simulation::tour(sf::Keyboard k){
-	
-	//Il faut tester pour quel joueur la touche doit être prise en compte
-	//Puis trouver la bonne action à réaliser
-	//Si c'est une touche qui n'existe pas on renvoie quand même l'environnement sans rien changer
-	
-	return this->_myEnv; 
+
+bool Simulation::appelActions(std::string s, Personnage p){
+
+	if(s.compare("Interagir"))
+	{
+		return true; 
+	}
+	else if(s.compare("Manger"))
+	{
+		p.manger();
+		return true; 
+	}
+	else if(s.compare("CreerHache"))
+	{
+		p.creerHache();
+		return true; 
+	}
+	else if(s.compare("CreerPioche"))
+	{
+		p.creerPioche();
+		return true;
+	}
+	else if(s.compare("AllumerFeu"))
+	{
+		p.allumerFeu();
+		return true; 
+	}
+	else if(s.compare("Dormir"))
+	{
+		p.dormir();
+		return true; 
+	}
+	else
+	{
+		p.bouger(s, this->_myEnv->getSizeX(), this->_myEnv->getSizeY()); //On lui passe la taille de l'image de l'environnement
+		return true; 
+	}
+	return false; 
 }
 
+
+Environnement* Simulation::tour(sf::Keyboard::Key k, double duration){
+	
+	//Il faut tester pour quel joueur la touche doit être prise en compte
+	std::map<sf::Keyboard::Key, std::string>::iterator cmd_it;
+	std::string actionJ;
+	for(int i=0 ; i < this->_myEnv->getNbPers(); i++)
+	{
+		cmd_t temp = this->_myEnv->getPers(i).getCmd(); 
+		cmd_it = temp.find(k);
+  		if(cmd_it != temp.end())
+  		{
+  			std::cout << "Le joueur " << i+1 << "a joue" << std::endl; //On a trouvé si un des joueurs à jouer
+  			actionJ = temp.find(k)->second; //On récupère la String associé à la key
+  			//Maintenant on doit lancer l'action correspondante
+  			this->appelActions(actionJ, this->_myEnv->getPers(i));
+  		}	
+  	}
+
+  	if(duration == 10)
+  	{
+  		this->changeStateDay();
+  	} 
+
+	return this->_myEnv; 
+}
 
 
 #endif

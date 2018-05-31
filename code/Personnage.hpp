@@ -15,7 +15,7 @@
 #include "ElemEnv.hpp"
 //#include "Ressource.hpp"
 
-typedef std::map<std::string, sf::Keyboard> cmd_t;
+typedef std::map<sf::Keyboard::Key, std::string> cmd_t;
 
 
 class Personnage : public ToDraw
@@ -32,8 +32,16 @@ public:
 		_vie = 5;
 		_myPack = new Poche();	
 		_cmd = createCmd(i);
+		_origin[0] = 50; //Correspond au sens horizontal  0 à gauche
+		_origin[1] = 50; //Correspond au sens vertical 0 en haut
+ 		_taillePas = 10;
 	}
 
+	cmd_t getCmd(){
+		return _cmd;
+	}
+
+	bool bouger(std::string s, int sizeX, int sizeY);
 	bool creerHache();
 	bool allumerFeu();
 	bool creerPioche();
@@ -58,6 +66,8 @@ protected:
 	int _faim;
 	int _fatigue;
 	int _vie;	
+	int _taillePas; 
+
 };
 
 #endif

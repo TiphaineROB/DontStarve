@@ -43,6 +43,10 @@ public:
 		return _persos[i];
 	}
 
+	int getNbPers(){
+		return _persos.size();
+	}
+
 	Environnement& operator=(const Environnement& e){
 			this->_objs = e._objs;
 			this->_persos = e._persos;
