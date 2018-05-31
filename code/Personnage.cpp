@@ -34,8 +34,8 @@ bool Personnage::bouger(std::string s, int sizeX, int sizeY)
 	{
 		//On regarde si l'origine dépasse vers la gauche, donc inférieur à 0
 		if(this->_origin[0]-this->_taillePas < 0) //Comme l'origine du sprite du personnage est en haut à gauche, les cas où il veut aller à g ou h ne posent pas de problèmes
-				this->_origin[0] = 0;
-			return true;
+			this->_origin[0] = 0;
+		return true;
 	}
 	else if(s.compare("Droite")){
 		if(this->_origin[0]+this->_size[0] > sizeX) //Dans ce cas il faut regarder que tout le sprite du personnage reste dans l'écran
@@ -91,9 +91,13 @@ bool Personnage::creerPioche(){
 	return true;
 }
 
-
+/*
+* @function updateLife()
+* @return int : la valeur de la vie du personnage
+*/
 int Personnage::updateLife()
 {
+	//TODO rajouter des conditions pour que juste après manger la vie ne baisse pas !! (chrono en interne du personnage ?)
 	this->_faim++; 
 	this->_fatigue++;
 	this->_vie -=2;
@@ -208,6 +212,8 @@ bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'e
 			this->_myPack->addPierre(3);
 		return true; 
 	}
+	else if(e.getType() == "Feu" && this->_myPack->getNbBois() > 0)
+		e.raviver();
 	return false;
 }
 
@@ -216,8 +222,15 @@ bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'e
 * @function changerOutil()
 * @return outil en main 
 */
-Outil Personnage::changerOut(int i)
+Outil Personnage::changerOut()
 {
-	Outil outil;
-	return outil;
+	//On met le premier à la fin et le deuxième au début
+	if(this->_outils.size() > 1) //Le personnage a au moins deux outils 
+	{	Outil temp = this->_outils[0];
+		this->_outils.erase (this->_outils.begin()); //On supprime le premier élement puis on le met à la fin
+		this->addOut(temp);
+		return this->_outils[0];
+	}
+	else
+		return this->_outils[0];
 }

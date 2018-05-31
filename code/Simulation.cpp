@@ -2,9 +2,7 @@
 #include "Simulation.hpp"
 #include <string>
 #include "time.h"
-// #include <chrono>
 
-// typedef std::chrono::high_resolution_clock Clock;
 using namespace sf;
 
 
@@ -26,8 +24,8 @@ int main()
   Simulation* sim = new Simulation();
   Sprite currentSpr = sim->getSprAcc(); 
 
-  //auto clockStart;
-  //auto clockCurrent;
+  clock_t clockStart;
+  clock_t clockCurrent;
   double duration = 0;
 
   while(window.isOpen())
@@ -67,15 +65,26 @@ int main()
    	  					//on a choisi le mode 2 joueurs
    	  					sim->creerEnv(2, "../images/fond.jpg");
    	  				}
-   	  				//clockStart = Clock::now();
+   	  				clockStart = clock();
    	  				break; 
    	  			case 2: //On a lancé le jeu donc on est dans la vraie simulation
    	  				if(event.type == Event::KeyPressed)
    	  				{	
-   	  					// clockCurrent = Clock::now();
-   	  					// duration = std::chrono::duration_cast<std::chrono::minute>(clockCurrent - clockStart).count();
-						sim->tour(event.key.code, duration);
+   	  					clockCurrent = clock();
+   	  					duration = (long)(clockCurrent - clockStart) / ((long)CLOCKS_PER_SEC);
+						if( sim->tour(event.key.code, duration) != 0)
+						{
+							std::cout << "Le jeu est fini" << std::endl;
+							sim->setEtat(3); //On met le jeu sur la page final où les joueurs ne peuvent que quitter
+ 							currentSpr = sim->getSprEnd();
+ 						}	
    	  				}
+   	  			case 3:
+   	  				if(event.type == Event::MouseButtonPressed and sim->isClicEnd(event.mouseButton.x, event.mouseButton.y) == -1)
+   	  				{
+						window.close(); //On a cliqué sur le bouton quitter
+   	  				}	
+
    	  			default: 
    	  				throw("Erreur dans l'obtention de l'état de la simulation"); //Gérer cette erreur
    	  		}	
@@ -85,12 +94,11 @@ int main()
     window.draw(currentSpr);
     //if(sim->getEtat() == 2)
     //{
-	// 	 for()
-    //
-    //
+    //	for(sim->)
     //}
     window.display();
   }
+  delete sim;
   return 0;
 }
 

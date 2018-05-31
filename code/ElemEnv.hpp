@@ -25,6 +25,7 @@ public:
 		return "Element indéfini";
 	}
 
+	virtual void raviver(){} //Cette fonction ne doit rien faire si on est autre chose que du feu
 	int getVie(){
 		return this->_vie;
 	}
@@ -37,6 +38,7 @@ public:
 		else
 			return false; 
 	}
+
 
 protected:
 	int _vie;

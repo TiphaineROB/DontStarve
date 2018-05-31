@@ -13,7 +13,6 @@
 #include "Hache.hpp"
 #include "Pioche.hpp"
 #include "ElemEnv.hpp"
-//#include "Ressource.hpp"
 
 typedef std::map<sf::Keyboard::Key, std::string> cmd_t;
 
@@ -40,6 +39,12 @@ public:
 	cmd_t getCmd(){
 		return _cmd;
 	}
+	int getLife(){return _vie;}
+
+	
+	void addOut(Outil o){
+		_outils.push_back(o);
+	}
 
 	bool bouger(std::string s, int sizeX, int sizeY);
 	bool creerHache();
@@ -51,7 +56,7 @@ public:
 	int reveil();
 	
 	bool interagir(ElemEnv env);
-	Outil changerOut(int i);
+	Outil changerOut();
 
 protected:
 	

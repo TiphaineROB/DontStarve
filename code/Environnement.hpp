@@ -20,22 +20,26 @@ public:
 	{
 		for(int i=0; i < nbP; i++)
 			addPers(Personnage(i+1));
+		this->setSize(1280,720);
 		this->setTexture("../images/PageAccueilBtn.png");
 		//On charge le sprite lier 
 	}
 
 	//Destructeur
-	~Environnement(){}
+	~Environnement(){
+		_objs.clear();
+		_persos.clear();
+	}
 
 	//Accesseurs
-	void addObj(ToDraw o){
-		_objs.push_back(o);
+	void addObj(ElemEnv e){
+		_objs.push_back(e);
 	}
 	void addPers(Personnage p){
 		_persos.push_back(p);
 	}
 
-	ToDraw getObj(int i){
+	ElemEnv getObj(int i){
 		return _objs[i];
 	}
 
@@ -55,7 +59,7 @@ public:
 
 
 protected:
-	std::vector<ToDraw> _objs;
+	std::vector<ElemEnv> _objs;
 	std::vector<Personnage> _persos;
 
 };

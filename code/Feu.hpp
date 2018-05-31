@@ -9,7 +9,7 @@
 #include <iostream>
 #include "Outil.hpp"
 
-class Feu : public Outil{
+class Feu : public ElemEnv{
 
 	public: 
 		
@@ -17,10 +17,14 @@ class Feu : public Outil{
 			_vie = 4;
 		}
 
-		string getType(){
+		std::string getType(){
 			return "Feu";
 		}
 
+		void raviver()
+		{
+			_vie++; //On ravive le feu en lui ajoutant du bois
+		}
 		void raviver(int nbB)
 		{
 			_vie+=nbB; //On ravive le feu en lui ajoutant du bois

@@ -15,10 +15,11 @@ public:
 	Outil(){
 		_vie = 4;
 	}
-	std::string getType(){
+	virtual std::string getType(){
 		return "Element indéfini";
 	}
 
+	virtual ~Outil(){ std::cout << "Destructeur outil" << std::endl;}
 protected:
 	double _vie;
 	//sf::Texture _img;
