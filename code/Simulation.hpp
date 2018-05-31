@@ -25,7 +25,7 @@ public:
 		}
 		_accueil.setTexture(_textAcc);
 		
-		if(!_textCmds.loadFromFile("../images/PageAccueilBtn.png"))
+		if(!_textCmds.loadFromFile("../images/choixNbJ.png"))
 		{
 			std::cout << "BAD MADAFAKA CMD" << std::endl;
 		}
