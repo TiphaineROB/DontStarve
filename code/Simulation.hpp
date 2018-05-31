@@ -31,7 +31,7 @@ public:
 		}
 		_cmds.setTexture(_textCmds);
 
-		if(!_textCmds.loadFromFile("../images/PageAccueilBtn.png"))
+		if(!_textCmds.loadFromFile("../images/PageEnd.png"))
 		{
 			std::cout << "BAD MADAFAKA END" << std::endl;
 		}
@@ -121,14 +121,17 @@ int Simulation::isClicAccueil(int x, int y)
 
 int Simulation::isClicChoixJ(int x, int y)
 {
-	return 0;
+	if( (x >= 345 && x <= 515) && (y >= 600 && y <= 690)) //On est dans la zone du bouton joueur 1
+		return 1;
+	else if( (x >= 755 && x <= 930) && (y >= 595 && y <= 685)) //On est dans la zone du joueur 2
+		return 2;
+	else 
+		return 0; //On a clické n'importe ou sur l'écran
 }
 
 int Simulation::isClicEnd(int x, int y)
 {
-	if( (x >= 20 && x <= 280) && (y >= 530 && y <= 680)) //On est dans la zone du bouton play
-		return 1;
-	else if( (x >= 970 && x <= 1230) && (y >= 530 && y <= 680)) //On est dans la zone du bouton quitter
+	if( (x >= 775 && x <= 1050) && (y >= 500 && y <= 660)) //On est dans la zone du bouton quitter
 		return -1;
 	else 
 		return 0; //On a clické n'importe ou sur l'écran
