@@ -19,6 +19,7 @@ public:
 
 	//Dans le constructeur de la simulation on lui donne les trois sprites généraux et on initialise les valeurs de ces variables
 	Simulation(){
+		std::cout << "Constructeur simulation" << std::endl;
 		if(!_textAcc.loadFromFile("../images/PageAccueilBtn.png"))
 		{
 			std::cout << "BAD MADAFAKA ACC" << std::endl;
@@ -46,7 +47,7 @@ public:
 	//Destructeur
 	~Simulation()
 	{
-		delete this->_myEnv;
+		//delete this->_myEnv;
 
 		std::cout << "Destructeur simulation" << std::endl;
 	}
@@ -160,6 +161,10 @@ Environnement* Simulation::creerEnv(int nbJ, std::string s){
 }
 
 
+///
+/// Fonction qui fait correspondre à la string issue du hashmap contenant les commandes d'un joueur et l'action associée
+/// Appelle les fonctions internes du joueur passé en paramètre
+///	
 bool Simulation::appelActions(std::string s, Personnage p){
 
 	if(s.compare("Interagir"))
@@ -200,6 +205,10 @@ bool Simulation::appelActions(std::string s, Personnage p){
 }
 
 
+///
+/// Fonction qui permet de jouer un "tour" est appelé à chaque fois qu'une touche est appuyée une fois que le jeu est lancé
+/// Si la touche appuyée correspond à une des commandes d'un joueur on appelle la fonction appelActions qui permet de jouer l'action correspondante
+///
 int Simulation::tour(sf::Keyboard::Key k, long duration){
 	
 	//Il faut tester pour quel joueur la touche doit être prise en compte
@@ -222,6 +231,7 @@ int Simulation::tour(sf::Keyboard::Key k, long duration){
   	}
 
 
+	//Cette partie est à mettre dans une nouvelle fonction elle sert à faire en sorte que le jour se transforme en nuit et inversement
   	if(duration % this->_timer == 0) //12 min se sont écoulées donc on change l'état de la journée et éventuellement le numéro du jour
   	{
   		this->changeStateDay();
