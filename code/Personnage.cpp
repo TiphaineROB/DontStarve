@@ -187,8 +187,8 @@ cmd_t Personnage::createCmd(int i){
 bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
 {
 
-  if(e.interagir(this->_outils[0].getType()))
-  {
+    if(e.interagir(this->_outils[0].getType()))
+    {
         if(e.getType().compare("Arbre") || e.getType().compare("Pierre"))
         {
            if(e.coupDestructif())
@@ -198,7 +198,7 @@ bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'e
         else if(e.getType().compare("Feu"))
             this->_pack.find("Bois")->second --;
         return true;
-  }
+    }
 
 	return false;
 }

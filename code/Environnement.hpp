@@ -18,16 +18,23 @@ public:
 	Environnement(){}
 	Environnement(int nbP, std::string s)
 	{
+
+		std::cout << "Constructeur Environnement" << std::endl;
 		for(int i=0; i < nbP; i++)
 			addPers(Personnage(i+1));
+
 		this->setSize(1280,720);
+
+
 		this->setTexture(s);
 		//On charge le sprite lier
 		this->setSprite();
+
 	}
 
 	//Destructeur
 	~Environnement(){
+		std::cout << "Destructeur Environnement" << std::endl;
 		_objs.clear();
 		_persos.clear();
 	}

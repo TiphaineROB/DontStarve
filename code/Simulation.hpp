@@ -48,7 +48,8 @@ public:
 	~Simulation()
 	{
 		//delete this->_myEnv;
-
+		if(this->_myEnv != NULL)
+			delete this->_myEnv;
 		std::cout << "Destructeur simulation" << std::endl;
 	}
 
