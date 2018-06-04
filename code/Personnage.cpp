@@ -16,7 +16,7 @@ Personnage::Personnage()
   }
   sprite.setTexture(texture);
 
-	
+
 	_sens = 'B';
 	_faim = 0;
 	_fatigue = 0;
@@ -34,13 +34,19 @@ bool Personnage::bouger(std::string s, int sizeX, int sizeY)
 	{
 		//On regarde si l'origine dépasse vers la gauche, donc inférieur à 0
 		if(this->_origin[0]-this->_taillePas < 0) //Comme l'origine du sprite du personnage est en haut à gauche, les cas où il veut aller à g ou h ne posent pas de problèmes
-			this->_origin[0] = 0;
-		return true;
+		{
+      this->_origin[0] = 0;
+      this->_sens = "G";
+    }
+    return true;
 	}
 	else if(s.compare("Droite")){
 		if(this->_origin[0]+this->_size[0] > sizeX) //Dans ce cas il faut regarder que tout le sprite du personnage reste dans l'écran
-				this->_origin[0] = sizeX - this->_size[0];
-			return true;
+			{
+        	this->_origin[0] = sizeX - this->_size[0];
+          this->_sens = "D";
+      }
+      return true;
 	}
 	else if(s.compare("Haut"))
 	{
@@ -98,7 +104,7 @@ bool Personnage::creerPioche(){
 int Personnage::updateLife()
 {
 	//TODO rajouter des conditions pour que juste après manger la vie ne baisse pas !! (chrono en interne du personnage ?)
-	this->_faim++; 
+	this->_faim++;
 	this->_fatigue++;
 	this->_vie -=2;
 
@@ -119,7 +125,7 @@ int Personnage::manger()
 
 /*
 * @function dormir()
-* @return int : ... ? 
+* @return int : ... ?
 */
 int Personnage::dormir(){
 return 0;
@@ -139,10 +145,10 @@ return 0;
 * Permet de donner à joueur son ensemble de touche correspondant à des actions
 */
 cmd_t Personnage::createCmd(int i){
-	
+
 	cmd_t cmd;
 	if(i==1)
-	{	
+	{
 		cmd[sf::Keyboard::Left] = "Gauche" ;
 		cmd[sf::Keyboard::Right] = "Droite";
 		cmd[sf::Keyboard::Up] = "Haut";
@@ -150,10 +156,10 @@ cmd_t Personnage::createCmd(int i){
 		cmd[sf::Keyboard::Num1] =  "Interagir";
 		cmd[sf::Keyboard::Num2] = "ChangerOutil";
 		cmd[sf::Keyboard::Num3] = "Manger" ;
-		cmd[sf::Keyboard::Num4] = "CreerHache"; 
+		cmd[sf::Keyboard::Num4] = "CreerHache";
 		cmd[sf::Keyboard::Num5] = "CreerPioche";
-		cmd[sf::Keyboard::Num6] = "AllumerFeu"; 
-		cmd[sf::Keyboard::Num7] = "Dormir"; 
+		cmd[sf::Keyboard::Num6] = "AllumerFeu";
+		cmd[sf::Keyboard::Num7] = "Dormir";
 	}
 	else if(i==2)
 	{
@@ -164,68 +170,48 @@ cmd_t Personnage::createCmd(int i){
 		cmd[sf::Keyboard::E] = "Interagir";
 		cmd[sf::Keyboard::S] = "ChangerOutil";
 		cmd[sf::Keyboard::Z] = "Manger";
-		cmd[sf::Keyboard::X] = "CreerHache"; 
+		cmd[sf::Keyboard::X] = "CreerHache";
 		cmd[sf::Keyboard::C] = "CreerPioche";
-		cmd[sf::Keyboard::V] = "AllumerFeu"; 
-		cmd[sf::Keyboard::W] = "Dormir"; 
+		cmd[sf::Keyboard::V] = "AllumerFeu";
+		cmd[sf::Keyboard::W] = "Dormir";
 	}
 	return cmd;
 }
 
 
 /*
-* @function couper(ElemEnv e)
-* @return : bool
-* Permet de dire si l'élément devant peut être couper
-*/
-bool Personnage::couper(ElemEnv e)
-{
-	if(e.getType() == "Arbre" && this->_outils[0].getType() == "Hache")
-		return true;
-	return false;
-}
-
-bool Personnage::casser(ElemEnv e)
-{
-	if(e.getType() == "Roche" && this->_outils[0].getType() == "Pioche")
-		return true;
-	return false;
-}
-
-
-/*
 * @function interagir()
-* @return bool: si le joueur a pu intéragir ? 
+* @return bool: si le joueur a pu intéragir ?
 * On regarde dans la direction du joueur s'il y a un obstacle et si il a l'outil adéquate
 */
 bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
 {
-	if(this->couper(e))
-	{
-		if(e.coupDestructif())
-			this->_myPack->addBois(3);
-		return true;
-	}
-	else if(this->casser(e))
-	{
-		if(e.coupDestructif())
-			this->_myPack->addPierre(3);
-		return true; 
-	}
-	else if(e.getType() == "Feu" && this->_myPack->getNbBois() > 0)
-		e.raviver();
+
+  if(e.interagir(this->_outils[0].getType()))
+  {
+        if(e.getType().compare("Arbre") || e.getType().compare("Pierre"))
+        {
+           if(e.coupDestructif())
+              this->_pack.find(e.getRessourceName())->second +=3;
+            //this->_outils[0].utiliser();
+        }
+        else if(e.getType().compare("Feu"))
+            this->_pack.find("Bois")->second --;
+        return true;
+  }
+
 	return false;
 }
 
 
 /*
 * @function changerOutil()
-* @return outil en main 
+* @return outil en main
 */
 Outil Personnage::changerOut()
 {
 	//On met le premier à la fin et le deuxième au début
-	if(this->_outils.size() > 1) //Le personnage a au moins deux outils 
+	if(this->_outils.size() > 1) //Le personnage a au moins deux outils
 	{	Outil temp = this->_outils[0];
 		this->_outils.erase (this->_outils.begin()); //On supprime le premier élement puis on le met à la fin
 		this->addOut(temp);

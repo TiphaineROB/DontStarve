@@ -7,15 +7,33 @@
 #define BAIE_HPP
 
 #include <iostream>
-#include "Nourriture.hpp"
+#include "ElemEnv.hpp"
 
-class Baie : public Nourriture{
+class Baie : public ElemEnv{
 
-public: 
+	public:
 
+	Baie(){
+		this->_vie = 3;
+		//On lui attribue son sprite aussi
+	}
+	std::string getType(){
+		return "Baie";
+	}
 
-protected:
-	
+	std::string getRessourceName()
+	{
+		return "Baie";
+	}
+
+  bool interagir(std::string s){
+		if(this->_vie !=0)
+		{
+			return true;
+		}
+		return false;
+	}
+
 };
 
 #endif

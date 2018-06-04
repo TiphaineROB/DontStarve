@@ -8,16 +8,17 @@
 #define BETE_HPP
 
 #include <iostream>
+#include "ToDraw.hpp"
 
-class Bete : public Drawable{
+class Bete : public ToDraw{
 
-	public: 
+	public:
 		Bete()
 		{
 			_vie = 3;
-			_danger = 0; 
-		}	
-	
+			_danger = 0;
+		}
+
 		std::string getType(){
 			return "Bete indefinie";
 		}
@@ -32,11 +33,11 @@ class Bete : public Drawable{
 			if(vie==0)
 				return true;
 			else
-				return false; 
+				return false;
 		}
 
 	protected:
-		int _vie; 
+		int _vie;
 		int _danger; //Niveau de dangerosité de la bête
 
 };

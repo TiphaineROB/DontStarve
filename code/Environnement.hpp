@@ -7,22 +7,23 @@
 #define ENV_HPP
 
 #include <iostream>
-#include "ToDraw.hpp"
+#include "ElemEnv.hpp"
 #include "Personnage.hpp"
 
 class Environnement : public ToDraw{
 
-public: 
+public:
 
 	//Constructeurs
-	Environnement(){}		
+	Environnement(){}
 	Environnement(int nbP, std::string s)
 	{
 		for(int i=0; i < nbP; i++)
 			addPers(Personnage(i+1));
 		this->setSize(1280,720);
-		this->setTexture("../images/PageAccueilBtn.png");
-		//On charge le sprite lier 
+		this->setTexture(s);
+		//On charge le sprite lier
+		this->setSprite();
 	}
 
 	//Destructeur
@@ -51,11 +52,35 @@ public:
 		return _persos.size();
 	}
 
+	ElemEnv getCloserElem(Personnage p){
+		for(int i=0;i<_objs.size();i++)
+		{
+				if(p.getSens().compare("B"))
+				{
+						std::cout << "A faire" << std::endl;
+				}
+				if(p.getSens().compare("H"))
+				{
+						std::cout << "A faire" << std::endl;
+				}
+				if(p.getSens().compare("G"))
+				{
+						std::cout << "A faire" << std::endl;
+				}
+				if(p.getSens().compare("D"))
+				{
+						std::cout << "A faire" << std::endl;
+				}
+		}
+		//Si on a pas trouvé de bon élément on lance une erreur
+		throw("Pas d'élément à côté !");
+	}
+
 	Environnement& operator=(const Environnement& e){
 			this->_objs = e._objs;
 			this->_persos = e._persos;
 			return *this;
-	} 
+	}
 
 
 protected:

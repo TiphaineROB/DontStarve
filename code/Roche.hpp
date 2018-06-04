@@ -13,7 +13,7 @@
 class Roche : public ElemEnv
 {
 
-public: 
+public:
 	Roche(){
 		this->_vie = 3; //Une roche est cassée au bout de 3 coups
 		//On doit lui attribuer un sprite aussi
@@ -21,6 +21,16 @@ public:
 
 	std::string getType(){
 		return "Roche";
+	}
+
+	std::string getRessourceName(){return "Pierre";}
+	
+	bool interagir(std::string s){
+		if(s.compare("Pioche"))
+		{
+			return true;
+		}
+		return false;
 	}
 
 };

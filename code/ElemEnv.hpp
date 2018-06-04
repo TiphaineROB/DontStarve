@@ -11,21 +11,27 @@
 #include <string>
 #include "ToDraw.hpp"
 
+
+
 class ElemEnv : public ToDraw
 {
 
-public: 
+public:
 
 	ElemEnv()
 	{
 		_vie = 3;
 	}
-	
+
 	virtual std::string getType(){
 		return "Element indéfini";
 	}
 
-	virtual void raviver(){} //Cette fonction ne doit rien faire si on est autre chose que du feu
+	virtual std::string getRessourceName(){
+		return "indefini";
+	}
+
+	virtual bool interagir(std::string s){ return false;}
 	int getVie(){
 		return this->_vie;
 	}
@@ -36,7 +42,7 @@ public:
 		if(_vie==0)
 			return true;
 		else
-			return false; 
+			return false;
 	}
 
 

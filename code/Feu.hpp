@@ -11,8 +11,8 @@
 
 class Feu : public ElemEnv{
 
-	public: 
-		
+	public:
+
 		Feu(){
 			_vie = 4;
 		}
@@ -30,8 +30,11 @@ class Feu : public ElemEnv{
 			_vie+=nbB; //On ravive le feu en lui ajoutant du bois
 		}
 
-	protected:
-	
+		bool interagir(std::string s){
+			 raviver();
+			 return true;
+		}
+
 };
 
 #endif

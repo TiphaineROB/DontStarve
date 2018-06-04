@@ -18,7 +18,7 @@ public:
 	virtual std::string getType(){
 		return "Element indéfini";
 	}
-
+	//virtual void utiliser(){}
 	virtual ~Outil(){ std::cout << "Destructeur outil" << std::endl;}
 protected:
 	double _vie;

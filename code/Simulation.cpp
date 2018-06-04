@@ -59,11 +59,15 @@ int main()
    	  				{
    	  					//on a choisi le mode joueur solo
    	  					sim->creerEnv(1,"../images/carte.png");
+						currentSpr = sim->getEnv()->getSprite();
+						sim->setEtat(2);
    	  				}
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 2)
    	  				{
    	  					//on a choisi le mode 2 joueurs
    	  					sim->creerEnv(2, "../images/carte.png");
+						currentSpr = sim->getEnv()->getSprite();
+						sim->setEtat(2);
    	  				}
    	  				clockStart = clock();
    	  				break; 

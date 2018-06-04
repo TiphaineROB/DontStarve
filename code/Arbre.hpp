@@ -13,13 +13,24 @@
 class Arbre : public ElemEnv
 {
 
-	public: 
+	public:
 		Arbre(){
 			this->_vie = 3;
 			//On lui attribue son sprite aussi
 		}
 		std::string getType(){
 			return "Arbre";
+		}
+
+		std::string getRessourceName(){return "Bois";}
+
+
+		bool interagir(std::string s){
+			if(s.compare("Hache"))
+			{
+				return true;
+			}
+			return false;
 		}
 
 };
