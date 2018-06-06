@@ -189,15 +189,11 @@ bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'e
 
     if(e.interagir(this->_outils[0].getType()))
     {
-        if(e.getType().compare("Arbre") || e.getType().compare("Pierre"))
-        {
            if(e.coupDestructif())
-              this->_pack.find(e.getRessourceName())->second +=3;
-            //this->_outils[0].utiliser();
-        }
-        else if(e.getType().compare("Feu"))
-            this->_pack.find("Bois")->second --;
-        return true;
+              this->_pack.find(e.getRessourceName())->second += e.getRessource();
+            if(e.getType().compare("Arbre") || e.getType().compare("Roche"))
+                this->_outils[0].utiliser();
+            return true;
     }
 
 	return false;

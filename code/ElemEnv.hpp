@@ -31,6 +31,8 @@ public:
 		return "indefini";
 	}
 
+	virtual int getRessource(){ return 0;}
+
 	virtual bool interagir(std::string s){ return false;}
 	int getVie(){
 		return this->_vie;

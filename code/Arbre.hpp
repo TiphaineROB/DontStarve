@@ -23,7 +23,7 @@ class Arbre : public ElemEnv
 		}
 
 		std::string getRessourceName(){return "Bois";}
-
+		int getRessource(){return 3;}
 
 		bool interagir(std::string s){
 			if(s.compare("Hache"))

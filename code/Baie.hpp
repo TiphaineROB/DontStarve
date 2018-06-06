@@ -26,12 +26,21 @@ class Baie : public ElemEnv{
 		return "Baie";
 	}
 
+	int getRessource(){return 1;}
+
   bool interagir(std::string s){
 		if(this->_vie !=0)
 		{
 			return true;
 		}
 		return false;
+	}
+
+	bool coupDestructif(){
+		if(this->_vie==0) //S'il n'y a plus de baies sur l'arbre à baie
+			return false;
+		else
+			return true;
 	}
 
 };

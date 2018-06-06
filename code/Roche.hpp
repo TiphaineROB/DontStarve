@@ -24,7 +24,8 @@ public:
 	}
 
 	std::string getRessourceName(){return "Pierre";}
-	
+	int getRessource(){return 3;}
+
 	bool interagir(std::string s){
 		if(s.compare("Pioche"))
 		{

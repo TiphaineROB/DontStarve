@@ -34,6 +34,11 @@ class Feu : public ElemEnv{
 			 raviver();
 			 return true;
 		}
+		int getRessource(){return 0;}
+		bool coupDestructif()
+		{
+			return false; //Il n'y a jamais de coup destructif pour le feu
+		}
 
 };
 
