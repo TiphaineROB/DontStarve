@@ -58,15 +58,22 @@ public:
 		this->sprite.setTextureRect(sf::IntRect(_origin[0],_state*_origin[1],_size[0],_size[1]));
 	}
 
+	void setPosition(int x, int y)
+{
+	_position[0]=x;
+	_position[1]=y;		
+}
+
 	int getSizeX(){return _size[0];}
 	int getSizeY(){return _size[1];}
-
+	int* getPosition(){return _position;}
 protected:
 	double _vie;
 	int _state;
 	int _pos[2];
 	int _origin[2];
 	int _size[2];
+	int _position[2];
 	bool _interaction;
 	sf::Sprite sprite;
 	sf::Texture texture;
