@@ -17,8 +17,30 @@ public:
 	Roche(){
 		this->_vie = 3; //Une roche est cassée au bout de 3 coups
 		//On doit lui attribuer un sprite aussi
+		if(!texture.loadFromFile("../images/rocheArbres.png"))
+	  {
+	    std::cout << "BAD MADAFAKA" << std::endl;
+	  }
+	  this->sprite.setTexture(texture);
+	  this->sprite.setTextureRect(sf::IntRect(0,10,128/4,160/4));
+	  //this->sprite.setPosition(sf::Vector2f(1280/2, 720/2));
+		this->sprite.setScale(sf::Vector2f(1.5,1.5));
+
 	}
 
+	Roche(int x, int y){
+			this->_vie = 3; //Une roche est cassée au bout de 3 coups
+			//On doit lui attribuer un sprite aussi
+			if(!texture.loadFromFile("../images/rocheArbres.png"))
+			{
+				std::cout << "BAD MADAFAKA" << std::endl;
+			}
+			this->sprite.setTexture(texture);
+			this->sprite.setTextureRect(sf::IntRect(0,10,128/4,160/4));
+			this->sprite.setScale(sf::Vector2f(1.5,1.5));
+			this->sprite.setPosition(sf::Vector2f(x,y));
+		}
+		
 	std::string getType(){
 		return "Roche";
 	}

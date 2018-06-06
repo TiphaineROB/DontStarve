@@ -61,7 +61,7 @@ public:
 	void setPosition(int x, int y)
 {
 	_position[0]=x;
-	_position[1]=y;		
+	_position[1]=y;
 }
 
 	int getSizeX(){return _size[0];}

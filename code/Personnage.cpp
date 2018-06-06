@@ -10,11 +10,13 @@ using namespace sf;
 
 Personnage::Personnage()
 {
-  if(!texture.loadFromFile("../images/arbres.png"))
+  if(!this->texture.loadFromFile("../images/perso.png"))
   {
     std::cout << "BAD MADAFAKA" << std::endl;
   }
-  sprite.setTexture(texture);
+  this->sprite.setTexture(this->texture);
+  this->sprite.setTextureRect(sf::IntRect(0,2*256/4,576/9,256/4));
+  this->sprite.setPosition(sf::Vector2f(1280/2, 720/2));
 
 
 	_sens = 'B';
@@ -37,6 +39,9 @@ bool Personnage::bouger(std::string s, int sizeX, int sizeY)
 		{
       this->_origin[0] = 0;
       this->_sens = "G";
+      this->sprite.setTextureRect(sf::IntRect(0,256/4,576/9,256/4));
+      this->_position[1] -= this->_position[1];
+      this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
     }
     return true;
 	}
@@ -45,7 +50,10 @@ bool Personnage::bouger(std::string s, int sizeX, int sizeY)
 			{
         	this->_origin[0] = sizeX - this->_size[0];
           this->_sens = "D";
-      }
+          this->sprite.setTextureRect(sf::IntRect(0,3*256/4,576/9,256/4));
+          this->_position[1] += this->_position[1];
+          this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
+          }
       return true;
 	}
 	else if(s.compare("Haut"))
@@ -53,11 +61,17 @@ bool Personnage::bouger(std::string s, int sizeX, int sizeY)
 		if(this->_origin[1]-this->_taillePas < 0)
 				this->_origin[1] = 0;
 			return true;
+      this->sprite.setTextureRect(sf::IntRect(0,0,576/9,256/4));
+      this->_position[0] -= this->_position[0];
+      this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
 	}
 	else if(s.compare("Bas"))
 	{
 		if(this->_origin[1]+this->_size[1] > sizeX) //Dans ce cas il faut regarder que tout le sprite du personnage reste dans l'écran
 				this->_origin[0] = sizeY - this->_size[1];
+        this->sprite.setTextureRect(sf::IntRect(0,2*256/4,576/9,256/4));
+        this->_position[0] += this->_position[0];
+        this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
 			return true;
 	}
 	return false; }

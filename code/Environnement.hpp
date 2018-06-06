@@ -9,6 +9,7 @@
 #include <iostream>
 #include "ElemEnv.hpp"
 #include "Personnage.hpp"
+#include "Arbre.hpp"
 
 class Environnement : public ToDraw{
 
@@ -29,7 +30,8 @@ public:
 		this->setTexture(s);
 		//On charge le sprite lier
 		this->setSprite();
-
+		Arbre arbre;
+		this->addObj(arbre);
 	}
 
 	//Destructeur
@@ -93,7 +95,6 @@ public:
 protected:
 	std::vector<ElemEnv> _objs;
 	std::vector<Personnage> _persos;
-
 };
 
 #endif

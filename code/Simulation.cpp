@@ -14,10 +14,13 @@ int main()
   // Sprite sprite;
  //
   // std::vector<ToDraw> Objets;
-  // ToDraw _perso;
-  // _perso.setTexture("../images/fond.jpg");
-  // _perso.setSize(100,100);
-  // _perso.setSprite();
+   Personnage *_perso = new Personnage(0);
+	 Arbre arbre;
+	// Arbre *_perso = new Arbre(10,300);
+	 Roche *_roche = new Roche(300,300);
+  // _perso->setTexture("../images/fond.jpg");
+  // _perso->setSize(100,100);
+  // _perso->setSprite();
 	//
   // Objets.push_back(_perso);
 
@@ -100,7 +103,13 @@ int main()
     }
     window.clear();
     window.draw(currentSpr);
-    //if(sim->getEtat() == 2)
+		if(sim->getEtat()==2){
+			window.draw(sim->getEnv()->getPers(0).getSprite());
+			std::cout << "On devrait afficher un personnage" << std::endl;
+		}
+		//else
+		 //	std::cout << "Personnage n'existe pas encore" << std::endl;
+		//if(sim->getEtat() == 2)
     //{
     //	for(sim->)
     //}

@@ -20,11 +20,16 @@ typedef std::map<std::string, int> poche_t;
 class Personnage : public ToDraw
 {
 public:
-	sf::Texture texture;
-	sf::Sprite sprite;
-
 	Personnage();
 	Personnage(int i){
+		if(!this->texture.loadFromFile("../images/perso.png"))
+  {
+    std::cout << "BAD MADAFAKA" << std::endl;
+  }
+  this->sprite.setTexture(this->texture);
+  this->sprite.setTextureRect(sf::IntRect(0,2*256/4,576/9,256/4));
+  this->sprite.setPosition(sf::Vector2f(1280/2, 720/2));
+
 		_sens = 'B';
 		_faim = 0;
 		_fatigue = 0;
