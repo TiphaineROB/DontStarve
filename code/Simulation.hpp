@@ -90,7 +90,7 @@ public:
 
 	//Accesseur et fonction créatrice de l'environnement de la simulation
 	Environnement* getEnv(){return this->_myEnv;}
-	Environnement* creerEnv(int nbJ, std::string s);
+	Environnement* creerEnv(int nbJ, std::string s, bool AI);
 
 	//Fonction permettant d'interprêter l'appui sur une touche et de lancer l'action correspondante
 	int tour(sf::Keyboard::Key k, long duration);
@@ -139,9 +139,9 @@ int Simulation::isClicEnd(int x, int y)
 		return 0; //On a clické n'importe ou sur l'écran
 }
 
-Environnement* Simulation::creerEnv(int nbJ, std::string s){
+Environnement* Simulation::creerEnv(int nbJ, std::string s, bool AI){
 
-	this->_myEnv = new Environnement(nbJ, s);
+	this->_myEnv = new Environnement(nbJ, s, AI);
 
 	//Creation des arbres, on en veut un nombre compris entre 1 et 10
 	int nbrandom = rand()%9 +1;

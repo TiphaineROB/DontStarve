@@ -45,23 +45,27 @@ int main()
    	  			case 0: //On est sur l'écran d'accueil
    	  				if(event.type == Event::MouseButtonPressed and sim->isClicAccueil(event.mouseButton.x, event.mouseButton.y) == -1)
    	  				{
-						window.close(); //On a cliqué sur le bouton quitter
+								window.close(); //On a cliqué sur le bouton quitter
    	  				}
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicAccueil(event.mouseButton.x, event.mouseButton.y) == 1)
    	  				{
    	  					sim->setEtat(1); //On a cliqué sur le bouton play
-						currentSpr = sim->getSprCmds();
+								currentSpr = sim->getSprCmds();
    	  				}
    	  				break;
    	  			case 1:  //On est sur la page qui nous donne les commandes des joueurs
    	  				if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == -1)
    	  				{
-								throw("Ce mode de jeu n'est pas implementé encore"); //On a cliqué sur le bouton contre l'IA
+								sim->creerEnv(1,"../images/carte.png", true);
+								std::cout << "Ce mode n'est pas implémenter, fermeture du jeu " << std::endl;
+								delete sim->getEnv();
+								sim->setEtat(0);
+								currentSpr = sim->getSprAcc();
    	  				}
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 1)
    	  				{
    	  					//on a choisi le mode joueur solo
-   	  					sim->creerEnv(1,"../images/carte.png");
+   	  					sim->creerEnv(1,"../images/carte.png", false);
 								currentSpr = sim->getEnv()->getSprite();
 
 										std::cout << "Constructeur TEST" << std::endl;
@@ -71,7 +75,7 @@ int main()
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 2)
    	  				{
    	  					//on a choisi le mode 2 joueurs
-   	  					sim->creerEnv(2, "../images/carte.png");
+   	  					sim->creerEnv(2, "../images/carte.png", false);
 								std::cout << "Constructeur TEST" << std::endl;
 								currentSpr = sim->getEnv()->getSprite();
 								sim->setEtat(2);
@@ -90,6 +94,7 @@ int main()
  							currentSpr = sim->getSprEnd();
  						}
    	  				}
+							break;
    	  			case 3:
    	  				if(event.type == Event::MouseButtonPressed and sim->isClicEnd(event.mouseButton.x, event.mouseButton.y) == -1)
    	  				{
@@ -98,6 +103,7 @@ int main()
 							break;
    	  			default:
    	  				throw("Erreur dans l'obtention de l'état de la simulation"); //Gérer cette erreur
+
    	  		}
       	}
     }

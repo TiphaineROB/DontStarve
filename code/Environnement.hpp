@@ -9,6 +9,7 @@
 #include <iostream>
 #include "ElemEnv.hpp"
 #include "Personnage.hpp"
+#include "AI.hpp"
 #include "Arbre.hpp"
 
 class Environnement : public ToDraw{
@@ -17,12 +18,16 @@ public:
 
 	//Constructeurs
 	Environnement(){}
-	Environnement(int nbP, std::string s)
+	Environnement(int nbP, std::string s, bool AI)
 	{
 
 		std::cout << "Constructeur Environnement" << std::endl;
 		for(int i=0; i < nbP; i++)
 			addPers(Personnage(i+1));
+		/*if(AI) //On est dans le mpment où on a une IA
+		{
+			addPers(new AI());
+		}*/
 
 		this->setSize(1280,720);
 

@@ -7,6 +7,7 @@
 #define AI_HPP
 
 #include <iostream>
+#include "Personnage.hpp"
 #include <string>
 
 class AI : public Personnage
@@ -15,7 +16,7 @@ class AI : public Personnage
 	public:
 		AI(): Personnage(1){} //Il possède les mêmes commandes que le joueur 1 donc il va imiter toutes ces actions (mais pas le sens)
 
-		bouger(std::string s, int sizeX, int sizeY)
+		bool bouger(std::string s, int sizeX, int sizeY)
 		{
 			int randomMove = rand()%4 +1;
 			if(randomMove == 1) //On va bouger vers la gauche
@@ -27,7 +28,7 @@ class AI : public Personnage
 		      this->_sens = "G";
 		      this->sprite.setTextureRect(sf::IntRect(0,256/4,576/9,256/4));
 		      this->_position[1] -= this->_position[1];
-		      this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
+		      this->sprite.setPosition(sf::Vector2f(this->_position[0],this->_position[1]));
 		    }
 		    return true;
 			}
@@ -39,7 +40,7 @@ class AI : public Personnage
 		          this->_sens = "D";
 		          this->sprite.setTextureRect(sf::IntRect(0,3*256/4,576/9,256/4));
 		          this->_position[1] += this->_position[1];
-		          this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
+		          this->sprite.setPosition(sf::Vector2f(this->_position[0],this->_position[1]));
 		          }
 		      return true;
 			}
@@ -50,7 +51,7 @@ class AI : public Personnage
 					return true;
 		      this->sprite.setTextureRect(sf::IntRect(0,0,576/9,256/4));
 		      this->_position[0] -= this->_position[0];
-		      this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
+		      this->sprite.setPosition(sf::Vector2f(this->_position[0],this->_position[1]));
 			}
 			else if(randomMove == 4) //On va vers le bas
 			{
@@ -58,7 +59,7 @@ class AI : public Personnage
 						this->_origin[0] = sizeY - this->_size[1];
 		        this->sprite.setTextureRect(sf::IntRect(0,2*256/4,576/9,256/4));
 		        this->_position[0] += this->_position[0];
-		        this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
+		        this->sprite.setPosition(sf::Vector2f(this->_position[0],this->_position[1]));
 					return true;
 			}
 			return false;
