@@ -45,8 +45,8 @@ public:
 	}
 
 	~Personnage(){
-		std::cout << "Destructeur Personnage" << std::endl;
 		_outils.clear();
+		std::cout << "Destructeur Personnage" << std::endl;
 	}
 
 	cmd_t getCmd(){

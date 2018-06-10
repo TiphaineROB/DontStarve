@@ -37,7 +37,8 @@ class Baie : public ElemEnv{
 	}
 
 	bool coupDestructif(){
-		if(this->_vie==0) //S'il n'y a plus de baies sur l'arbre à baie
+		this->_vie--;
+		if(this->_vie<=0) //S'il n'y a plus de baies sur l'arbre à baie
 			return false;
 		else
 			return true;

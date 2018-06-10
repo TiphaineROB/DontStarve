@@ -32,6 +32,11 @@ class Arbre : public ElemEnv
 			this->sprite.setPosition(sf::Vector2f(x, y));
 		}
 
+
+		~Arbre(){
+				std::cout << "Destructeur Arbre" << std::endl;
+		}
+
 		std::string getType(){
 			return "Arbre";
 		}

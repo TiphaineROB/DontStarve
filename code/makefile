@@ -4,10 +4,10 @@ LINKER_FLAGS = -lm -lsfml-graphics -lsfml-window -lsfml-system
 
 all: simulation
 
-simulation : ToDraw.o Simulation.o Personnage.o Simulation.hpp
+simulation : ToDraw.o Simulation.o Personnage.o jeu.hpp
 	g++ $(FLAG) -o simulation Simulation.o Personnage.o $(LINKER_FLAGS)
 
-Simulation.o: Simulation.cpp Simulation.hpp Environnement.hpp
+Simulation.o: Simulation.cpp jeu.hpp
 	g++ $(FLAG) -c Simulation.cpp
 
 ToDraw.o: ToDraw.cpp ToDraw.hpp

@@ -40,7 +40,11 @@ public:
 			this->sprite.setScale(sf::Vector2f(1.5,1.5));
 			this->sprite.setPosition(sf::Vector2f(x,y));
 		}
-		
+
+		~Roche(){
+			std::cout << "Destructeur Roche" << std::endl;
+		}
+
 	std::string getType(){
 		return "Roche";
 	}

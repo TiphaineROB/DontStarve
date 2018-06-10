@@ -26,8 +26,10 @@ Personnage::Personnage()
 	_cmd = createCmd(1);
 }
 
-
-
+/*
+* Fonction qui change la position du personnage en fonction de la touche appuyée
+*
+*/
 bool Personnage::bouger(std::string s, int sizeX, int sizeY)
 {
 	//Dans tous les cas il faut vérifier qu'on est bien rester dans l'image
@@ -95,7 +97,6 @@ bool Personnage::creerHache(){
 bool Personnage::allumerFeu(){
 	if(this->_pack.find("Pierre")->second < 2 || this->_pack.find("Bois")->second < 2) //Il faut 2 de chaque ressources
 		return false;
-	//On ajoute un drawable ??
 	return true;
 }
 
@@ -144,14 +145,6 @@ int Personnage::manger()
 int Personnage::dormir(){
   this->_fatigue--;
   return this->_fatigue;
-}
-
-/*
-* @function reveil()
-* @return int : Le niveau de fatigue du personnage
-*/
-int Personnage::reveil(){
-return 0;
 }
 
 /*
@@ -206,7 +199,7 @@ bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'e
     {
            if(e.coupDestructif())
               this->_pack.find(e.getRessourceName())->second += e.getRessource();
-            if(e.getType().compare("Arbre") || e.getType().compare("Roche"))
+          if(e.getType().compare("Arbre") || e.getType().compare("Roche"))
                 this->_outils[0].utiliser();
             return true;
     }

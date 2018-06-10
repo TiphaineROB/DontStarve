@@ -29,7 +29,10 @@ public:
 		// Arbre arbre;
 		// this->addObj(arbre);
 		for(int i=0; i < nbP; i++)
-			addPers(Personnage(i+1));
+		{
+			Personnage p(i+1);
+//			_persos.push_back(p);
+		}
 		/*if(AI) //On est dans le mpment où on a une IA
 		{
 			addPers(new AI());
@@ -38,9 +41,9 @@ public:
 
 	//Destructeur
 	~Environnement(){
-		std::cout << "Destructeur Environnement" << std::endl;
 		_objs.clear();
 		_persos.clear();
+		std::cout << "Destructeur Environnement" << std::endl;
 	}
 
 	//Accesseurs

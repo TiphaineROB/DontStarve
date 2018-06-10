@@ -66,7 +66,7 @@ public:
 
 	int getSizeX(){return _size[0];}
 	int getSizeY(){return _size[1];}
-	int* getPosition(){return _position;}
+	int getPosition(int i){return _position[i];}
 protected:
 	double _vie;
 	int _state;
