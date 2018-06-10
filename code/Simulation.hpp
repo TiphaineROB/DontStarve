@@ -42,14 +42,17 @@ public:
 		_day = 0;
 		_timer = 720; //Doit correspondre à 12 minutes (soit 720min), toutes les 10min on passe en nuit et toutes les 4 on perds de la vie
 		_stateDay = true; //On commence la journée
+		_env = false; //On ne crée pas l'environnement en même temps que la simulation
 	}
 
 	//Destructeur
 	~Simulation()
 	{
 		//delete this->_myEnv;
-		if(this->_myEnv != NULL)
+		if(this->_env == true)
+		{
 			delete this->_myEnv;
+		}
 		std::cout << "Destructeur simulation" << std::endl;
 	}
 
@@ -99,6 +102,7 @@ public:
 protected:
 	long _timer;
 	Environnement* _myEnv;
+	bool _env;
 	bool _stateDay; //Correspond si on est en journée ou pendant la nuit
 	int _day;
 	int _etat; //Etat du jeu 0 si on est sur la page d'accueil, 1 si sur la page des commandes, 2 pendant le jeu
@@ -154,10 +158,11 @@ Environnement* Simulation::creerEnv(int nbJ, std::string s, bool AI){
 	nbrandom = rand()%9 +1;
 	for(int i=0; i < nbrandom; i++)
 	{
-		this->_myEnv->addObj(Arbre()); //donner une position random aussi
+		this->_myEnv->addObj(Roche()); //donner une position random aussi
 	}
 
 	//Dans la version 0 on ne crée pas de betes
+	this->_env = true;
 	return this->_myEnv;
 }
 
@@ -171,15 +176,8 @@ bool Simulation::appelActions(std::string s, Personnage p){
 	if(s.compare("Interagir"))
 	{
 		//On cherche un élément propre et dans la bonne direction
-		try
-		{
-			p.interagir(this->_myEnv->getCloserElem(p));
-		}
-		catch(...)
-		{
-			return false;
-		}
-		return true;
+
+		return false;
 	}
 	else if(s.compare("Manger"))
 	{

@@ -67,16 +67,12 @@ int main()
    	  					//on a choisi le mode joueur solo
    	  					sim->creerEnv(1,"../images/carte.png", false);
 								currentSpr = sim->getEnv()->getSprite();
-
-										std::cout << "Constructeur TEST" << std::endl;
 								sim->setEtat(2);
-								//currentSpr = sim->getSprAcc();
    	  				}
    	  				else if(event.type == Event::MouseButtonPressed and sim->isClicChoixJ(event.mouseButton.x, event.mouseButton.y) == 2)
    	  				{
    	  					//on a choisi le mode 2 joueurs
    	  					sim->creerEnv(2, "../images/carte.png", false);
-								std::cout << "Constructeur TEST" << std::endl;
 								currentSpr = sim->getEnv()->getSprite();
 								sim->setEtat(2);
    	  				}
@@ -87,12 +83,12 @@ int main()
    	  				{
    	  					clockCurrent = clock();
    	  					duration = (long)(clockCurrent - clockStart) / ((long)CLOCKS_PER_SEC);
-						if( sim->tour(event.key.code, duration) != 0)
-						{
-							std::cout << "Le jeu est fini" << std::endl;
-							sim->setEtat(3); //On met le jeu sur la page final où les joueurs ne peuvent que quitter
- 							currentSpr = sim->getSprEnd();
- 						}
+								if( sim->tour(event.key.code, duration) != 0)
+								{
+									std::cout << "Le jeu est fini" << std::endl;
+									sim->setEtat(3); //On met le jeu sur la page final où les joueurs ne peuvent que quitter
+ 									currentSpr = sim->getSprEnd();
+ 								}
    	  				}
 							break;
    	  			case 3:
@@ -102,23 +98,19 @@ int main()
    	  				}
 							break;
    	  			default:
-   	  				throw("Erreur dans l'obtention de l'état de la simulation"); //Gérer cette erreur
-
+   	  				std::cout << "Mauvais état fourni" << std::endl;
    	  		}
       	}
     }
     window.clear();
     window.draw(currentSpr);
-		if(sim->getEtat()==2){
-			window.draw(sim->getEnv()->getPers(0).getSprite());
+		if(sim->getEtat()==2)
+		{
+			//window.draw(sim->getEnv()->getPers(0).getSprite());
 			std::cout << "On devrait afficher un personnage" << std::endl;
 		}
 		//else
 		 //	std::cout << "Personnage n'existe pas encore" << std::endl;
-		//if(sim->getEtat() == 2)
-    //{
-    //	for(sim->)
-    //}
     window.display();
   }
   delete sim;

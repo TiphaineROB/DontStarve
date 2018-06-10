@@ -23,7 +23,6 @@ Personnage::Personnage()
 	_faim = 0;
 	_fatigue = 0;
 	_vie = 5;
-	_myPack = new Poche();
 	_cmd = createCmd(1);
 }
 
@@ -83,7 +82,7 @@ bool Personnage::bouger(std::string s, int sizeX, int sizeY)
 * @return bool : true si la hache a bien été créée
 */
 bool Personnage::creerHache(){
-	if(this->_myPack->getNbPierre() < 2 || this->_myPack->getNbBois() < 1) //Il faut 2 pierres et un bois pour faire une hache
+	if(this->_pack.find("Pierre")->second < 2 || this->_pack.find("Bois")->second < 1) //Il faut 2 pierres et un bois pour faire une hache
 		return false;
 	_outils.push_back(Hache());
 	return true;
@@ -94,7 +93,7 @@ bool Personnage::creerHache(){
 * @return bool : true si le feu a été allumé
 */
 bool Personnage::allumerFeu(){
-	if(this->_myPack->getNbPierre() < 2 || this->_myPack->getNbBois() < 2) //Il faut 2 de chaque ressources
+	if(this->_pack.find("Pierre")->second < 2 || this->_pack.find("Bois")->second < 2) //Il faut 2 de chaque ressources
 		return false;
 	//On ajoute un drawable ??
 	return true;
@@ -105,7 +104,7 @@ bool Personnage::allumerFeu(){
 * @return bool : true si la pioche a été créée
 */
 bool Personnage::creerPioche(){
-	if(this->_myPack->getNbPierre() < 1 || this->_myPack->getNbBois() < 1) //La pioche est l'outil le plus facile à faire
+	if(this->_pack.find("Pierre")->second < 1 || this->_pack.find("Bois")->second < 1) //La pioche est l'outil le plus facile à faire
 		return false;
 	_outils.push_back(Pioche());
 	return true;
@@ -131,8 +130,9 @@ int Personnage::updateLife()
 */
 int Personnage::manger()
 {
+
 	//Par défaut on mange des baies ça fait moins 1 à notre faim
-	if(this->_myPack->getNbBaie() > 0)
+	if(this->_pack.find("Baie")->second > 0)
 		this->_faim--;
 	return this->_faim;
 }
@@ -142,7 +142,8 @@ int Personnage::manger()
 * @return int : ... ?
 */
 int Personnage::dormir(){
-return 0;
+  this->_fatigue--;
+  return this->_fatigue;
 }
 
 /*

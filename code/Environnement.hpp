@@ -22,21 +22,18 @@ public:
 	{
 
 		std::cout << "Constructeur Environnement" << std::endl;
+		this->setSize(1280,720);
+		this->setTexture(s);
+		//On charge le sprite lier
+		this->setSprite();
+		// Arbre arbre;
+		// this->addObj(arbre);
 		for(int i=0; i < nbP; i++)
 			addPers(Personnage(i+1));
 		/*if(AI) //On est dans le mpment où on a une IA
 		{
 			addPers(new AI());
 		}*/
-
-		this->setSize(1280,720);
-
-
-		this->setTexture(s);
-		//On charge le sprite lier
-		this->setSprite();
-		Arbre arbre;
-		this->addObj(arbre);
 	}
 
 	//Destructeur
@@ -64,30 +61,6 @@ public:
 
 	int getNbPers(){
 		return _persos.size();
-	}
-
-	ElemEnv getCloserElem(Personnage p){
-		for(int i=0;i<_objs.size();i++)
-		{
-				if(p.getSens().compare("B"))
-				{
-						std::cout << "A faire" << std::endl;
-				}
-				if(p.getSens().compare("H"))
-				{
-						std::cout << "A faire" << std::endl;
-				}
-				if(p.getSens().compare("G"))
-				{
-						std::cout << "A faire" << std::endl;
-				}
-				if(p.getSens().compare("D"))
-				{
-						std::cout << "A faire" << std::endl;
-				}
-		}
-		//Si on a pas trouvé de bon élément on lance une erreur
-		throw("Pas d'élément à côté !");
 	}
 
 	Environnement& operator=(const Environnement& e){

@@ -34,12 +34,19 @@ public:
 		_faim = 0;
 		_fatigue = 0;
 		_vie = 5;
-		_myPack = new Poche();
 		_cmd = createCmd(i);
 		_origin[0] = 50; //Correspond au sens horizontal  0 à gauche
 		_origin[1] = 50; //Correspond au sens vertical 0 en haut
  		_taillePas = 10;
+		_pack["Baie"] = 0;
+		_pack["Bois"] = 0;
+		_pack["Pierre"] = 0;
 
+	}
+
+	~Personnage(){
+		std::cout << "Destructeur Personnage" << std::endl;
+		_outils.clear();
 	}
 
 	cmd_t getCmd(){
@@ -72,7 +79,7 @@ protected:
 	cmd_t createCmd(int i);
 
 	cmd_t _cmd;
-	Poche* _myPack;
+	//Poche* _myPack;
 	poche_t _pack;
 	std::vector<Outil> _outils;
 	std::string _sens;
