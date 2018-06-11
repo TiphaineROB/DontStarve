@@ -69,7 +69,7 @@ public:
 	int updateLife();
 	int manger();
 	int dormir();
-	int reveil();
+	//int reveil();
 
 	bool interagir(ElemEnv env);
 	Outil changerOut();
