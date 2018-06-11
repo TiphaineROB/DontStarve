@@ -20,8 +20,6 @@ public:
 		return "Element indéfini";
 	}
 	virtual void utiliser(){}
-	int getVie(){return _vie;}
-	void setVie(int v){_vie = v;}
 	virtual ~Outil(){ std::cout << "Destructeur outil" << std::endl;}
 protected:
 	double _vie;

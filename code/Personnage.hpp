@@ -7,7 +7,7 @@
 #define PERS_HPP
 
 #include <iostream>
-#include "Poche.hpp"
+//#include "Poche.hpp"
 #include "Outil.hpp"
 #include "ToDraw.hpp"
 #include "Hache.hpp"
