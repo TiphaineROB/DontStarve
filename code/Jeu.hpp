@@ -203,52 +203,8 @@ int Jeu::isClicEnd(int x, int y)
 * Fonction qui crée le reste de l'environnement, les élements plus les personnages
 */
 Jeu* Jeu::creerEnv(int nbJ, bool AI){
-
-/*_objs.push_back(arbre);
-_objs.push_back(arbre1);
-_objs.push_back(arbre2);
-_objs.push_back(arbre3);
-_objs.push_back(arbre4);*/
 	std::cout << "Creation des personnages, et des élements de l'environnement" <<std::endl;
 
-	// std::cout << "Probleme ?" << std::endl;
-	// //Création des personnages
-	// for(int i=0; i < nbJ; i++)
-	// {
-	// 	Personnage *p = new Personnage(i+1);
-	// 	_persos.push_back(*p);
-	// }
-	// /*if(AI) //On est dans le mpment où on a une IA
-	// {
-	// 	addPers(new AI());
-	// }*/
-	//
-	//
-	// std::cout << "Probleme2 ?" << std::endl;
-	//
-	// //Creation des arbres, on en veut un nombre compris entre 1 et 10
-	// int nbrandom = rand()%9 +1;
-	//
-	// std::cout << nbrandom << std::endl;
-	// for(int i=0; i < nbrandom; i++)
-	// {
-	// 	Arbre *a = new Arbre(50,50);
-	// 	_objs.push_back(*a); //donner une position random aussi
-	// }
-	//
-	// std::cout << "Probleme3 ?" << std::endl;
-	//
-	// //Creation des roches de la même manière
-	// nbrandom = rand()%9 +1;
-	// std::cout << nbrandom << std::endl;
-	// for(int i=0; i < nbrandom; i++)
-	// {
-	// 	Roche *r = new Roche(50,50);
-	// 	_objs.push_back(*r); //donner une position random aussi
-	// }
-	//
-	// std::cout << "Probleme4 ?" << std::endl;
-	//
 
 	return this;
 }
@@ -331,15 +287,16 @@ int Jeu::tour(sf::Keyboard::Key k, long duration){
 
   		if(duration % (long)(this->_timer/4) == 0)
   			this->getPers(i).updateLife();
-  	}
-
-  	if(this->getPers(0).getLife() == 0 || this->getPers(1).getLife() == 0 )
+  }
+	if(this->getNbPers() != NULL)
+  {
+			if(this->getPers(0).getLife() == 0 || this->getPers(1).getLife() == 0 )
   		return 3; //Les deux joueurs ont perdus en même temps
-  	else if(this->getPers(0).getLife() == 0)
+  	else if(this->getPers(0).getLife() == 0 && this->getPers(1).getLife() == 4) //Le joueur 2 a toute sa vie
   		return 1; //Le joueur 1 a perdu
-  	else if(this->getPers(1).getLife() == 0)
+  	else if(this->getPers(1).getLife() == 0 && this->getPers(0).getLife() == 4)
   		return 2; //Le joueur 2 a perdu
-
+	}
   	//Si aucun des joueurs n'est mort on renvoie 0 pour dire de continuer
 	return 0;
 }

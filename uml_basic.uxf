@@ -1,64 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.2">
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
   <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>798</y>
-      <w>126</w>
-      <h>84</h>
-    </coordinates>
-    <panel_attributes>Ressource
-Package::Ressources
-
---
-- logo: Texture
-- 
---
-+ ramasser()
-+ deposer()
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>540</x>
-      <y>906</y>
-      <w>126</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>Pierre
-Package::Ressources
-
---
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>414</x>
-      <y>906</y>
-      <w>126</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>Bois
-Package::Ressources
-
---
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>804</x>
-      <y>792</y>
+      <x>978</x>
+      <y>660</y>
       <w>126</w>
       <h>72</h>
     </coordinates>
@@ -76,8 +22,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>684</x>
-      <y>906</y>
+      <x>858</x>
+      <y>774</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -91,8 +37,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>906</y>
+      <x>984</x>
+      <y>774</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -108,8 +54,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>936</x>
-      <y>906</y>
+      <x>1110</x>
+      <y>774</y>
       <w>126</w>
       <h>42</h>
     </coordinates>
@@ -124,8 +70,8 @@ Package::Outils
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>606</x>
-      <y>576</y>
+      <x>780</x>
+      <y>444</y>
       <w>384</w>
       <h>138</h>
     </coordinates>
@@ -133,7 +79,8 @@ Package::Outils
 Package::Environnement
 {Some Properties}
 --
-- ressources : Ressources[]
+- _pack : HashMap&lt;string, int&gt;
+- _cmds : HashMap&lt;sf::Keyboard::key, string&gt;
 - outils : Outils[]
 - nourritures : Nourriture[]
 --
@@ -148,112 +95,47 @@ Package::Environnement
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1134</x>
-      <y>792</y>
-      <w>126</w>
-      <h>84</h>
+      <x>636</x>
+      <y>444</y>
+      <w>132</w>
+      <h>138</h>
     </coordinates>
-    <panel_attributes>Nourriture
-Package::Nourriture
+    <panel_attributes>ElemEnv
+Package: Jeu
+--
+
+- _vie: int
 
 --
-- datePeremption: int
-- apportNourriture: double
-- image: Texture
---
-</panel_attributes>
+
+/+ getType(): string/
+/+ getRessourceName(): string/
+/+ getRessource(): int /
+/+ interagir(s: string): bool/
++ getVie(): int
++ coupDestructif(): bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1074</x>
-      <y>900</y>
-      <w>126</w>
-      <h>84</h>
-    </coordinates>
-    <panel_attributes>Baies
-Package::Nourriture
-
---
--id: Long
-_-ClassAttribute: Long_
---
-#Operation(i: int): int
-/+AbstractOperation()/
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1200</x>
-      <y>900</y>
-      <w>126</w>
-      <h>84</h>
-    </coordinates>
-    <panel_attributes>Viande
-Package::Nourriture
-
---
--id: Long
-_-ClassAttribute: Long_
---
-#Operation(i: int): int
-/+AbstractOperation()/
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>528</x>
-      <y>300</y>
-      <w>126</w>
+      <x>474</x>
+      <y>660</y>
+      <w>132</w>
       <h>96</h>
     </coordinates>
-    <panel_attributes>Environnement
+    <panel_attributes>Roche
 Package::Jeu
 
 --
-- objets: SurCart[] 
-- persos: Personnage[]
 --
-#Operation(i: int): int
-/+AbstractOperation()/
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>300</x>
-      <y>582</y>
-      <w>126</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>Arbre
-Package::Environnement
++ Roche()
++ Roche(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ interagir(s: string): bool
 
---
---
-+ couper()</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>426</x>
-      <y>582</y>
-      <w>126</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>Roche
-Package::Environnement
-
---
---
-+ casser()
 
 </panel_attributes>
     <additional_attributes/>
@@ -261,13 +143,13 @@ Package::Environnement
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>174</x>
-      <y>582</y>
+      <x>306</x>
+      <y>444</y>
       <w>126</w>
       <h>54</h>
     </coordinates>
-    <panel_attributes>Bêtes
-Package::Environnement
+    <panel_attributes>Betes
+Package::Jeu
 {Some Properties}
 --
 --
@@ -277,12 +159,12 @@ Package::Environnement
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>384</x>
-      <y>456</y>
+      <x>684</x>
+      <y>606</y>
       <w>126</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>SurCarte
+    <panel_attributes>ToDraw
 Package::Jeu
 
 --
@@ -298,50 +180,53 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>138</y>
-      <w>126</w>
-      <h>96</h>
+      <x>702</x>
+      <y>0</y>
+      <w>222</w>
+      <h>336</h>
     </coordinates>
-    <panel_attributes>Simulation
+    <panel_attributes>Jeu
 Package::Jeu
 
 --
-- day: int
-- interface: Affichage
-- timer: 
-- myEnv: Environnement
+- _day: int
+- _stateDay: bool
+- _etat: int
+- _ifEnv: bool
+- _timer: double
+- _textAcc: sf::Texture
+- _accueil: sf::Sprite
+- _textCmds: sf::Texture
+- _cmds: sf::Sprite
+- _textEnv: sf::Texture
+- _env: sf::Sprite
+- _textEnd: sf::Texture
+- _end: sf::Sprite
+- _objets: Vector&lt;ElemEnv&gt; 
+- _persos: Vector&lt;Personnage&gt;
+- 
+
 --
-+ tour()</panel_attributes>
++ changeStateDay(): bool
++ addObj(e: ElemEnv): void
++ addPers(p: Personnage):void
++ getObj(i: int): ElemEnv
++ getPers(i: int): Personnage
++ getNbPers(): int
++ getNbObjs(): int
++ isClicAccueil(x: int, y: int): int
++ isClicChoixJ(x: int, y: int): int
++ isClicEnd(x: int, y: int): int
++ creerEnv(nbJ: int, AI: bool): Jeu*
++ tour(k: sf::Keyboard::Key,duration: double) : bool
+- AppelActions(s: string, p: Personnage)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>498</x>
-      <y>876</y>
-      <w>18</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>552</x>
-      <y>876</y>
-      <w>18</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>864</x>
-      <y>858</y>
+      <x>1038</x>
+      <y>726</y>
       <w>18</w>
       <h>60</h>
     </coordinates>
@@ -351,8 +236,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>858</y>
+      <x>972</x>
+      <y>726</y>
       <w>36</w>
       <h>60</h>
     </coordinates>
@@ -362,8 +247,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>912</x>
-      <y>858</y>
+      <x>1086</x>
+      <y>726</y>
       <w>60</w>
       <h>60</h>
     </coordinates>
@@ -373,8 +258,30 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1176</x>
-      <y>870</y>
+      <x>390</x>
+      <y>438</y>
+      <w>324</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;520.0;430.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>786</x>
+      <y>576</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>726</x>
+      <y>576</y>
       <w>18</w>
       <h>42</h>
     </coordinates>
@@ -384,127 +291,24 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1218</x>
-      <y>870</y>
-      <w>18</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>258</x>
-      <y>540</y>
-      <w>156</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;70.0;240.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>486</x>
-      <y>540</y>
-      <w>186</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>290.0;60.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>312</x>
-      <y>540</y>
-      <w>126</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;70.0;190.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>462</x>
-      <y>540</y>
-      <w>84</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>120.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>558</x>
-      <y>708</y>
-      <w>72</w>
-      <h>102</h>
+      <x>858</x>
+      <y>330</y>
+      <w>30</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-n
+0..2
 
 
 
 </panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>390</y>
-      <w>72</w>
-      <h>198</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-n
-
-
-
-</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;310.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>492</x>
-      <y>390</y>
-      <w>66</w>
-      <h>78</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-n
-
-
-
-</panel_attributes>
-    <additional_attributes>90.0;10.0;10.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>588</x>
-      <y>228</y>
-      <w>18</w>
-      <h>84</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-n
-
-
-
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>810</x>
-      <y>708</y>
+      <x>984</x>
+      <y>576</y>
       <w>18</w>
       <h>96</h>
     </coordinates>
@@ -517,19 +321,86 @@ n
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>252</x>
+      <y>618</y>
+      <w>132</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Arbre
+Package::Jeu
+
+--
+--
++ Arbre()
++ Arbre(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ interagir(s: string): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>618</x>
+      <y>660</y>
+      <w>132</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Baie
+Package::Jeu
+
+--
+--
++ Baie()
++ Baie(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ interagir(s: string): bool
++ coupDestructif(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>336</y>
+      <w>132</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Feu
+Package::Jeu
+
+--
+--
++ Feu()
++ Feu(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ raviver(): void
++ raviver(nbB: int): void
++ interagir(s: string): bool
++ coupDestructif(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>708</y>
-      <w>198</w>
-      <h>96</h>
+      <x>714</x>
+      <y>330</y>
+      <w>30</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-n
+0.n
 
 
 
 </panel_attributes>
-    <additional_attributes>10.0;10.0;310.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
   </element>
 </diagram>

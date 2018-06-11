@@ -134,8 +134,11 @@ int Personnage::manger()
 
 	//Par défaut on mange des baies ça fait moins 1 à notre faim
 	if(this->_pack.find("Baie")->second > 0)
-		this->_faim--;
-	return this->_faim;
+	{
+    	this->_faim--;
+      this->_pack.find("Baie")->second--;
+  }
+  return this->_faim;
 }
 
 /*

@@ -16,7 +16,7 @@ class AI : public Personnage
 	public:
 		AI(): Personnage(1){} //Il possède les mêmes commandes que le joueur 1 donc il va imiter toutes ces actions (mais pas le sens)
 
-		bool bouger(std::string s, int sizeX, int sizeY)
+		/*bool bouger(std::string s, int sizeX, int sizeY)
 		{
 			int randomMove = rand()%4 +1;
 			if(randomMove == 1) //On va bouger vers la gauche
@@ -63,7 +63,7 @@ class AI : public Personnage
 					return true;
 			}
 			return false;
-		}
+		}*/
 
 
 };

@@ -45,7 +45,7 @@ public:
 	//Fonction qui dit si le coup que l'élement a reçu est destructif
 	bool coupDestructif(){
 		_vie--;
-		if(_vie<=0)
+		if(_vie==0)
 			return true;
 		else
 			return false;
