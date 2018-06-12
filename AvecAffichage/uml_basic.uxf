@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>798</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Ressource
+Package::Ressources
+
+--
+- logo: Texture
+- 
+--
++ ramasser()
++ deposer()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>906</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Pierre
+Package::Ressources
+
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>906</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Bois
+Package::Ressources
+
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>804</x>
+      <y>792</y>
+      <w>126</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Outils
+Package::Outils
+
+--
+- vie: Long
+- logo: Texture
+--
+/+ utiliser()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>684</x>
+      <y>906</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Hache
+Package::Outils
+
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>906</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Feu
+Package::Outils
+
+--
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>906</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Pioche
+Package::Outils
+
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>606</x>
+      <y>576</y>
+      <w>384</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>Personnage
+Package::Environnement
+{Some Properties}
+--
+- ressources : Ressources[]
+- outils : Outils[]
+- nourritures : Nourriture[]
+--
++ creerHache()
++ allumerFeu()
++ creerPioche()
++ manger()
++ dormir()
++ utiliserOutils()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>792</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Nourriture
+Package::Nourriture
+
+--
+- datePeremption: int
+- apportNourriture: double
+- image: Texture
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1074</x>
+      <y>900</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Baies
+Package::Nourriture
+
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1200</x>
+      <y>900</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Viande
+Package::Nourriture
+
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>300</y>
+      <w>126</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Environnement
+Package::Jeu
+
+--
+- objets: SurCart[] 
+- persos: Personnage[]
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>582</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Arbre
+Package::Environnement
+
+--
+--
++ couper()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>426</x>
+      <y>582</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Roche
+Package::Environnement
+
+--
+--
++ casser()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>174</x>
+      <y>582</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Bêtes
+Package::Environnement
+{Some Properties}
+--
+--
++</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>384</x>
+      <y>456</y>
+      <w>126</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>SurCarte
+Package::Jeu
+
+--
+- vie: Long
+- position: int[2]
+- image: Texture
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>138</y>
+      <w>126</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Simulation
+Package::Jeu
+
+--
+- day: int
+- interface: Affichage
+- timer: 
+- myEnv: Environnement
+--
++ tour()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>498</x>
+      <y>876</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>552</x>
+      <y>876</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>858</y>
+      <w>18</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>858</y>
+      <w>36</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;80.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>912</x>
+      <y>858</y>
+      <w>60</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>80.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1176</x>
+      <y>870</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1218</x>
+      <y>870</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>258</x>
+      <y>540</y>
+      <w>156</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;70.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>540</y>
+      <w>186</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>290.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>312</x>
+      <y>540</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;70.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>540</y>
+      <w>84</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>120.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>558</x>
+      <y>708</y>
+      <w>72</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+n
+
+
+
+</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>390</y>
+      <w>72</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+n
+
+
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>390</y>
+      <w>66</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+n
+
+
+
+</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>588</x>
+      <y>228</y>
+      <w>18</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+n
+
+
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>708</y>
+      <w>18</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+n
+
+
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>708</y>
+      <w>198</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+n
+
+
+
+</panel_attributes>
+    <additional_attributes>10.0;10.0;310.0;140.0</additional_attributes>
+  </element>
+</diagram>
