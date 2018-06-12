@@ -50,6 +50,8 @@ public:
 		_pack["Pierre"] = 0;
 		_position[0] = 1280/2;
 		_position[1] = 720/2;
+
+		std::cout << "TAILLE DU VECTEUR OUTIL" << _outils.size()<< std::endl;
 	}
 
 	/*~Personnage(){
@@ -60,8 +62,6 @@ public:
 	cmd_t getCmd(){
 		return _cmd;
 	}
-	int getBois(){return this->_pack["Bois"];}
-	void setBois(int i){this->_pack["Bois"]=i;}
 
 	int getLife(){return _vie;}
 	int getFaim(){return _faim;}
@@ -93,7 +93,7 @@ public:
 	int dormir();
 	int reveil();
 
-	bool interagir(ElemEnv env);
+	bool interagir(ElemEnv* env);
 	Outil* changerOut();
 
 protected:

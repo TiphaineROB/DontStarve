@@ -40,6 +40,8 @@ public:
 			this->sprite.setTextureRect(sf::IntRect(0,10,128/4,160/4));
 			this->sprite.setScale(sf::Vector2f(1.5,1.5));
 			this->sprite.setPosition(sf::Vector2f(x,y));
+			this->_position[0]=x;
+			this->_position[1]=y;
 		}
 
 		~Roche(){

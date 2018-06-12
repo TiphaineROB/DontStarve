@@ -12,6 +12,8 @@
 #include "Outil.hpp"
 #include "Arbre.hpp"
 #include "Roche.hpp"
+#include "Baie.hpp"
+#include <math.h>
 //#include "ElemAffichage.hpp"
 
 class Jeu{
@@ -94,19 +96,19 @@ public:
 	}
 
 	//Accesseurs pour Personnages et objets
-	void addObj(ElemEnv e){
+	/*void addObj(ElemEnv* e){
 		_objs.push_back(e);
 	}
-	void addPers(Personnage p){
+	void addPers(Personnage* p){
 		_persos.push_back(p);
-	}
+	}*/
 
 	ElemEnv& getObj(int i){
-		return _objs[i];
+		return *_objs[i];
 	}
 
 	Personnage& getPers(int i){
-		return _persos[i];
+		return *_persos[i];
 	}
 
 	int getNbPers(){
@@ -126,7 +128,6 @@ public:
 	sf::Sprite getSprCmds(){ return _cmds; }
 	sf::Sprite getSprEnd(){ return _end; }
 	sf::Sprite getSprEnv(){ return _env; }
-	Personnage& getPersonnage(int i){return this->_persos[i];}
 
 	//Fonction permettant de vérifier si un clic est dans la bonne zone en fonction du sprite afficher
 	int isClicAccueil(int x, int y);
@@ -135,11 +136,11 @@ public:
 
 
 	//Accesseur et fonction créatrice de l'environnement de la simulation
-	void setObjet(std::vector<ElemEnv> elements){_objs = elements;}
-	void setPersos(std::vector<Personnage> perso){_persos = perso;}
+	//void setObjet(std::vector<ElemEnv> elements){_objs = elements;}
+	//void setPersos(std::vector<Personnage> perso){_persos = perso;}
 
 	//Jeu* creerEnv(int nbJ, bool AI);
-	void creerEnv(int x, int y);
+	void creerEnv(int x, int y, int z);
 	void  creerJeu(int nbJ);
 	//Fonction permettant d'interprêter l'appui sur une touche et de lancer l'action correspondante
 	int tour(sf::Keyboard::Key k, long duration);
@@ -149,6 +150,10 @@ public:
 
 	std::vector<sf::Sprite*>& getAffichage(){return _affichage;}
 	sf::Sprite& getAffichage(int i){return *_affichage[i];}
+
+//Gestion des interactions :
+double distanceToPerso(ElemEnv* element, Personnage& perso);
+ElemEnv* getCloserObject(Personnage& perso);
 
 private:
 	bool appelActions(std::string s, Personnage& p);
@@ -166,8 +171,8 @@ private:
 	sf::Sprite _cmds;
 	sf::Sprite _env;
 	sf::Sprite _end;
-	std::vector<ElemEnv> _objs;
-	std::vector<Personnage> _persos;
+	std::vector<ElemEnv*> _objs;
+	std::vector<Personnage*> _persos;
 	//ATTRIBUTS POUR L'affichageStatique
 	std::vector<sf::Sprite*> _affichage;
 };
@@ -219,22 +224,23 @@ void Jeu::creerJeu(int nbJ)
 	{
 		Personnage* perso = new Personnage(1);
 		Personnage& p = *perso;
-		this->_persos.push_back(p);
+		this->_persos.push_back(perso);
 	}
 	else if (nbJ == 2)
 	{
 		Personnage *perso1 = new Personnage(1);
 		Personnage& p1 = *perso1;
-		this->_persos.push_back(p1);
+		this->_persos.push_back(perso1);
 		Personnage* perso2 = new Personnage(2);
 		Personnage& p2 = *perso2;
-		this->_persos.push_back(p2);
+		this->_persos.push_back(perso2);
 	}
-	creerEnv(rand()%10,rand()%10);
-	//	creerAffichage();
+	creerEnv(rand()%10,rand()%7,rand()%5);
+	//creerEnv(1,1,1);
+	creerAffichage();
 }
 
-void Jeu::creerEnv(int x, int y)
+void Jeu::creerEnv(int x, int y, int z)
 {
   int n1,n2;
 	for(int i=0 ; i<x; i++)
@@ -243,17 +249,25 @@ void Jeu::creerEnv(int x, int y)
   	n1 = rand();
   	n2 = rand();
 		Arbre* arbre = new Arbre(n1%1280,n2%720);
-		Arbre& arbre1 = *arbre;
-		this->_objs.push_back(arbre1);
+		std::cout << arbre->getPosition(0)<< "arbre" << arbre->getPosition(1)<< std::endl;
+		this->_objs.push_back(arbre);
 	}
+	std::cout << _objs[0]->getPosition(0)<< "arbre" << _objs[0]->getPosition(1)<< std::endl;
 	for(int i=0 ; i<y; i++)
 	{
 		std::cout << "CREATION ELEMENTS" <<std::endl;
    	n1 = rand();
   	n2 = rand();
   	Roche* roche = new Roche(n1%1280,n2%720);
-		Roche& roche1 = *roche;
-		this->_objs.push_back(roche1);
+		this->_objs.push_back(roche);
+	}
+	for(int i=0 ; i<z; i++)
+	{
+		std::cout << "CREATION ELEMENTS" <<std::endl;
+   	n1 = rand();
+  	n2 = rand();
+  	Baie* baie = new Baie(n1%1280,n2%720);
+		this->_objs.push_back(baie);
 	}
 	std::cout << " Elements créés"<< std::endl;
 }
@@ -265,15 +279,23 @@ void Jeu::creerEnv(int x, int y)
 bool Jeu::appelActions(std::string s, Personnage& p){
 	if(s == "Interagir")
 	{
+		std::cout <<"arbre " << _objs[0]->getPosition(0) << "  " << _objs[0]->getPosition(1) << std::endl;
+		std::cout <<"roche " << _objs[1]->getPosition(0) << "  " << _objs[1]->getPosition(1) << std::endl;
+		std::cout <<"arbres " << _persos[1]->getPosition(0) << "  " << _persos[1]->getPosition(1) << std::endl;
+
 		//On cherche un élément propre et dans la bonne direction
-		for(int i =0; i<9; i++){
-    	if (abs(p.getPosition(0)-_objs[i].getPosition(0))<20 && abs(p.getPosition(1)-_objs[i].getPosition(1))<20)
+
+//if(distanceToPerso(getCloserObject,p)<30)
+		//for(int i =0; i<_objs.size(); i++){
+    	//if (abs(p.getPosition(0)-_objs[i]->getPosition(0))<20 && abs(p.getPosition(1)-_objs[i]->getPosition(1))<20)
+if(distanceToPerso(getCloserObject(p),p)<30)
     	{
       	std::cout << "Interaction Possible" << std::endl;
-				p.interagir(_objs[i]);
+				p.interagir(getCloserObject(p));
 				return true;
 			}
-  	}
+			else
+			std::cout << "INTERACTION IMPOSSIBLE" << std::endl;
 		return false;
 	}
 	else if(s == "Manger")
@@ -354,6 +376,7 @@ int Jeu::tour(sf::Keyboard::Key k, long duration){
 
 void Jeu::creerAffichage()
 {
+//Icones d'invocateurs
 	sf::Texture* indicateurVie = new sf::Texture();
 	sf::Sprite* perso1 = new sf::Sprite();
 	sf::Sprite* perso2 = new sf::Sprite();
@@ -363,6 +386,7 @@ void Jeu::creerAffichage()
 	perso2->setTexture(*indicateurVie);
 	perso2->setTextureRect(sf::IntRect(213-134,0,134,129));
 	perso2->setPosition(sf::Vector2f(1280-134,0));
+//Affichage des Jauges de vie
 	sf::Texture* jauge = new sf::Texture();
 	jauge->loadFromFile("../images/EnsembleJauges.png");
 	sf::Sprite* jauge1 = new sf::Sprite();
@@ -388,12 +412,13 @@ void Jeu::creerAffichage()
 	jauge5->setPosition(sf::Vector2f(1280-134-72,215/5));
 	jauge6->setPosition(sf::Vector2f(1280-134-72,2*215/5));
 
-	sf::Sprite& j1 = *jauge1;
-	sf::Sprite& j2 = *jauge2;
-	sf::Sprite& j3 = *jauge3;
-	sf::Sprite& j4 = *jauge4;
-	sf::Sprite& j5 = *jauge5;
-	sf::Sprite& j6 = *jauge6;
+//HORLOGE
+sf::Texture* textHorloge = new sf::Texture();
+sf::Sprite* sprHorloge = new sf::Sprite();
+	textHorloge->loadFromFile("../images/horloge.png");
+	sprHorloge->setTexture(*textHorloge);
+	sprHorloge->setTextureRect(sf::IntRect(0,0,640/4,246/2));
+	sprHorloge->setPosition(sf::Vector2f(1280/2-320/4,0));
 
 	_affichage.push_back(perso1);
 	_affichage.push_back(perso2);
@@ -403,33 +428,27 @@ void Jeu::creerAffichage()
 	_affichage.push_back(jauge4);
 	_affichage.push_back(jauge5);
 	_affichage.push_back(jauge6);
-/*
-_affichage.push_back(*perso1);
-_affichage.push_back(*perso2);
-_affichage.push_back(*jauge1);
-_affichage.push_back(*jauge2);
-_affichage.push_back(*jauge3);
-_affichage.push_back(*jauge4);
-_affichage.push_back(*jauge5);
-_affichage.push_back(*jauge6);*/
-}
-/*
-void Jeu::affichageStatique(sf::RenderWindow& window)
-{
-//Pour PERSONNAGE 1
-std::cout << "PERSONNAGE VIE : " << _persos[0].getLife() << std::endl;
-_affichage[2]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getLife()),72,215/5));
-//_affichage[2]->setTextureRect(sf::IntRect(0,0,10,10 ));
-_affichage[3]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFatigue()),72,215/5));
-_affichage[4]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFaim()),72,215/5));
-//Pour PERSONNAGE 2
-_affichage[5]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getLife()),72,215/5));
-_affichage[6]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFatigue()),72,215/5));
-_affichage[7]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFaim()),72,215/5));
+	_affichage.push_back(sprHorloge);
 
-for(int i =0; i<_affichage.size();i++)
-{
-	window.draw(*_affichage[i]);
 }
-}*/
+
+double Jeu::distanceToPerso(ElemEnv* element, Personnage& perso)
+{
+	return sqrt(pow(element->getPosition(0)-perso.getPosition(0),2)+pow(element->getPosition(1)-perso.getPosition(1),2));
+}
+
+ElemEnv* Jeu::getCloserObject(Personnage& perso)
+{
+	ElemEnv* element = _objs[0];
+	int j = 0;
+	for(int i = 0; i<_objs.size();i++)
+		{
+			if(distanceToPerso(_objs[i],perso) < distanceToPerso(element,perso)){
+				element = _objs[i];
+				j=i;
+			}
+		}
+	//	std::cout <<"L'élément " << j << " est le plus proche" << std::endl;
+		return element;
+}
 #endif

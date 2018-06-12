@@ -9,20 +9,16 @@ using namespace sf;
 void Jeu::affichageStatique(sf::RenderWindow& window)
 {
 //Pour PERSONNAGE 1
-std::cout << "PERSONNAGE VIE : " << _persos[0].getLife() << std::endl;
-_affichage[2]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getLife()),72,215/5));
-//_affichage[2]->setTextureRect(sf::IntRect(0,0,10,10 ));
-_affichage[3]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFatigue()),72,215/5));
-_affichage[4]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFaim()),72,215/5));
+_affichage[2]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getLife()),72,215/5));
+_affichage[3]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFatigue()),72,215/5));
+_affichage[4]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFaim()),72,215/5));
 //Pour PERSONNAGE 2
-_affichage[5]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getLife()),72,215/5));
-_affichage[6]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFatigue()),72,215/5));
-_affichage[7]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0].getFaim()),72,215/5));
-//std::cout << _affichage[2] << std::endl;
+_affichage[5]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getLife()),72,215/5));
+_affichage[6]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFatigue()),72,215/5));
+_affichage[7]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFaim()),72,215/5));
 
-for(int i =0; i<8;i++)
+for(int i =0; i<_affichage.size();i++)
 {
-	std::cout << _affichage[2]->getTextureRect().top<< std::endl;
 	window.draw(getAffichage(i));
 }
 }
@@ -80,9 +76,8 @@ std::vector<Personnage> perso;
 									std::cout << "CREATION DE L'ENVIRONNEMENT" << std::endl;
 									//on a choisi le mode joueur solo
 									//std::vector<ElemEnv> obj;
-									sim->creerEnv(3,4);
 									sim->creerJeu(nbJ);
-									sim->creerAffichage();
+									//sim->creerAffichage();
 									//sim->setObjet(sim->creerEnv(3,4));
 //perso = sim->creerJeu(nbJ);
 //sim->setPersos(perso);
@@ -141,15 +136,18 @@ std::vector<Personnage> perso;
 
 		if(sim->getEtat()==2)
 		{
-		for(int i = 0; i <sim->getNbObjs(); i++){
+	for(int i = 0; i <sim->getNbObjs(); i++){
 				window.draw(sim->getObj(i).getSprite());
 		//window.draw(obj[i].getSprite());
 			}
 			for(int i = 0; i < sim->getNbPers(); i++){
-				window.draw(sim->getPersonnage(i).getSprite());
+				window.draw(sim->getPers(i).getSprite());
 			}
 			sim->affichageStatique(window);
-      //std::cout << &sim->getAffichage(2) << std::endl;
+			double distance;
+		//	distance = sim->distanceToPerso(sim->getCloserObject(sim->getPers(0)),sim->getPers(0));
+				//sim->getCloserObject(sim->getPers(0))->getSprite().setColor(sf::Color::Red);
+			//std::cout << distance << std::endl;
 		}
 		//else
 		 //	std::cout << "Personnage n'existe pas encore" << std::endl;

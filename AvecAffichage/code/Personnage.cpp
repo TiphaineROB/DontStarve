@@ -69,10 +69,7 @@ std::cout << " UP "<< std::endl;
       this->sprite.setTextureRect(sf::IntRect(0,0,576/9,256/4));
       this->_position[1] = this->_position[1] - 10;
       this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
-//      std::cout << "POSITION PERSONNAGE " << _position[0]<< " " << getPosition(0) << std::endl;
-
-      std::cout << "POSITION PERSONNAGE " << getPosition(0)<< " " << getPosition(1) << std::endl;
-    //}
+//}
     return true;
 	}
 	else if(s == "Bas")
@@ -264,17 +261,21 @@ cmd_t Personnage::createCmd(int i){
 * @return bool: si le joueur a pu intéragir ?
 * On regarde dans la direction du joueur s'il y a un obstacle et si il a l'outil adéquate
 */
-bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
+bool Personnage::interagir(ElemEnv* e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
 {
-
-    if(e.interagir(this->_outils[0]->getType()))
-    {
-           if(e.coupDestructif())
-              this->_pack.find(e.getRessourceName())->second += e.getRessource();
-          if(e.getType().compare("Arbre") || e.getType().compare("Roche"))
+std::cout << " ON INTERAGIT AVEC L'OBJET" << std::endl;
+  /*  if(e->interagir(this->_outils[0]->getType()))
+    {*/
+           //if(e->coupDestructif())
+              this->_pack.find(e->getRessourceName())->second += e->getRessource();
+              std::cout << " J'AI DANS MA VALISE :" << getRessourceBois()<< std::endl;
+    std::cout << "Bois  " << getRessourceBois()<< std::endl;
+    std::cout << "Baie " << getRessourceBaie()<< std::endl;
+		std::cout << "Pierre " << getRessourcePierre()<< std::endl;
+        /*  if(e->getType().compare("Arbre") || e->getType().compare("Roche"))
                 this->_outils[0]->utiliser();
-            return true;
-    }
+            return true;*/
+  //  }
 
 	return false;
 }
