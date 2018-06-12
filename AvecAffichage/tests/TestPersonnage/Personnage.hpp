@@ -84,6 +84,7 @@ public:
 	void setRessourceBaie(int i){ _pack["Baie"] = i;}
 	int getRessourceBaie(){ return _pack["Baie"];}
 
+
 	bool bouger(std::string s, int sizeX, int sizeY);
 	bool creerHache();
 	bool allumerFeu();

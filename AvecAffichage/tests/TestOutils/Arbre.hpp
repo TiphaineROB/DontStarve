@@ -46,7 +46,7 @@ class Arbre : public ElemEnv
 		int getRessource(){return 3;}
 
 		bool interagir(std::string s){
-			if(s.compare("Hache"))
+			if(s == "Hache")
 			{
 				return true;
 			}

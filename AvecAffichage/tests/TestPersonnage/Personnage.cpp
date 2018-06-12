@@ -266,7 +266,7 @@ cmd_t Personnage::createCmd(int i){
 */
 bool Personnage::interagir(ElemEnv e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
 {
-
+    //Erreur ici on appelle la fonction de ElemEnv au lieu de celle non virtuelle du type envoyé en paramètre
     if(e.interagir(this->_outils[0]->getType()))
     {
            if(e.coupDestructif())
