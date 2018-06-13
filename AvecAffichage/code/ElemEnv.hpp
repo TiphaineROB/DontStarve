@@ -37,7 +37,7 @@ public:
 
 	virtual int getRessource(){ return 0;}
 
-	virtual bool interagir(std::string s){ return false;}
+	virtual bool interagir(std::string s){ return true;}
 	int getVie(){
 		return this->_vie;
 	}

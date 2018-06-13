@@ -51,14 +51,14 @@ public:
 		_position[0] = 1280/2;
 		_position[1] = 720/2;
 
-		std::cout << "TAILLE DU VECTEUR OUTIL" << _outils.size()<< std::endl;
+		std::cout << "Taille du vecteur outil" << _outils.size()<< std::endl;
 	}
 
-	/*~Personnage(){
+	~Personnage(){
 		_outils.clear();
-//		std::cout << "Destructeur Personnage" << std::endl;
+		std::cout << "Destructeur Personnage" << std::endl;
 	}
-*/
+
 	cmd_t getCmd(){
 		return _cmd;
 	}
@@ -94,7 +94,7 @@ public:
 	int reveil();
 
 	bool interagir(ElemEnv* env);
-	Outil* changerOut();
+	bool changerOut();
 
 protected:
 

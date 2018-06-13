@@ -86,54 +86,6 @@ std::cout << " UP "<< std::endl;
 	return false;
 }
 
-/*
-bool Personnage::bouger(std::string s, int sizeX, int sizeY)
-{
-	//Dans tous les cas il faut vérifier qu'on est bien rester dans l'image
-	if(s.compare("Gauche"))
-	{
-		//On regarde si l'origine dépasse vers la gauche, donc inférieur à 0
-		if(this->_origin[0]-this->_taillePas < 0) //Comme l'origine du sprite du personnage est en haut à gauche, les cas où il veut aller à g ou h ne posent pas de problèmes
-		{
-      this->_origin[0] = 0;
-      this->_sens = "G";
-      this->sprite.setTextureRect(sf::IntRect(0,256/4,576/9,256/4));
-      this->_position[1] -= this->_position[1];
-      this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
-    }
-    return true;
-	}
-	else if(s.compare("Droite")){
-		if(this->_origin[0]+this->_size[0] > sizeX) //Dans ce cas il faut regarder que tout le sprite du personnage reste dans l'écran
-			{
-        	this->_origin[0] = sizeX - this->_size[0];
-          this->_sens = "D";
-          this->sprite.setTextureRect(sf::IntRect(0,3*256/4,576/9,256/4));
-          this->_position[1] += this->_position[1];
-          this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
-          }
-      return true;
-	}
-	else if(s.compare("Haut"))
-	{
-		if(this->_origin[1]-this->_taillePas < 0)
-				this->_origin[1] = 0;
-			return true;
-      this->sprite.setTextureRect(sf::IntRect(0,0,576/9,256/4));
-      this->_position[0] -= this->_position[0];
-      this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
-	}
-	else if(s.compare("Bas"))
-	{
-		if(this->_origin[1]+this->_size[1] > sizeX) //Dans ce cas il faut regarder que tout le sprite du personnage reste dans l'écran
-				this->_origin[0] = sizeY - this->_size[1];
-        this->sprite.setTextureRect(sf::IntRect(0,2*256/4,576/9,256/4));
-        this->_position[0] += this->_position[0];
-        this->sprite.setPosition(Vector2f(this->_position[0],this->_position[1]));
-			return true;
-	}
-	return false; }
-*/
 
 
 /*
@@ -146,6 +98,7 @@ bool Personnage::creerHache(){
 	_outils.push_back(new Hache());
   this->_pack["Pierre"] -= 2;
   this->_pack["Bois"] -= 1;
+  std::cout << "Hache créée" << std::endl;
 	return true;
 }
 
@@ -171,6 +124,7 @@ bool Personnage::creerPioche(){
 	_outils.push_back(new Pioche());
   this->_pack["Pierre"] -= 1;
   this->_pack["Bois"] -= 1;
+  std::cout << "Pioche créée" << std::endl;
 	return true;
 }
 
@@ -263,20 +217,23 @@ cmd_t Personnage::createCmd(int i){
 */
 bool Personnage::interagir(ElemEnv* e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
 {
-std::cout << " ON INTERAGIT AVEC L'OBJET" << std::endl;
-  /*  if(e->interagir(this->_outils[0]->getType()))
-    {*/
-           //if(e->coupDestructif())
-              this->_pack.find(e->getRessourceName())->second += e->getRessource();
-              std::cout << " J'AI DANS MA VALISE :" << getRessourceBois()<< std::endl;
-    std::cout << "Bois  " << getRessourceBois()<< std::endl;
-    std::cout << "Baie " << getRessourceBaie()<< std::endl;
-		std::cout << "Pierre " << getRessourcePierre()<< std::endl;
-        /*  if(e->getType().compare("Arbre") || e->getType().compare("Roche"))
+  std::cout << " On interagit" << std::endl;
+  if(this->getNbOutils() >= 1)
+  {
+    if(e->interagir(this->_outils[0]->getType()))
+    {
+        if(e->coupDestructif())
+          this->_pack.find(e->getRessourceName())->second += e->getRessource();
+        std::cout << " J'AI DANS MA VALISE :" << getRessourceBois()<< std::endl;
+        std::cout << "Bois  " << getRessourceBois()<< std::endl;
+        std::cout << "Baie " << getRessourceBaie()<< std::endl;
+		    std::cout << "Pierre " << getRessourcePierre()<< std::endl;
+        if(e->getType().compare("Arbre") || e->getType().compare("Roche"))
                 this->_outils[0]->utiliser();
-            return true;*/
-  //  }
-
+        return true;
+    }
+  }
+  std::cout << "interaction impossible, pas d'outils dans sa valise" << std::endl;
 	return false;
 }
 
@@ -285,15 +242,17 @@ std::cout << " ON INTERAGIT AVEC L'OBJET" << std::endl;
 * @function changerOutil()
 * @return outil en main
 */
-Outil* Personnage::changerOut()
+bool Personnage::changerOut()
 {
 	//On met le premier à la fin et le deuxième au début
 	if(this->_outils.size() > 1) //Le personnage a au moins deux outils
 	{	Outil *temp = this->_outils[0];
 		this->_outils.erase (this->_outils.begin()); //On supprime le premier élement puis on le met à la fin
 		this->addOut(temp);
-		return this->_outils[0];
+    std::cout << "Changement d'outil; Le nouvel outil est :" << this->_outils[0]->getType() << std::endl;
+		return true;
 	}
-	else
-		return this->_outils[0];
+	else if(this->_outils.size() == 1)
+		std::cout << "Un seul outil dans la valise, on ne peut pas changer" << std::endl;
+  return false;
 }

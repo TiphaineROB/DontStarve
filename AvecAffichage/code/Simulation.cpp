@@ -6,21 +6,26 @@
 
 using namespace sf;
 
-void Jeu::affichageStatique(sf::RenderWindow& window)
+void Jeu::affichageStatique(sf::RenderWindow& window, int nbP)
 {
-//Pour PERSONNAGE 1
-_affichage[2]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getLife()),72,215/5));
-_affichage[3]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFatigue()),72,215/5));
-_affichage[4]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFaim()),72,215/5));
-//Pour PERSONNAGE 2
-_affichage[5]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getLife()),72,215/5));
-_affichage[6]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFatigue()),72,215/5));
-_affichage[7]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFaim()),72,215/5));
 
-for(int i =0; i<_affichage.size();i++)
-{
-	window.draw(getAffichage(i));
-}
+	if(nbP ==2)
+	{
+		//Pour PERSONNAGE 2
+		_affichage[5]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getLife()),72,215/5));
+		_affichage[6]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFatigue()),72,215/5));
+		_affichage[7]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFaim()),72,215/5));
+	}
+	//pour le PERSONNAGE 1
+	_affichage[2]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getLife()),72,215/5));
+	_affichage[3]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFatigue()),72,215/5));
+	_affichage[4]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFaim()),72,215/5));
+
+
+	for(int i =0; i<_affichage.size();i++)
+	{
+		window.draw(getAffichage(i));
+	}
 }
 
 int main()
@@ -73,15 +78,9 @@ std::vector<Personnage> perso;
 								}
 								else if(nbJ == 1 || nbJ == 2) //On est dans le cas où on a 1 ou deux joueurs
 								{
-									std::cout << "CREATION DE L'ENVIRONNEMENT" << std::endl;
+									std::cout << "Creation de l'environnement" << std::endl;
 									//on a choisi le mode joueur solo
-									//std::vector<ElemEnv> obj;
 									sim->creerJeu(nbJ);
-									//sim->creerAffichage();
-									//sim->setObjet(sim->creerEnv(3,4));
-//perso = sim->creerJeu(nbJ);
-//sim->setPersos(perso);
-//sim->setObjet(obj);
 									currentSpr = sim->getSprEnv();
 									sim->setEtat(2);
 									clockStart = clock();
@@ -122,6 +121,7 @@ std::vector<Personnage> perso;
 		sf::Sprite perso1;
 		sf::Sprite perso2;
 		indicateurVie.loadFromFile("../images/indicateurVie.png");
+		
 		perso1.setTexture(indicateurVie);
 		perso2.setTexture(indicateurVie);
 		sf::Texture jauge;
@@ -136,14 +136,14 @@ std::vector<Personnage> perso;
 
 		if(sim->getEtat()==2)
 		{
-	for(int i = 0; i <sim->getNbObjs(); i++){
-				window.draw(sim->getObj(i).getSprite());
-		//window.draw(obj[i].getSprite());
-			}
+			for(int i = 0; i <sim->getNbObjs(); i++){
+					window.draw(sim->getObj(i).getSprite());
+					//window.draw(obj[i].getSprite());
+				}
 			for(int i = 0; i < sim->getNbPers(); i++){
 				window.draw(sim->getPers(i).getSprite());
 			}
-			sim->affichageStatique(window);
+			sim->affichageStatique(window, nbJ);
 			double distance;
 		//	distance = sim->distanceToPerso(sim->getCloserObject(sim->getPers(0)),sim->getPers(0));
 				//sim->getCloserObject(sim->getPers(0))->getSprite().setColor(sf::Color::Red);

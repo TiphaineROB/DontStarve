@@ -68,8 +68,11 @@ public:
 	//Destructeur
 	~Jeu()
 	{
-		_objs.clear();
-		_persos.clear();
+		for(int i=0; i < _objs.size(); i++)
+				delete _objs[i];
+		for(int i=0; i < _persos.size(); i++)
+				delete _persos[i];
+
 		std::cout << "Destructeur jeu" << std::endl;
 	}
 
@@ -146,7 +149,7 @@ public:
 	int tour(sf::Keyboard::Key k, long duration);
 
 	void	creerAffichage();
-	void affichageStatique(sf::RenderWindow& window);
+	void affichageStatique(sf::RenderWindow& window, int nbP);
 
 	std::vector<sf::Sprite*>& getAffichage(){return _affichage;}
 	sf::Sprite& getAffichage(int i){return *_affichage[i];}
@@ -245,7 +248,7 @@ void Jeu::creerEnv(int x, int y, int z)
   int n1,n2;
 	for(int i=0 ; i<x; i++)
 	{
-		std::cout << "CREATION ELEMENTS" <<std::endl;
+		std::cout << "Creation des arbres" <<std::endl;
   	n1 = rand();
   	n2 = rand();
 		Arbre* arbre = new Arbre(n1%1280,n2%720);
@@ -255,7 +258,7 @@ void Jeu::creerEnv(int x, int y, int z)
 	std::cout << _objs[0]->getPosition(0)<< "arbre" << _objs[0]->getPosition(1)<< std::endl;
 	for(int i=0 ; i<y; i++)
 	{
-		std::cout << "CREATION ELEMENTS" <<std::endl;
+		std::cout << "Creation des roches" <<std::endl;
    	n1 = rand();
   	n2 = rand();
   	Roche* roche = new Roche(n1%1280,n2%720);
@@ -263,7 +266,7 @@ void Jeu::creerEnv(int x, int y, int z)
 	}
 	for(int i=0 ; i<z; i++)
 	{
-		std::cout << "CREATION ELEMENTS" <<std::endl;
+		std::cout << "Creation des baies" <<std::endl;
    	n1 = rand();
   	n2 = rand();
   	Baie* baie = new Baie(n1%1280,n2%720);
@@ -279,49 +282,62 @@ void Jeu::creerEnv(int x, int y, int z)
 bool Jeu::appelActions(std::string s, Personnage& p){
 	if(s == "Interagir")
 	{
-		std::cout <<"arbre " << _objs[0]->getPosition(0) << "  " << _objs[0]->getPosition(1) << std::endl;
-		std::cout <<"roche " << _objs[1]->getPosition(0) << "  " << _objs[1]->getPosition(1) << std::endl;
-		std::cout <<"arbres " << _persos[1]->getPosition(0) << "  " << _persos[1]->getPosition(1) << std::endl;
+		//std::cout <<"arbre " << _objs[0]->getPosition(0) << "  " << _objs[0]->getPosition(1) << std::endl;
+		//std::cout <<"roche " << _objs[1]->getPosition(0) << "  " << _objs[1]->getPosition(1) << std::endl;
+		//std::cout <<"arbres " << _persos[1]->getPosition(0) << "  " << _persos[1]->getPosition(1) << std::endl;
 
-		//On cherche un élément propre et dans la bonne direction
-
-//if(distanceToPerso(getCloserObject,p)<30)
-		//for(int i =0; i<_objs.size(); i++){
-    	//if (abs(p.getPosition(0)-_objs[i]->getPosition(0))<20 && abs(p.getPosition(1)-_objs[i]->getPosition(1))<20)
-if(distanceToPerso(getCloserObject(p),p)<30)
-    	{
-      	std::cout << "Interaction Possible" << std::endl;
-				p.interagir(getCloserObject(p));
-				return true;
-			}
-			else
+		//On cherche un élément proche et dans la bonne direction
+		if(distanceToPerso(getCloserObject(p),p)<30)
+    {
+    		std::cout << "Interaction Possible" << std::endl;
+		   	p.interagir(getCloserObject(p));
+		  	return true;
+		}
+		else
 			std::cout << "INTERACTION IMPOSSIBLE" << std::endl;
 		return false;
 	}
 	else if(s == "Manger")
 	{
 		p.manger();
+		std::cout << "Joueur a mangé" << std::endl;
 		return true;
 	}
 	else if(s == "CreerHache")
 	{
+		std::cout << "Tentative pour créer une hache" << std::endl;
 		if(p.creerHache())
+		{
+			std::cout << "Le joueur a : " << p.getNbOutils() << "Outils" << std::endl;
 			return true;
+		}
 	}
 	else if(s == "CreerPioche")
 	{
+		std::cout << "Tentative pour créer une pioche" << std::endl;
 		if(p.creerPioche())
+		{
+			std::cout << "Le joueur a : " << p.getNbOutils() << "Outils" << std::endl;
 			return true;
+		}
 	}
 	else if(s == "AllumerFeu")
 	{
+		std::cout << "Tentative pour créer un feu" << std::endl;
 		if(p.allumerFeu())
 			return true;
 	}
 	else if(s == "Dormir")
 	{
 		p.dormir();
+		std::cout << "Joueur a dormi" << std::endl;
 		return true;
+	}
+	else if(s == "ChangerOutil")
+	{
+		std::cout << "Le joueur veut changer d'outil" << std::endl;
+		if(p.changerOut())
+			return true;
 	}
 	else
 	{
@@ -357,18 +373,18 @@ int Jeu::tour(sf::Keyboard::Key k, long duration){
   			this->getPers(i).updateLife();
   	}
 	if(this->getNbPers() == 2)
-  {
-			if(this->getPers(0).getLife() == 0 || this->getPers(1).getLife() == 0 )
-  		return 3; //Les deux joueurs ont perdus en même temps
-  	else if(this->getPers(0).getLife() == 0)
-  		return 1; //Le joueur 1 a perdu
-  	else if(this->getPers(1).getLife() == 0)
-  		return 2; //Le joueur 2 a perdu
+ 	 {
+		if(this->getPers(0).getLife() == 0 || this->getPers(1).getLife() == 0 )
+  			return 3; //Les deux joueurs ont perdus en même temps
+  		else if(this->getPers(0).getLife() == 0)
+  			return 1; //Le joueur 1 a perdu
+  		else if(this->getPers(1).getLife() == 0)
+  			return 2; //Le joueur 2 a perdu
 	}
 	if(this->getNbPers() == 1)
-  {
+  	{
 		if(this->getPers(0).getLife() == 0)
-  		return 1; //Le joueur 2 a perdu
+  			return 1; //Le joueur 1 a perdu
 	}
   	//Si aucun des joueurs n'est mort on renvoie 0 pour dire de continuer
 	return 0;
