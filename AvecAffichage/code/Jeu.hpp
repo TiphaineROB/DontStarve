@@ -53,7 +53,7 @@ public:
 		//Initialisation des variables de jeu
 		_etat = 0; //on met l'état à 0 cela correspond à la page d'accueil
 		_day = 0;
-		_timer = 720000; //Doit correspondre à 12 minutes (soit 720s), toutes les 10min on passe en nuit et toutes les 4 on perds de la vie
+		_timer = 300000; //Doit correspondre à 10 minutes (soit 720s), toutes les 10min on passe en nuit et toutes les 4 on perds de la vie
 		_stateDay = true; //On commence la journée
 		_ifEnv = false; //On ne crée pas l'environnement en même temps que la simulation
 	}
@@ -219,7 +219,7 @@ int Jeu::isClicEnd(int x, int y)
 }
 
 /*
-* Fonction qui crée le reste de l'environnement, les élements plus les personnages
+* Fonction qui crée les personnages
 */
 void Jeu::creerJeu(int nbJ)
 {
@@ -243,6 +243,10 @@ void Jeu::creerJeu(int nbJ)
 	creerAffichage();
 }
 
+
+/*
+* Fonction qui crée leséléments de l'environnement
+*/
 void Jeu::creerEnv(int x, int y, int z)
 {
   int n1,n2;
@@ -390,6 +394,9 @@ int Jeu::tour(sf::Keyboard::Key k, long duration){
 	return 0;
 }
 
+/*
+* Fonction qui crée les l'affichage
+*/
 void Jeu::creerAffichage()
 {
 //Icones d'invocateurs

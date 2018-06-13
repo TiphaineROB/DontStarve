@@ -36,7 +36,6 @@ std::vector<Personnage> perso;
 
 	srand(time(NULL));
   RenderWindow window(VideoMode(1280,720),"ROB Starve Looser");
-	RenderWindow& fen = window;
   Jeu* sim = new Jeu();
   Sprite currentSpr = sim->getSprAcc();
 
@@ -94,6 +93,7 @@ std::vector<Personnage> perso;
 							if(int(duration) % int(sim->getTimer()) == 0) //12 min se sont écoulées donc on change l'état de la journée et éventuellement le numéro du jour
 							{
 								sim->changeStateDay();
+								//Indiquer que s'il n'y a pas de feu les joueurs perdent
 							}
 							if(event.type == Event::KeyPressed)
    	  				{

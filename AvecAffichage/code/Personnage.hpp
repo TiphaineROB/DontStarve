@@ -59,7 +59,9 @@ public:
 	}
 
 	~Personnage(){
-		_outils.clear();
+		for(int i=0; i < _outils.size(); i++)
+				delete _outils[i];
+		_outils.erase();
 		std::cout << "Destructeur Personnage" << std::endl;
 	}
 

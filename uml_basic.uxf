@@ -3,8 +3,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1098</x>
-      <y>732</y>
+      <x>1122</x>
+      <y>780</y>
       <w>126</w>
       <h>72</h>
     </coordinates>
@@ -21,8 +21,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1032</x>
-      <y>822</y>
+      <x>1056</x>
+      <y>870</y>
       <w>126</w>
       <h>66</h>
     </coordinates>
@@ -38,8 +38,8 @@ Package::jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>822</y>
+      <x>1194</x>
+      <y>870</y>
       <w>126</w>
       <h>66</h>
     </coordinates>
@@ -55,8 +55,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>942</x>
-      <y>486</y>
+      <x>966</x>
+      <y>534</y>
       <w>246</w>
       <h>216</h>
     </coordinates>
@@ -66,7 +66,7 @@ Package::Jeu
 --
 - _pack : HashMap&lt;string, int&gt;
 - _cmds : HashMap&lt;sf::Keyboard::key, string&gt;
-- _outils : Outils[]
+- _outils : vector&lt;Outil*&gt;
 - _sens : string
 - _faim : int
 - _fatigue : int
@@ -79,7 +79,7 @@ Package::Jeu
 + manger(): int
 + updateLife(): int
 + dormir(): int
-+ interagir(e: ElemEnv): bool
++ interagir(e: ElemEnv*): bool
 + changerOut(): Outil
 + bouger(s: string, sizeX: int, sizeY: int): bool
 - createCmd(i: int): HashMap&lt;sf::Keyboard::key, string&gt;</panel_attributes>
@@ -88,8 +88,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>672</x>
-      <y>486</y>
+      <x>696</x>
+      <y>534</y>
       <w>132</w>
       <h>138</h>
     </coordinates>
@@ -112,8 +112,8 @@ Package: Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>600</y>
+      <x>456</x>
+      <y>648</y>
       <w>132</w>
       <h>96</h>
     </coordinates>
@@ -136,8 +136,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>486</y>
+      <x>834</x>
+      <y>534</y>
       <w>126</w>
       <h>54</h>
     </coordinates>
@@ -152,8 +152,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>798</y>
+      <x>774</x>
+      <y>846</y>
       <w>240</w>
       <h>90</h>
     </coordinates>
@@ -173,10 +173,10 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>714</x>
-      <y>42</y>
+      <x>738</x>
+      <y>54</y>
       <w>348</w>
-      <h>336</h>
+      <h>372</h>
     </coordinates>
     <panel_attributes>Jeu
 Package::Jeu
@@ -195,16 +195,15 @@ Package::Jeu
 - _env: sf::Sprite
 - _textEnd: sf::Texture
 - _end: sf::Sprite
-- _objets: Vector&lt;ElemEnv&gt; 
-- _persos: Vector&lt;Personnage&gt;
-- 
+- _objets: Vector&lt;ElemEn*v&gt; 
+- _persos: Vector&lt;Personnage*&gt;
 
 --
 + changeStateDay(): bool
-+ addObj(e: ElemEnv): void
-+ addPers(p: Personnage):void
-+ getObj(i: int): ElemEnv
-+ getPers(i: int): Personnage
++ addObj(e: ElemEnv*): void
++ addPers(p: Personnage*):void
++ getObj(i: int): ElemEnv*
++ getPers(i: int): Personnage*
 + getNbPers(): int
 + getNbObjs(): int
 + isClicAccueil(x: int, y: int): int
@@ -212,25 +211,31 @@ Package::Jeu
 + isClicEnd(x: int, y: int): int
 + creerEnv(nbJ: int, AI: bool): Jeu*
 + tour(k: sf::Keyboard::Key,duration: double) : bool
-- AppelActions(s: string, p: Personnage)</panel_attributes>
++ creerEnv(x: int,y:int,z:int) : void
++ creerAffichage() : void
++ distanceToPerso(element:ElemEnv*, perso:Personnage&amp; ) : double
++ getCloserObject(perso: Personnage&amp; ) : ElemEnv*
++ affichageStatique(sf::RenderWindow&amp;,nbP: int): void
+- AppelActions(s: string, p: Personnage)
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1182</x>
-      <y>498</y>
-      <w>36</w>
-      <h>18</h>
+      <x>582</x>
+      <y>468</y>
+      <w>126</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>190.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1128</x>
-      <y>798</y>
+      <x>1152</x>
+      <y>846</y>
       <w>18</w>
       <h>36</h>
     </coordinates>
@@ -240,8 +245,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1182</x>
-      <y>798</y>
+      <x>1206</x>
+      <y>846</y>
       <w>18</w>
       <h>36</h>
     </coordinates>
@@ -251,8 +256,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
-      <y>534</y>
+      <x>894</x>
+      <y>582</y>
       <w>18</w>
       <h>276</h>
     </coordinates>
@@ -262,8 +267,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>696</y>
+      <x>984</x>
+      <y>744</y>
       <w>18</w>
       <h>114</h>
     </coordinates>
@@ -273,8 +278,8 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>762</x>
-      <y>618</y>
+      <x>786</x>
+      <y>666</y>
       <w>18</w>
       <h>192</h>
     </coordinates>
@@ -284,43 +289,50 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>372</y>
+      <x>1044</x>
+      <y>414</y>
       <w>30</w>
-      <h>126</h>
+      <h>138</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+
 0..2
 
 
 
+
+
+
+1
+
+
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+    <additional_attributes>10.0;20.0;10.0;200.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1104</x>
-      <y>678</y>
+      <x>1128</x>
+      <y>732</y>
       <w>18</w>
-      <h>84</h>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 
 
 
 n
-
-
+1
 
 </panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>492</y>
+      <x>456</x>
+      <y>540</y>
       <w>132</w>
       <h>102</h>
     </coordinates>
@@ -340,8 +352,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>702</y>
+      <x>456</x>
+      <y>750</y>
       <w>132</w>
       <h>108</h>
     </coordinates>
@@ -362,8 +374,8 @@ Package::Jeu
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>360</y>
+      <x>456</x>
+      <y>408</y>
       <w>132</w>
       <h>126</h>
     </coordinates>
@@ -386,24 +398,34 @@ Package::Jeu
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>372</y>
+      <x>774</x>
+      <y>408</y>
       <w>30</w>
-      <h>126</h>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+
+
 0.n
 
 
 
+
+
+
+
+1
+
+
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;210.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1206</x>
-      <y>486</y>
+      <x>1230</x>
+      <y>534</y>
       <w>192</w>
       <h>66</h>
     </coordinates>
@@ -416,5 +438,49 @@ Package::Jeu
 +  comportement(): string
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>582</x>
+      <y>576</y>
+      <w>120</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>582</x>
+      <y>654</y>
+      <w>120</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>582</x>
+      <y>660</y>
+      <w>126</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>552</y>
+      <w>42</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
