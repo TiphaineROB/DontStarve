@@ -19,11 +19,22 @@ Personnage::Personnage()
   this->sprite.setPosition(sf::Vector2f(1280/2, 720/2));
 
 
-	_sens = 'B';
-	_faim = 0;
-	_fatigue = 0;
-	_vie = 5;
-	_cmd = createCmd(1);
+  _sens = 'B';
+  _faim = 0;
+  _fatigue = 0;
+  _vie = 4;
+  _cmd = createCmd(1); //On associe les commandes au joueur
+  _origin[0] = 50; //Correspond au sens horizontal  0 à gauche
+  _origin[1] = 50; //Correspond au sens vertical 0 en haut
+  _taillePas = 10;
+  _pack["Baie"] = 0;
+  _pack["Bois"] = 2; //On commence avec deux bois et deux pierres pour pouvoir créer des outils
+  _pack["Pierre"] = 2;
+  _position[0] = 1280/2;
+  _position[1] = 720/2;
+
+  std::cout << "Taille du vecteur outil" << _outils.size()<< std::endl;
+
 }
 
 /*
@@ -93,8 +104,11 @@ std::cout << " UP "<< std::endl;
 * @return bool : true si la hache a bien été créée
 */
 bool Personnage::creerHache(){
-	if(this->_pack.find("Pierre")->second < 2 || this->_pack.find("Bois")->second < 1) //Il faut 2 pierres et un bois pour faire une hache
-		return false;
+	if(this->_pack["Pierre"] < 2 || this->_pack["Bois"] < 1) //Il faut 2 pierres et un bois pour faire une hache
+	{
+    std::cout << "Tentative échouée" << std::endl;
+    return false;
+  }
 	_outils.push_back(new Hache());
   this->_pack["Pierre"] -= 2;
   this->_pack["Bois"] -= 1;
@@ -107,8 +121,11 @@ bool Personnage::creerHache(){
 * @return bool : true si le feu a été allumé
 */
 bool Personnage::allumerFeu(){
-	if(this->_pack.find("Pierre")->second < 2 || this->_pack.find("Bois")->second < 2) //Il faut 2 de chaque ressources
-		return false;
+	if(this->_pack["Pierre"] < 2 || this->_pack["Bois"] < 2) //Il faut 2 de chaque ressources
+	{
+    std::cout << "Tentative échouée" << std::endl;
+    return false;
+  }
   this->_pack["Pierre"] -= 2;
   this->_pack["Bois"] -= 2;
 	return true;
@@ -119,9 +136,12 @@ bool Personnage::allumerFeu(){
 * @return bool : true si la pioche a été créée
 */
 bool Personnage::creerPioche(){
-	if(this->_pack.find("Pierre")->second < 1 || this->_pack.find("Bois")->second < 1) //La pioche est l'outil le plus facile à faire
-		return false;
-	_outils.push_back(new Pioche());
+	if(this->_pack["Pierre"] < 1 || this->_pack["Bois"] < 1) //La pioche est l'outil le plus facile à faire
+	{
+    std::cout << "Tentative échouée" << std::endl;
+    return false;
+  }
+  _outils.push_back(new Pioche());
   this->_pack["Pierre"] -= 1;
   this->_pack["Bois"] -= 1;
   std::cout << "Pioche créée" << std::endl;
@@ -184,13 +204,13 @@ cmd_t Personnage::createCmd(int i){
 		cmd[sf::Keyboard::Right] = "Droite";
 		cmd[sf::Keyboard::Up] = "Haut";
 		cmd[sf::Keyboard::Down] = "Bas";
-		cmd[sf::Keyboard::Num1] =  "Interagir";
-		cmd[sf::Keyboard::Num2] = "ChangerOutil";
-		cmd[sf::Keyboard::Num3] = "Manger" ;
-		cmd[sf::Keyboard::Num4] = "CreerHache";
-		cmd[sf::Keyboard::Num5] = "CreerPioche";
-		cmd[sf::Keyboard::Num6] = "AllumerFeu";
-		cmd[sf::Keyboard::Num7] = "Dormir";
+		cmd[sf::Keyboard::M] =  "Interagir";
+		cmd[sf::Keyboard::L] = "ChangerOutil";
+		cmd[sf::Keyboard::K] = "Manger" ;
+		cmd[sf::Keyboard::O] = "CreerHache";
+		cmd[sf::Keyboard::P] = "CreerPioche";
+		cmd[sf::Keyboard::I] = "AllumerFeu";
+		cmd[sf::Keyboard::J] = "Dormir";
 	}
 	else if(i==2)
 	{
@@ -217,24 +237,36 @@ cmd_t Personnage::createCmd(int i){
 */
 bool Personnage::interagir(ElemEnv* e) //On lui passe l'élément devant lui, l'erreur d'agir s'il n'y a pas d'élément est regardé avant d'appeler la fonction
 {
+  bool interac = false;
   std::cout << " On interagit" << std::endl;
-  if(this->getNbOutils() >= 1)
+  if(this->getNbOutils() >= 1 )
   {
     if(e->interagir(this->_outils[0]->getType()))
     {
         if(e->coupDestructif())
           this->_pack.find(e->getRessourceName())->second += e->getRessource();
-        std::cout << " J'AI DANS MA VALISE :" << getRessourceBois()<< std::endl;
-        std::cout << "Bois  " << getRessourceBois()<< std::endl;
-        std::cout << "Baie " << getRessourceBaie()<< std::endl;
-		    std::cout << "Pierre " << getRessourcePierre()<< std::endl;
-        if(e->getType().compare("Arbre") || e->getType().compare("Roche"))
+
+        if(e->getType() == "Arbre" || e->getType() == "Roche")
                 this->_outils[0]->utiliser();
-        return true;
+        interac = true;
+    }
+  }
+
+  if(e->getType() == "Baie")
+  {
+    if(e->coupDestructif())
+    {
+        this->_pack.find(e->getRessourceName())->second += e->getRessource();
+        interac = true;
     }
   }
   std::cout << "interaction impossible, pas d'outils dans sa valise" << std::endl;
-	return false;
+  std::cout << " J'AI DANS MA VALISE :" << getRessourceBois()<< std::endl;
+  std::cout << "Bois  " << getRessourceBois()<< std::endl;
+  std::cout << "Baie " << getRessourceBaie()<< std::endl;
+  std::cout << "Pierre " << getRessourcePierre()<< std::endl;
+
+  return interac;
 }
 
 

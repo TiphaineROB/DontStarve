@@ -13,6 +13,10 @@
 #include "Hache.hpp"
 #include "Pioche.hpp"
 #include "ElemEnv.hpp"
+#include "Arbre.hpp"
+#include "Baie.hpp"
+#include "Feu.hpp"
+#include "Roche.hpp"
 
 typedef std::map<sf::Keyboard::Key, std::string> cmd_t;
 typedef std::map<std::string, int> poche_t;
@@ -38,16 +42,16 @@ public:
   this->sprite.setPosition(sf::Vector2f(1240/2+i*30, 720/2+rand()%100));
 
 		_sens = 'B';
-		_faim = 3;
-		_fatigue = 3;
-		_vie = 3;
-		_cmd = createCmd(i);
+		_faim = 0;
+		_fatigue = 0;
+		_vie = 4;
+		_cmd = createCmd(i); //On associe les commandes au joueur
 		_origin[0] = 50; //Correspond au sens horizontal  0 à gauche
 		_origin[1] = 50; //Correspond au sens vertical 0 en haut
  		_taillePas = 10;
 		_pack["Baie"] = 0;
-		_pack["Bois"] = 0;
-		_pack["Pierre"] = 0;
+		_pack["Bois"] = 2; //On commence avec deux bois et deux pierres pour pouvoir créer des outils
+		_pack["Pierre"] = 2;
 		_position[0] = 1280/2;
 		_position[1] = 720/2;
 

@@ -53,7 +53,7 @@ public:
 		//Initialisation des variables de jeu
 		_etat = 0; //on met l'état à 0 cela correspond à la page d'accueil
 		_day = 0;
-		_timer = 720; //Doit correspondre à 12 minutes (soit 720min), toutes les 10min on passe en nuit et toutes les 4 on perds de la vie
+		_timer = 720000; //Doit correspondre à 12 minutes (soit 720s), toutes les 10min on passe en nuit et toutes les 4 on perds de la vie
 		_stateDay = true; //On commence la journée
 		_ifEnv = false; //On ne crée pas l'environnement en même temps que la simulation
 	}

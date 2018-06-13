@@ -44,7 +44,7 @@ public:
 
 	void setVie(int v){this->_vie = v;}
 	//Fonction qui dit si le coup que l'élement a reçu est destructif
-	bool coupDestructif(){
+	virtual bool coupDestructif(){
 		_vie--;
 		if(_vie==0)
 			return true;

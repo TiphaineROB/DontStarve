@@ -13,13 +13,13 @@ void Jeu::affichageStatique(sf::RenderWindow& window, int nbP)
 	{
 		//Pour PERSONNAGE 2
 		_affichage[5]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getLife()),72,215/5));
-		_affichage[6]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFatigue()),72,215/5));
-		_affichage[7]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[1]->getFaim()),72,215/5));
+		_affichage[6]->setTextureRect(sf::IntRect(0,215/5*(_persos[1]->getFatigue()),72,215/5));
+		_affichage[7]->setTextureRect(sf::IntRect(0,215/5*(_persos[1]->getFaim()),72,215/5));
 	}
 	//pour le PERSONNAGE 1
 	_affichage[2]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getLife()),72,215/5));
-	_affichage[3]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFatigue()),72,215/5));
-	_affichage[4]->setTextureRect(sf::IntRect(0,215/5*(4-_persos[0]->getFaim()),72,215/5));
+	_affichage[3]->setTextureRect(sf::IntRect(0,215/5*(_persos[0]->getFatigue()),72,215/5));
+	_affichage[4]->setTextureRect(sf::IntRect(0,215/5*(_persos[0]->getFaim()),72,215/5));
 
 
 	for(int i =0; i<_affichage.size();i++)
@@ -121,7 +121,7 @@ std::vector<Personnage> perso;
 		sf::Sprite perso1;
 		sf::Sprite perso2;
 		indicateurVie.loadFromFile("../images/indicateurVie.png");
-		
+
 		perso1.setTexture(indicateurVie);
 		perso2.setTexture(indicateurVie);
 		sf::Texture jauge;
@@ -144,13 +144,7 @@ std::vector<Personnage> perso;
 				window.draw(sim->getPers(i).getSprite());
 			}
 			sim->affichageStatique(window, nbJ);
-			double distance;
-		//	distance = sim->distanceToPerso(sim->getCloserObject(sim->getPers(0)),sim->getPers(0));
-				//sim->getCloserObject(sim->getPers(0))->getSprite().setColor(sf::Color::Red);
-			//std::cout << distance << std::endl;
 		}
-		//else
-		 //	std::cout << "Personnage n'existe pas encore" << std::endl;
     window.display();
 	}
   delete sim;
