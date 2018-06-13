@@ -13,6 +13,10 @@
 #include "Hache.hpp"
 #include "Pioche.hpp"
 #include "ElemEnv.hpp"
+#include "Arbre.hpp"
+#include "Baie.hpp"
+#include "Feu.hpp"
+#include "Roche.hpp"
 
 typedef std::map<sf::Keyboard::Key, std::string> cmd_t;
 typedef std::map<std::string, int> poche_t;
@@ -38,30 +42,30 @@ public:
   this->sprite.setPosition(sf::Vector2f(1240/2+i*30, 720/2+rand()%100));
 
 		_sens = 'B';
-		_faim = 3;
-		_fatigue = 3;
-		_vie = 3;
-		_cmd = createCmd(i);
+		_faim = 0;
+		_fatigue = 0;
+		_vie = 4;
+		_cmd = createCmd(i); //On associe les commandes au joueur
 		_origin[0] = 50; //Correspond au sens horizontal  0 à gauche
 		_origin[1] = 50; //Correspond au sens vertical 0 en haut
  		_taillePas = 10;
 		_pack["Baie"] = 0;
-		_pack["Bois"] = 0;
-		_pack["Pierre"] = 0;
+		_pack["Bois"] = 2; //On commence avec deux bois et deux pierres pour pouvoir créer des outils
+		_pack["Pierre"] = 2;
 		_position[0] = 1280/2;
 		_position[1] = 720/2;
+
+		std::cout << "Taille du vecteur outil" << _outils.size()<< std::endl;
 	}
 
-	/*~Personnage(){
+	~Personnage(){
 		_outils.clear();
-//		std::cout << "Destructeur Personnage" << std::endl;
+		std::cout << "Destructeur Personnage" << std::endl;
 	}
-*/
+
 	cmd_t getCmd(){
 		return _cmd;
 	}
-	int getBois(){return this->_pack["Bois"];}
-	void setBois(int i){this->_pack["Bois"]=i;}
 
 	int getLife(){return _vie;}
 	int getFaim(){return _faim;}
@@ -84,7 +88,6 @@ public:
 	void setRessourceBaie(int i){ _pack["Baie"] = i;}
 	int getRessourceBaie(){ return _pack["Baie"];}
 
-
 	bool bouger(std::string s, int sizeX, int sizeY);
 	bool creerHache();
 	bool allumerFeu();
@@ -94,8 +97,8 @@ public:
 	int dormir();
 	int reveil();
 
-	bool interagir(ElemEnv env);
-	Outil* changerOut();
+	bool interagir(ElemEnv* env);
+	bool changerOut();
 
 protected:
 

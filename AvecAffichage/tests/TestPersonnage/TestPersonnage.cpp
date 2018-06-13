@@ -33,7 +33,7 @@ int main()
   {
 
     //On ne les testes pas toutes mais quelques unes
-    if(pers->getCmd()[sf::Keyboard::Left] != "Gauche" || pers->getCmd()[sf::Keyboard::Num1] != "Interagir" || pers->getCmd()[sf::Keyboard::Num7] != "Dormir")
+    if(pers->getCmd()[sf::Keyboard::Left] != "Gauche" || pers->getCmd()[sf::Keyboard::M] != "Interagir" || pers->getCmd()[sf::Keyboard::J] != "Dormir")
       throw("Erreur dans la création des commandes pour le joueur");
 
     std::cout << "Test initial réussi" << std::endl;
@@ -81,21 +81,20 @@ int main()
   try
   {
     //Les ressources ne sont pas suffisantes
-     if(pers->creerHache())
+     if(!pers->creerHache()) //Le joueur possède de base 2 de chaque item
       throw("Erreur dans la création d'une hache");
 
     std::cout << "3eme test réussi" << std::endl;
 
-    pers->setRessourceBois(5);
-    pers->setRessourcePierre(5);
-    if(pers->getRessourceBois() != 5 || pers->getRessourcePierre() != 5)
+    
+    if(pers->getRessourceBois() != 1 || pers->getRessourcePierre() != 0)
       throw("Erreur dans l'ajout de ressources dans la hashMap");
 
       std::cout << "4eme test réussi" << std::endl;
 
 
     bool succeed = pers->creerHache();
-    if(!succeed || pers->getRessourceBois() != 4 || pers->getRessourcePierre() != 3 || pers->getNbOutils()!=3)
+    if(succeed) //Si on a réussi alors qu'on a plus de ressources erreur
       throw("Erreur dans la création de la hache");
 
       std::cout << "5eme test réussi" << std::endl;
@@ -142,13 +141,13 @@ int main()
       Roche *r = new Roche();
       std::cout << pers->getOut()->getType() << std::endl;
 
-      if(pers->interagir(*a))
+      if(pers->interagir(a))
         throw("Erreur,  le joueur peut interagir avec le mauvais outil");
 
       std::cout << "8eme test réussi" << std::endl;
 
 
-      if(!pers->interagir(*r))
+      if(!pers->interagir(r)) //Comme on a une pioche on peut interagir avec la roche
         throw("Erreur dans la correspondance outil/elem");
 
       //Coup destructif a déjà été testé dans le test ElemEnv donc les tests sur la fonction s'arrête là

@@ -251,6 +251,10 @@ bool Personnage::interagir(ElemEnv* e) //On lui passe l'élément devant lui, l'
         interac = true;
     }
   }
+  else
+  {
+      std::cout << "interaction impossible, pas d'outils dans sa valise" << std::endl;
+  }
 
   if(e->getType() == "Baie")
   {
@@ -260,8 +264,7 @@ bool Personnage::interagir(ElemEnv* e) //On lui passe l'élément devant lui, l'
         interac = true;
     }
   }
-  std::cout << "interaction impossible, pas d'outils dans sa valise" << std::endl;
-  std::cout << " J'AI DANS MA VALISE :" << getRessourceBois()<< std::endl;
+  std::cout << " J'AI DANS MA VALISE :" << std::endl;
   std::cout << "Bois  " << getRessourceBois()<< std::endl;
   std::cout << "Baie " << getRessourceBaie()<< std::endl;
   std::cout << "Pierre " << getRessourcePierre()<< std::endl;

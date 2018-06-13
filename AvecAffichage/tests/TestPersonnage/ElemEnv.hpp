@@ -37,14 +37,14 @@ public:
 
 	virtual int getRessource(){ return 0;}
 
-	virtual bool interagir(std::string s){ return false;}
+	virtual bool interagir(std::string s){ return true;}
 	int getVie(){
 		return this->_vie;
 	}
 
 	void setVie(int v){this->_vie = v;}
 	//Fonction qui dit si le coup que l'élement a reçu est destructif
-	bool coupDestructif(){
+	virtual bool coupDestructif(){
 		_vie--;
 		if(_vie==0)
 			return true;
