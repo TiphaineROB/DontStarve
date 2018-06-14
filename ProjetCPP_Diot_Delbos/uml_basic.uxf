@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1122</x>
+      <y>780</y>
+      <w>126</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Outils
+Package::Jeu
+
+--
+- vie: Long
+--
+/+ utiliser()/
+/+ getType(): string/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1056</x>
+      <y>870</y>
+      <w>126</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Hache
+Package::jeu
+
+--
+--
++ utiliser(): void
++ getType(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1194</x>
+      <y>870</y>
+      <w>126</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Pioche
+Package::Jeu
+
+--
+--
++ utiliser(): void
++ getType(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>966</x>
+      <y>534</y>
+      <w>246</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>Personnage
+Package::Jeu
+{Some Properties}
+--
+- _pack : HashMap&lt;string, int&gt;
+- _cmds : HashMap&lt;sf::Keyboard::key, string&gt;
+- _outils : vector&lt;Outil*&gt;
+- _sens : string
+- _faim : int
+- _fatigue : int
+- _vie : int
+- _taillePas: int
+--
++ creerHache(): bool
++ allumerFeu(): bool
++ creerPioche(): bool
++ manger(): int
++ updateLife(): int
++ dormir(): int
++ interagir(e: ElemEnv*): bool
++ changerOut(): Outil
++ bouger(s: string, sizeX: int, sizeY: int): bool
+- createCmd(i: int): HashMap&lt;sf::Keyboard::key, string&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>534</y>
+      <w>132</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>ElemEnv
+Package: Jeu
+--
+
+- _vie: int
+
+--
+
+/+ getType(): string/
+/+ getRessourceName(): string/
+/+ getRessource(): int /
+/+ interagir(s: string): bool/
++ getVie(): int
++ coupDestructif(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>648</y>
+      <w>132</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Roche
+Package::Jeu
+
+--
+--
++ Roche()
++ Roche(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ interagir(s: string): bool
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>834</x>
+      <y>534</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Betes
+Package::Jeu
+{Some Properties}
+--
+--
++</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>774</x>
+      <y>846</y>
+      <w>240</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ToDraw
+Package::Jeu
+
+--
+- vie: Long
+- position: int[2]
+- image: Texture
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>738</x>
+      <y>54</y>
+      <w>348</w>
+      <h>372</h>
+    </coordinates>
+    <panel_attributes>Jeu
+Package::Jeu
+
+--
+- _day: int
+- _stateDay: bool
+- _etat: int
+- _ifEnv: bool
+- _timer: double
+- _textAcc: sf::Texture
+- _accueil: sf::Sprite
+- _textCmds: sf::Texture
+- _cmds: sf::Sprite
+- _textEnv: sf::Texture
+- _env: sf::Sprite
+- _textEnd: sf::Texture
+- _end: sf::Sprite
+- _objets: Vector&lt;ElemEn*v&gt; 
+- _persos: Vector&lt;Personnage*&gt;
+
+--
++ changeStateDay(): bool
++ addObj(e: ElemEnv*): void
++ addPers(p: Personnage*):void
++ getObj(i: int): ElemEnv*
++ getPers(i: int): Personnage*
++ getNbPers(): int
++ getNbObjs(): int
++ isClicAccueil(x: int, y: int): int
++ isClicChoixJ(x: int, y: int): int
++ isClicEnd(x: int, y: int): int
++ creerEnv(nbJ: int, AI: bool): Jeu*
++ tour(k: sf::Keyboard::Key,duration: double) : bool
++ creerEnv(x: int,y:int,z:int) : void
++ creerAffichage() : void
++ distanceToPerso(element:ElemEnv*, perso:Personnage&amp; ) : double
++ getCloserObject(perso: Personnage&amp; ) : ElemEnv*
++ affichageStatique(sf::RenderWindow&amp;,nbP: int): void
+- AppelActions(s: string, p: Personnage)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>582</x>
+      <y>468</y>
+      <w>126</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>190.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>846</y>
+      <w>18</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1206</x>
+      <y>846</y>
+      <w>18</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>894</x>
+      <y>582</y>
+      <w>18</w>
+      <h>276</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;440.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>744</y>
+      <w>18</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>786</x>
+      <y>666</y>
+      <w>18</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;300.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1044</x>
+      <y>414</y>
+      <w>30</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+
+0..2
+
+
+
+
+
+
+1
+
+
+</panel_attributes>
+    <additional_attributes>10.0;20.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1128</x>
+      <y>732</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+
+
+n
+1
+
+</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>540</y>
+      <w>132</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Arbre
+Package::Jeu
+
+--
+--
++ Arbre()
++ Arbre(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ interagir(s: string): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>750</y>
+      <w>132</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Baie
+Package::Jeu
+
+--
+--
++ Baie()
++ Baie(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ interagir(s: string): bool
++ coupDestructif(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>408</y>
+      <w>132</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Feu
+Package::Jeu
+
+--
+--
++ Feu()
++ Feu(x:int, y: int)
++ getType(): string
++ getRessourceName(): string
++ getRessource(): int 
++ raviver(): void
++ raviver(nbB: int): void
++ interagir(s: string): bool
++ coupDestructif(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>774</x>
+      <y>408</y>
+      <w>30</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+
+
+0.n
+
+
+
+
+
+
+
+1
+
+
+</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1230</x>
+      <y>534</y>
+      <w>192</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>AI
+Package::Jeu
+{Some Properties}
+--
+--
++  bouger(s: string, sizeX: int, sizeY: int): bool
++  comportement(): string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>582</x>
+      <y>576</y>
+      <w>120</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>582</x>
+      <y>654</y>
+      <w>120</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>582</x>
+      <y>660</y>
+      <w>126</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1200</x>
+      <y>552</y>
+      <w>42</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
